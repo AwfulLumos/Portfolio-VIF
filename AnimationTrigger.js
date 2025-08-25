@@ -1,158 +1,277 @@
-// Enhanced School Section JavaScript
-document.addEventListener("DOMContentLoaded", function () {
-  // Flip card functionality
-  const schoolCard = document.getElementById("schoolCard");
-  if (schoolCard) {
-    const cardInner = schoolCard.querySelector(".school-card-inner");
+document.addEventListener("DOMContentLoaded", () => {
+  initScrollAnimations();
+  initParticleSystem();
+  initSchoolCardFlip();
+  initAchievementToggle();
+  initSmoothScrolling();
+  initHeaderScroll();
 
-    schoolCard.addEventListener("click", () => {
-      cardInner.classList.toggle("flipped");
+  console.log("🚀 VIF.Dev Portfolio Enhanced - All systems loaded!");
+});
 
-      // Add subtle haptic feedback (if supported)
-      if (navigator.vibrate) {
-        navigator.vibrate(50);
-      }
-    });
-
-    // Add keyboard accessibility
-    schoolCard.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        cardInner.classList.toggle("flipped");
-      }
-    });
-
-    // Make card focusable for accessibility
-    schoolCard.setAttribute("tabindex", "0");
-    schoolCard.setAttribute("role", "button");
-    schoolCard.setAttribute(
-      "aria-label",
-      "Flip card to see university information"
-    );
-  }
-
-  // Achievements toggle functionality
-  const achievementsBtn = document.getElementById("showAchievementsBtn");
-  const achievementsContent = document.getElementById("achievements");
-
-  if (achievementsBtn && achievementsContent) {
-    let achievementsVisible = false;
-
-    achievementsBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      achievementsVisible = !achievementsVisible;
-
-      if (achievementsVisible) {
-        achievementsContent.classList.add("active");
-        achievementsBtn.textContent = "🏆 Hide Achievements";
-        achievementsBtn.setAttribute("aria-expanded", "true");
-
-        // Smooth scroll to achievements after a short delay to allow animation
-        setTimeout(() => {
-          achievementsContent.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-          });
-        }, 200);
-      } else {
-        achievementsContent.classList.remove("active");
-        achievementsBtn.textContent = "🏆 View My Achievements";
-        achievementsBtn.setAttribute("aria-expanded", "false");
-      }
-
-      // Add button press effect
-      achievementsBtn.style.transform = "scale(0.95)";
-      setTimeout(() => {
-        achievementsBtn.style.transform = "";
-      }, 150);
-    });
-
-    // Set initial aria attributes
-    achievementsBtn.setAttribute("aria-expanded", "false");
-    achievementsBtn.setAttribute("aria-controls", "achievements");
-  }
-
-  // Add intersection observer for subtle entrance animation
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  };
+// Scroll-triggered animations
+function initScrollAnimations() {
+  const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("animate-in");
+
+        if (entry.target.id === "about") {
+          setTimeout(() => {
+            const textContent = entry.target.querySelector(
+              ".col-md-6:first-child"
+            );
+            const imageContent = entry.target.querySelector(
+              ".col-md-6:last-child"
+            );
+            if (textContent) textContent.classList.add("about-text-animate");
+            if (imageContent) imageContent.classList.add("about-image-animate");
+          }, 200);
+        }
       }
     });
   }, observerOptions);
 
-  // Observe the school section
-  const schoolSection = document.getElementById("school");
-  if (schoolSection) {
-    observer.observe(schoolSection);
+  document
+    .querySelectorAll("section")
+    .forEach((section) => observer.observe(section));
+}
+
+// Floating particles system
+function initParticleSystem() {
+  const particlesContainer = document.createElement("div");
+  particlesContainer.className = "particles-container";
+  document.body.appendChild(particlesContainer);
+
+  for (let i = 0; i < 10; i++) createParticle(particlesContainer);
+}
+
+function createParticle(container) {
+  const particle = document.createElement("div");
+  particle.className = "particle";
+
+  const sizes = ["small", "medium", "large"];
+  const drifts = ["", "drift-left", "drift-right"];
+
+  particle.classList.add(sizes[Math.floor(Math.random() * sizes.length)]);
+  if (Math.random() > 0.6) {
+    particle.classList.add(drifts[Math.floor(Math.random() * drifts.length)]);
   }
 
-  // Add subtle parallax effect to background elements
-  const schoolBg = document.querySelector("#school::before");
-  if (schoolSection) {
-    let ticking = false;
+  particle.style.left = Math.random() * 100 + "%";
+  particle.style.animationDelay = Math.random() * -10 + "s";
 
-    function updateParallax() {
-      const scrolled = window.pageYOffset;
-      const parallax = scrolled * 0.5;
+  container.appendChild(particle);
+}
 
-      schoolSection.style.transform = `translateY(${parallax * 0.1}px)`;
-      ticking = false;
+// School card flip functionality
+function initSchoolCardFlip() {
+  const schoolCard = document.getElementById("schoolCard");
+  if (!schoolCard) return;
+
+  let isFlipped = false;
+  let flipTimeout;
+  let autoFlipInterval;
+
+  function flipCard() {
+    isFlipped = !isFlipped;
+    schoolCard.classList.toggle("flipped", isFlipped);
+    schoolCard.setAttribute("aria-expanded", String(isFlipped));
+
+    clearTimeout(flipTimeout);
+    if (isFlipped) {
+      flipTimeout = setTimeout(() => {
+        isFlipped = false;
+        schoolCard.classList.remove("flipped");
+        schoolCard.setAttribute("aria-expanded", "false");
+      }, 5000);
     }
+  }
 
-    function requestTick() {
-      if (!ticking) {
-        requestAnimationFrame(updateParallax);
-        ticking = true;
+  // Manual flip
+  schoolCard.addEventListener("click", flipCard);
+  schoolCard.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      flipCard();
+    }
+  });
+
+  // Auto-flip setup
+  function startAutoFlip() {
+    clearInterval(autoFlipInterval);
+    autoFlipInterval = setInterval(() => {
+      if (
+        !schoolCard.matches(":hover") &&
+        document.activeElement !== schoolCard
+      ) {
+        flipCard();
       }
-    }
-
-    // Only add parallax on larger screens to avoid performance issues
-    if (window.innerWidth > 768) {
-      window.addEventListener("scroll", requestTick);
-    }
+    }, 8000);
   }
 
-  // Add loading states and error handling for images
-  const schoolImage = document.querySelector(".school-card-front img");
-  if (schoolImage) {
-    schoolImage.addEventListener("load", () => {
-      schoolImage.classList.add("loaded");
-    });
-
-    schoolImage.addEventListener("error", () => {
-      console.warn("School logo failed to load");
-      schoolImage.alt = "University logo (failed to load)";
-    });
+  function stopAutoFlip() {
+    clearInterval(autoFlipInterval);
   }
 
-  // Add ripple effect to button
-  function createRipple(event) {
-    const button = event.currentTarget;
-    const ripple = document.createElement("span");
-    const rect = button.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
-    const x = event.clientX - rect.left - size / 2;
-    const y = event.clientY - rect.top - size / 2;
+  schoolCard.addEventListener("mouseenter", stopAutoFlip);
+  schoolCard.addEventListener("mouseleave", startAutoFlip);
 
-    ripple.style.width = ripple.style.height = size + "px";
-    ripple.style.left = x + "px";
-    ripple.style.top = y + "px";
-    ripple.classList.add("ripple");
+  startAutoFlip();
+}
 
-    button.appendChild(ripple);
+// Enhanced achievement toggle
+function initAchievementToggle() {
+  const btn = document.getElementById("showAchievementsBtn");
+  const achievements = document.getElementById("achievements");
+  if (!btn || !achievements) return;
 
+  let isExpanded = false;
+
+  btn.addEventListener("click", () => {
+    isExpanded = !isExpanded;
+    achievements.classList.toggle("active", isExpanded);
+    btn.setAttribute("aria-expanded", String(isExpanded));
+
+    if (isExpanded) {
+      btn.innerHTML = "🎉 Awesome Achievements!";
+      btn.style.background =
+        "linear-gradient(135deg, var(--color-secondary), var(--color-accent))";
+      setTimeout(
+        () =>
+          achievements.scrollIntoView({ behavior: "smooth", block: "nearest" }),
+        300
+      );
+    } else {
+      btn.innerHTML = "🏆 View My Achievements";
+      btn.style.background =
+        "linear-gradient(135deg, var(--color-accent), var(--color-secondary))";
+    }
+  });
+
+  btn.addEventListener("animationend", () => {
+    btn.style.animation = "";
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && !isExpanded) {
+        btn.style.animation = "buttonPulse 2s ease-in-out 3";
+      }
+    });
+  });
+  observer.observe(btn);
+}
+
+// Smooth scrolling for navigation links
+function initSmoothScrolling() {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetSection = document.querySelector(anchor.getAttribute("href"));
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+}
+
+// Header scroll effect
+function initHeaderScroll() {
+  const header = document.querySelector("header");
+  if (!header) return;
+
+  let lastScrollY = window.scrollY;
+  let isHeaderVisible = true;
+
+  window.addEventListener(
+    "scroll",
+    throttle(() => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > 50) {
+        header.style.backdropFilter = "blur(25px)";
+        header.style.background = "rgba(10, 15, 28, 0.95)";
+      } else {
+        header.style.backdropFilter = "blur(20px)";
+        header.style.background = "rgba(10, 15, 28, 0.9)";
+      }
+
+      if (
+        currentScrollY > lastScrollY &&
+        currentScrollY > 100 &&
+        isHeaderVisible
+      ) {
+        header.style.transform = "translateY(-100%)";
+        isHeaderVisible = false;
+      } else if (currentScrollY < lastScrollY && !isHeaderVisible) {
+        header.style.transform = "translateY(0)";
+        isHeaderVisible = true;
+      }
+
+      lastScrollY = currentScrollY;
+    }, 100)
+  );
+}
+
+// Throttle helper
+function throttle(func, wait) {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), wait);
+  };
+}
+
+// Add button pulse keyframes
+const style = document.createElement("style");
+style.textContent = `
+    @keyframes buttonPulse {
+        0% { transform: scale(1); box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3); }
+        50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5); }
+        100% { transform: scale(1); box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3); }
+    }
+    @keyframes rainbow {
+        0% { filter: hue-rotate(0deg); }
+        100% { filter: hue-rotate(360deg); }
+    }
+`;
+document.head.appendChild(style);
+
+// Page fade-in
+window.addEventListener("load", () => {
+  document.body.style.opacity = "0";
+  document.body.style.transition = "opacity 0.5s ease";
+  setTimeout(() => (document.body.style.opacity = "1"), 100);
+});
+
+// Konami code Easter egg
+const konamiSequence = [
+  "ArrowUp",
+  "ArrowUp",
+  "ArrowDown",
+  "ArrowDown",
+  "ArrowLeft",
+  "ArrowRight",
+  "ArrowLeft",
+  "ArrowRight",
+  "b",
+  "a",
+];
+let konamiInput = [];
+
+document.addEventListener("keydown", (e) => {
+  konamiInput.push(e.key);
+  if (konamiInput.length > konamiSequence.length) konamiInput.shift();
+
+  if (konamiInput.join("") === konamiSequence.join("")) {
+    document.body.style.animation = "rainbow 2s linear infinite";
     setTimeout(() => {
-      ripple.remove();
-    }, 600);
-  }
-
-  if (achievementsBtn) {
-    achievementsBtn.addEventListener("click", createRipple);
+      document.body.style.animation = "";
+      alert("🎉 Easter egg activated! You found the secret! 🚀");
+    }, 2000);
+    konamiInput = [];
   }
 });
