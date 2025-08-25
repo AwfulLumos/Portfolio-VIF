@@ -5,121 +5,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VIF.Dev Portfolio</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="PortfolioStyle.css">
-    <link rel="stylesheet" href="SchoolStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="aboutMe.css">
+    <link rel="stylesheet" href="school.css">
+    <link rel="stylesheet" href="achievement.css">
+    <link rel="stylesheet" href="particles.css">
+    <link rel="stylesheet" href="footer.css">
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="py-3">
-        <nav class="container d-flex justify-content-between align-items-center">
-            <h1 class="text-white">VIF.Dev</h1>
-            <ul class="nav">
-                <li class="nav-item"><a href="#about" class="nav-link text-light fw-bold">About Me</a></li>
-                <li class="nav-item"><a href="#school" class="nav-link text-light fw-bold">School</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link text-light fw-bold">Contact</a></li>
-                <li class="nav-item"><a href="#projects" class="nav-link text-light fw-bold">Projects</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="hero" class="d-flex flex-column justify-content-center align-items-center text-center vh-100">
-        <h2 class="text-white display-4">
-            Hi! I'm VIF.Dev <span class="floating-arrow">^^</span>
-        </h2>
-        <p class="text-light fs-3 mt-3">Full Stack Developer | Web Developer Enthusiast</p>
-    </section>
-
-    <!-- Bootstrap JS (optional) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- About Me Section -->
-    <section id="about" class="py-5">
+    <header class="navbar navbar-expand-lg py-3">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 mb-4 mb-md-0">
-                    <h3 class="text-white">About Me</h3>
-                    <p class="text-light">
-                        Hello! I'm VIF.Dev, a Full Stack Developer passionate about building modern, responsive
-                        websites.
-                        I specialize in JavaScript, React, Vue.js, and backend development with MySQL, Laravel, and
-                        Spring Boot.
-                        I love exploring new technologies, contributing to open-source projects, and designing intuitive
-                        user experiences.
-                    </p>
-                </div>
-
-                <div class="col-md-6 text-center">
-                    <div class="about-image-container">
-                        <img src="me.png" alt="VIF.Dev" class="img-fluid shadow-lg">
-                    </div>
-                </div>
+            <a class="navbar-brand text-white fs-4 fw-bold" href="#">VIF.Dev</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link text-light fw-bold" href="#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link text-light fw-bold" href="#school-section">School</a></li>
+                    <li class="nav-item"><a class="nav-link text-light fw-bold" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link text-light fw-bold" href="#projects">Projects</a></li>
+                </ul>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- School Section -->
-    <section id="school" class="py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- School Image / Logo -->
-                <div class="col-lg-5 col-md-6 text-center mb-4 mb-md-0">
-                    <div class="school-card" id="schoolCard">
-                        <div class="school-card-inner">
-                            <!-- Front: School Logo -->
-                            <div class="school-card-front">
-                                <img src="https://unc.neolms.eu/files/86109/1200px-University_of_Nueva_Caceres_Seal(6).png?lmsauth=0d3e8d79854064302d3a29dc0243b9cba24f367f"
-                                    alt="University of Nueva Caceres Seal" class="img-fluid">
-                            </div>
-                            <!-- Back: Custom Description -->
-                            <div class="school-card-back">
-                                <h4>🎓 Fun Fact</h4>
-                                <p>University of Nueva Caceres is the first private university in the Bicol Region,
-                                    founded in 1949. It has been nurturing future leaders for over 75 years!</p>
-                            </div>
+    <main>
+        <section id="hero" class="d-flex flex-column justify-content-center align-items-center text-center vh-100">
+            <h2 class="text-white display-4">
+                Hi! I'm VIF.Dev
+            </h2>
+            <p class="text-light fs-3 mt-3">Full Stack Developer | Web Developer Enthusiast</p>
+        </section>
+
+        <section id="about" class="py-5 glass-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <h3 class="text-white">About Me</h3>
+                        <p class="text-light">
+                            Hello! I'm VIF.Dev, a Full Stack Developer passionate about building modern, responsive
+                            websites.
+                            I specialize in JavaScript, React, Vue.js, and backend development with MySQL, Laravel, and
+                            Spring Boot.
+                            I love exploring new technologies, contributing to open-source projects, and designing
+                            intuitive
+                            user experiences.
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <div class="about-image-container">
+                            <img src="me.png" alt="A professional headshot of VIF.Dev, smiling and looking confident."
+                                loading="lazy" class="img-fluid shadow-lg">
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- School Description -->
-                <div class="col-lg-7 col-md-6">
-                    <h3>My Educational Journey</h3>
-                    <p>
-                        I'm currently pursuing my <strong>Bachelor of Science in Information Technology</strong> at the
-                        prestigious <strong>University of Nueva Caceres</strong>, where I'm diving deep into software
-                        development, database management, and cutting-edge web technologies. My academic journey has
-                        been enriched by hands-on projects that bridge theory with real-world applications, preparing me
-                        to tackle complex technological challenges in today's digital landscape.
-                    </p>
-
-                    <!-- Achievements Button -->
-                    <button id="showAchievementsBtn" class="btn btn-primary mt-3">
-                        🏆 View My Achievements
-                    </button>
-
-                    <!-- Achievements Content (hidden by default) -->
-                    <div id="achievements" class="achievements-content mt-4">
-                        <ul>
-                            <li>Dean's List 2021 Second Semester SY 2020-2021</li>
-                            <li>Dean's List 2022 First Semester SY 2021-2022</li>
-                            <li>Dean's List 2023 Second Semester SY 2022-2023</li>
-                            <li>Idea2Startup 2025 Project: DigiStall</li>
-                            <li>Open Source Contributor</li>
-                        </ul>
+        <section id="school-section" class="school-section glass-section">
+            <div class="school-container">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-4 col-md-5 text-center">
+                        <div class="school-card" id="schoolCard" tabindex="0" role="button"
+                            aria-label="Flip card to see university information">
+                            <div class="school-card-inner">
+                                <div class="school-card-front">
+                                    <img src="https://unc.neolms.eu/files/86109/1200px-University_of_Nueva_Caceres_Seal(6).png?lmsauth=0d3e8d79854064302d3a29dc0243b9cba24f367f"
+                                        alt="Seal of the University of Nueva Caceres" class="img-fluid loaded">
+                                </div>
+                                <div class="school-card-back">
+                                    <h4>🎓 Fun Fact</h4>
+                                    <p>University of Nueva Caceres is the first private university in the Bicol Region,
+                                        founded in 1949. It has been nurturing future leaders for over 75 years!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-7">
+                        <h3>My Educational Journey</h3>
+                        <p>
+                            I'm currently pursuing my <strong>Bachelor of Science in Information Technology</strong> at
+                            the
+                            prestigious <strong>University of Nueva Caceres</strong>, where I'm diving deep into
+                            software
+                            development, database management, and cutting-edge web technologies. My academic journey has
+                            been enriched by hands-on projects that bridge theory with real-world applications.
+                        </p>
+                        <button id="showAchievementsBtn" aria-expanded="false" aria-controls="achievements"
+                            class="btn btn-primary">
+                            🏆 View My Achievements
+                        </button>
+                        <div id="achievements" class="achievements-content">
+                            <ul>
+                                <li>Dean's List 2021 Second Semester SY 2020-2021</li>
+                                <li>Dean's List 2022 First Semester SY 2021-2022</li>
+                                <li>Dean's List 2023 Second Semester SY 2022-2023</li>
+                                <li>Idea2Startup 2025 Project: <a href="#">DigiStall</a></li>
+                                <li>Open Source Contributor</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2025 VIF.Dev. All Rights Reserved.</p>
+            <ul class="footer-links">
+                <li><a href="https://github.com/yourgithub" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://linkedin.com/in/yourlinkedin" target="_blank"
+                        rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="mailto:your@email.com">Email</a></li>
+            </ul>
         </div>
-    </section>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="AnimationTrigger.js"></script>
 </body>
 
 </html>
-
-
-<script src="AnimationTrigger.js"></script>
-
