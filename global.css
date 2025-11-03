@@ -110,6 +110,27 @@ header {
   transition: all 0.3s ease;
 }
 
+/* Enhanced button reliability */
+button, .btn {
+  position: relative;
+  z-index: 10;
+  pointer-events: auto !important;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent interference from overlays */
+.particles-container {
+  pointer-events: none !important;
+  z-index: 1;
+}
+
+/* Ensure proper stacking context */
+section {
+  position: relative;
+  z-index: 2;
+}
+
 .navbar-brand {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1.8rem !important;
@@ -191,7 +212,7 @@ header {
     opacity: 0.5; 
   }
   100% { 
-    transform: translate(-50%, -50%) scale(1.2); 
+    transform: translate(-50%, -50%) scale(1.05); 
     opacity: 0.8; 
   }
 }
