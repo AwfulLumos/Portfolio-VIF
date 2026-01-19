@@ -1,0 +1,209 @@
+<!-- Projects Section Component with Carousel -->
+<section id="projects" class="projects-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2 class="gradient-text">Featured Projects</h2>
+      <p class="section-subtitle">
+        A showcase of my recent work and creative endeavors
+      </p>
+    </div>
+
+    <!-- Bootstrap Carousel -->
+    <div
+      id="projectsCarousel"
+      class="carousel slide projects-carousel"
+      data-bs-ride="carousel"
+      data-bs-interval="6000"
+    >
+      <div class="carousel-inner">
+        <!-- Project 1 -->
+        <div class="carousel-item active">
+          <div class="project-card">
+            <div class="project-card-inner">
+              <div class="project-image">
+                <img
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
+                  alt="DigiStall E-commerce Platform"
+                  loading="lazy"
+                />
+              </div>
+              <div class="project-info">
+                <span class="project-category">Web Application</span>
+                <h3>DigiStall</h3>
+                <p>
+                  An innovative e-commerce platform developed for the
+                  Idea2Startup 2025 competition. Features a modern UI, secure
+                  payment integration, and inventory management system designed
+                  to help small businesses establish their digital presence.
+                </p>
+                <div class="project-tech">
+                  <span>Laravel</span>
+                  <span>Vue.js</span>
+                  <span>MySQL</span>
+                  <span>Bootstrap</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" class="btn btn-primary">
+                    <i class="bi bi-eye"></i> Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/AwfulLumos"
+                    class="btn btn-outline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="bi bi-github"></i> Source Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="carousel-item">
+          <div class="project-card">
+            <div class="project-card-inner">
+              <div class="project-image">
+                <img
+                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop"
+                  alt="Portfolio Website"
+                  loading="lazy"
+                />
+              </div>
+              <div class="project-info">
+                <span class="project-category">Personal Project</span>
+                <h3>Portfolio Website</h3>
+                <p>
+                  A modern, responsive portfolio website built with Bootstrap 5
+                  and custom CSS. Features smooth animations, glass morphism
+                  design, interactive elements, and optimized performance for an
+                  exceptional user experience.
+                </p>
+                <div class="project-tech">
+                  <span>HTML5</span>
+                  <span>CSS3</span>
+                  <span>JavaScript</span>
+                  <span>Bootstrap 5</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" class="btn btn-primary">
+                    <i class="bi bi-eye"></i> Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/AwfulLumos/Portfolio-VIF"
+                    class="btn btn-outline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="bi bi-github"></i> Source Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="carousel-item">
+          <div class="project-card">
+            <div class="project-card-inner">
+              <div class="project-image">
+                <img
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
+                  alt="Task Management System"
+                  loading="lazy"
+                />
+              </div>
+              <div class="project-info">
+                <span class="project-category">Full Stack Application</span>
+                <h3>Task Management System</h3>
+                <p>
+                  A comprehensive task management application with user
+                  authentication, team collaboration features, and real-time
+                  updates. Built with a RESTful API backend and modern frontend
+                  technologies.
+                </p>
+                <div class="project-tech">
+                  <span>Spring Boot</span>
+                  <span>React</span>
+                  <span>PostgreSQL</span>
+                  <span>JWT</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" class="btn btn-primary">
+                    <i class="bi bi-eye"></i> Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/AwfulLumos"
+                    class="btn btn-outline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="bi bi-github"></i> Source Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Controls -->
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#projectsCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#projectsCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+
+      <!-- Carousel Indicators -->
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#projectsCarousel"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Project 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#projectsCarousel"
+          data-bs-slide-to="1"
+          aria-label="Project 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#projectsCarousel"
+          data-bs-slide-to="2"
+          aria-label="Project 3"
+        ></button>
+      </div>
+    </div>
+
+    <!-- View All Projects Button -->
+    <div class="text-center mt-4 fade-in">
+      <a
+        href="https://github.com/AwfulLumos?tab=repositories"
+        class="btn btn-outline"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="bi bi-github"></i> View All Projects on GitHub
+      </a>
+    </div>
+  </div>
+</section>

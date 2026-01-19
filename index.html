@@ -1,14 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VIF.Dev Portfolio</title>
+    <meta
+      name="description"
+      content="VIF.Dev - Full Stack Developer Portfolio. Voun Irish Florence Dejumo specializes in JavaScript, React, Vue.js, Laravel and Spring Boot development."
+    />
+    <meta
+      name="keywords"
+      content="Full Stack Developer, Web Developer, JavaScript, React, Vue.js, Laravel, Spring Boot, Portfolio"
+    />
+    <meta name="author" content="Voun Irish Florence Dejumo" />
+
+    <!-- Open Graph / Social Media -->
+    <meta
+      property="og:title"
+      content="VIF.Dev - Full Stack Developer Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Full Stack Developer crafting modern, responsive web experiences with passion for clean code and innovative solutions."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vif.dev" />
+
+    <title>VIF.Dev | Full Stack Developer Portfolio</title>
+
+    <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
+    <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -16,6 +41,13 @@
       crossorigin="anonymous"
     />
 
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,18 +55,30 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="global.css" />
-    <link rel="stylesheet" href="aboutMe.css" />
-    <link rel="stylesheet" href="school.css" />
-    <link rel="stylesheet" href="achievement.css" />
-    <link rel="stylesheet" href="particles.css" />
-    <link rel="stylesheet" href="footer.css" />
+    <!-- Custom CSS - Organized in css/ folder -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/skills.css" />
+    <link rel="stylesheet" href="css/education.css" />
+    <link rel="stylesheet" href="css/projects.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/particles.css" />
   </head>
 
   <body>
-    <header class="navbar navbar-expand-lg py-3">
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="visually-hidden-focusable"
+      >Skip to main content</a
+    >
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
       <div class="container">
-        <a class="navbar-brand text-white fs-4 fw-bold" href="#">VIF.Dev</a>
+        <a class="navbar-brand" href="#">VIF.Dev</a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -46,165 +90,907 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div
           class="collapse navbar-collapse justify-content-end"
           id="navbarNav"
         >
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link text-light fw-bold" href="#about">About Me</a>
+              <a class="nav-link active" href="#hero">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light fw-bold" href="#school-section"
-                >School</a
-              >
+              <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light fw-bold" href="#contact">Contact</a>
+              <a class="nav-link" href="#skills">Skills</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light fw-bold" href="#projects"
-                >Projects</a
-              >
+              <a class="nav-link" href="#education">Education</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
             </li>
           </ul>
         </div>
       </div>
-    </header>
+    </nav>
 
-    <main>
-      <section
-        id="hero"
-        class="d-flex flex-column justify-content-center align-items-center text-center vh-100"
-      >
-        <h2 class="text-white display-4">Hi! I'm VIF.Dev</h2>
-        <p class="text-light fs-3 mt-3">
-          Full Stack Developer | Web Developer Enthusiast
-        </p>
+    <!-- Main Content -->
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section id="hero" class="hero-section">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="status-dot"></span>
+            <span>Available for Work</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="highlight">Voun Irish Florence Dejumo</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Full Stack Developer crafting modern, responsive web experiences
+            with passion for clean code and innovative solutions.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">
+              <i class="bi bi-folder"></i>
+              View My Work
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <i class="bi bi-envelope"></i>
+              Get in Touch
+            </a>
+          </div>
+        </div>
+
+        <div class="scroll-indicator">
+          <a href="#about">
+            <div class="mouse"></div>
+            <span>Scroll Down</span>
+          </a>
+        </div>
       </section>
 
-      <section id="about" class="py-5 glass-section">
+      <!-- About Section -->
+      <section id="about" class="about-section">
         <div class="container">
-          <div class="row align-items-center">
-            <div class="col-md-6 mb-4 mb-md-0">
-              <h3 class="text-white">About Me</h3>
-              <p class="text-light">
-                Hello! I'm Voun Irish Florence Dejumo, a Full Stack Developer
-                passionate about building modern, responsive websites. I
-                specialize in JavaScript, React, Vue.js, and backend development
-                with MySQL, Laravel, and Spring Boot. I love exploring new
-                technologies, contributing to open-source projects, and
-                designing intuitive user experiences.
-              </p>
-            </div>
-            <div class="col-md-6 text-center">
+          <div class="about-content">
+            <div class="about-image-wrapper fade-in-left">
               <div class="about-image-container">
                 <img
                   src="me.png"
-                  alt="A professional headshot of VIF.Dev, smiling and looking confident."
+                  alt="Voun Irish Florence Dejumo - Full Stack Developer"
                   loading="lazy"
-                  class="img-fluid shadow-lg"
                 />
+              </div>
+            </div>
+
+            <div class="about-text fade-in-right">
+              <h2 class="gradient-text">About Me</h2>
+
+              <p class="lead">
+                A passionate Full Stack Developer dedicated to building
+                exceptional digital experiences.
+              </p>
+
+              <p>
+                Hello! I'm <strong>Voun Irish Florence Dejumo</strong>, a Full
+                Stack Developer with a deep passion for creating modern,
+                responsive and user-centric web applications. I specialize in
+                JavaScript ecosystems including React and Vue.js, complemented
+                by robust backend development using Laravel, Spring Boot and
+                database management with MySQL.
+              </p>
+
+              <p>
+                My journey in technology is driven by curiosity and a constant
+                desire to learn. I love exploring new technologies, contributing
+                to open-source projects and transforming complex problems into
+                elegant, intuitive solutions. When I'm not coding, you'll find
+                me exploring the latest tech trends or working on personal
+                projects.
+              </p>
+
+              <div class="about-highlights">
+                <span class="highlight-tag">
+                  <i class="bi bi-code-slash"></i>
+                  Clean Code Advocate
+                </span>
+                <span class="highlight-tag">
+                  <i class="bi bi-lightbulb"></i>
+                  Problem Solver
+                </span>
+                <span class="highlight-tag">
+                  <i class="bi bi-people"></i>
+                  Team Player
+                </span>
+                <span class="highlight-tag">
+                  <i class="bi bi-book"></i>
+                  Continuous Learner
+                </span>
+              </div>
+
+              <div class="about-stats">
+                <div class="stat-item">
+                  <div class="stat-number">3+</div>
+                  <div class="stat-label">Years Learning</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">10+</div>
+                  <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">5+</div>
+                  <div class="stat-label">Technologies</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="school-section" class="school-section glass-section">
-        <div class="school-container">
-          <div class="row align-items-center g-4">
-            <div class="col-lg-4 col-md-5 text-center">
-              <div
-                class="school-card"
-                id="schoolCard"
-                tabindex="0"
-                role="button"
-                aria-label="Flip card to see university information"
-              >
-                <div class="school-card-inner">
-                  <div class="school-card-front">
-                    <img
-                      src="https://unc.neolms.eu/files/86109/1200px-University_of_Nueva_Caceres_Seal(6).png?lmsauth=0d3e8d79854064302d3a29dc0243b9cba24f367f"
-                      alt="Seal of the University of Nueva Caceres"
-                      class="img-fluid loaded"
-                    />
-                  </div>
-                  <div class="school-card-back">
-                    <h4>Fun Fact</h4>
-                    <p>
-                      University of Nueva Caceres is the first private
-                      university in the Bicol Region, founded in 1949. It has
-                      been nurturing future leaders for over 75 years!
-                    </p>
-                  </div>
-                </div>
+      <!-- Skills Section -->
+      <section id="skills" class="skills-section">
+        <div class="container">
+          <div class="section-header fade-in">
+            <h2 class="gradient-text">Skills & Expertise</h2>
+            <p class="section-subtitle">
+              Technologies and tools I work with to bring ideas to life
+            </p>
+          </div>
+
+          <div class="skills-grid">
+            <!-- Frontend Development -->
+            <div class="skill-category fade-in delay-1">
+              <div class="skill-category-icon">
+                <i class="bi bi-laptop"></i>
+              </div>
+              <h3>Frontend Development</h3>
+              <p>
+                Creating responsive and interactive user interfaces with modern
+                frameworks.
+              </p>
+              <div class="skill-tags">
+                <span class="skill-tag"
+                  ><i class="bi bi-filetype-html"></i> HTML5</span
+                >
+                <span class="skill-tag"
+                  ><i class="bi bi-filetype-css"></i> CSS3</span
+                >
+                <span class="skill-tag"
+                  ><i class="bi bi-filetype-js"></i> JavaScript</span
+                >
+                <span class="skill-tag"
+                  ><i class="bi bi-bootstrap"></i> Bootstrap</span
+                >
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Vue.js</span>
               </div>
             </div>
-            <div class="col-lg-8 col-md-7">
-              <h3>My Educational Journey</h3>
+
+            <!-- Backend Development -->
+            <div class="skill-category fade-in delay-2">
+              <div class="skill-category-icon">
+                <i class="bi bi-server"></i>
+              </div>
+              <h3>Backend Development</h3>
+              <p>Building robust server-side applications and RESTful APIs.</p>
+              <div class="skill-tags">
+                <span class="skill-tag"
+                  ><i class="bi bi-filetype-php"></i> PHP</span
+                >
+                <span class="skill-tag">Laravel</span>
+                <span class="skill-tag"
+                  ><i class="bi bi-filetype-java"></i> Java</span
+                >
+                <span class="skill-tag">Spring Boot</span>
+                <span class="skill-tag">Node.js</span>
+              </div>
+            </div>
+
+            <!-- Database & Tools -->
+            <div class="skill-category fade-in delay-3">
+              <div class="skill-category-icon">
+                <i class="bi bi-database"></i>
+              </div>
+              <h3>Database & DevOps</h3>
+              <p>Managing data and deploying applications efficiently.</p>
+              <div class="skill-tags">
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">PostgreSQL</span>
+                <span class="skill-tag"><i class="bi bi-git"></i> Git</span>
+                <span class="skill-tag"
+                  ><i class="bi bi-github"></i> GitHub</span
+                >
+                <span class="skill-tag">Docker</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tech Stack Icons -->
+          <div class="tech-stack fade-in">
+            <div class="tech-stack-header">
+              <h3>Tech Stack</h3>
+              <p>Tools and technologies in my daily workflow</p>
+            </div>
+            <div class="tech-icons">
+              <div class="tech-icon" title="HTML5">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                  alt="HTML5"
+                />
+                <span>HTML5</span>
+              </div>
+              <div class="tech-icon" title="CSS3">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                  alt="CSS3"
+                />
+                <span>CSS3</span>
+              </div>
+              <div class="tech-icon" title="JavaScript">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                  alt="JavaScript"
+                />
+                <span>JavaScript</span>
+              </div>
+              <div class="tech-icon" title="React">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                  alt="React"
+                />
+                <span>React</span>
+              </div>
+              <div class="tech-icon" title="Vue.js">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
+                  alt="Vue.js"
+                />
+                <span>Vue.js</span>
+              </div>
+              <div class="tech-icon" title="PHP">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+                  alt="PHP"
+                />
+                <span>PHP</span>
+              </div>
+              <div class="tech-icon" title="Laravel">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
+                  alt="Laravel"
+                />
+                <span>Laravel</span>
+              </div>
+              <div class="tech-icon" title="Java">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                  alt="Java"
+                />
+                <span>Java</span>
+              </div>
+              <div class="tech-icon" title="Spring">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
+                  alt="Spring"
+                />
+                <span>Spring</span>
+              </div>
+              <div class="tech-icon" title="MySQL">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                  alt="MySQL"
+                />
+                <span>MySQL</span>
+              </div>
+              <div class="tech-icon" title="Git">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                  alt="Git"
+                />
+                <span>Git</span>
+              </div>
+              <div class="tech-icon" title="VS Code">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+                  alt="VS Code"
+                />
+                <span>VS Code</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education Section -->
+      <section id="education" class="education-section">
+        <div class="container">
+          <div class="education-content">
+            <!-- School Logo Card (Static Display) -->
+            <div class="school-card-wrapper fade-in-left">
+              <div class="school-card-static">
+                <img
+                  src="https://unc.neolms.eu/files/86109/1200px-University_of_Nueva_Caceres_Seal(6).png?lmsauth=0d3e8d79854064302d3a29dc0243b9cba24f367f"
+                  alt="Seal of the University of Nueva Caceres"
+                  loading="lazy"
+                />
+              </div>
+              <p class="school-name">
+                <i class="bi bi-mortarboard"></i> University of Nueva Caceres
+              </p>
+            </div>
+
+            <!-- Education Info -->
+            <div class="education-info fade-in-right">
+              <h2 class="gradient-text">My Educational Journey</h2>
+
+              <p class="lead">
+                Pursuing excellence in Information Technology at one of Bicol's
+                premier institutions.
+              </p>
+
               <p>
                 I'm currently pursuing my
                 <strong>Bachelor of Science in Information Technology</strong>
-                at the prestigious <strong>University of Nueva Caceres</strong>,
-                where I'm diving deep into software development, database
-                management, and cutting-edge web technologies. My academic
-                journey has been enriched by hands-on projects that bridge
-                theory with real-world applications.
+                at the prestigious <strong>University of Nueva Caceres</strong>.
+                My academic journey has been an exciting exploration of software
+                development, database management and cutting-edge web
+                technologies. Through hands-on projects and rigorous coursework,
+                I've developed a strong foundation that bridges theoretical
+                knowledge with real-world applications.
               </p>
-              <button
-                id="showAchievementsBtn"
-                aria-expanded="false"
-                aria-controls="achievements"
-                class="btn btn-primary"
-              >
-                View My Achievements
-              </button>
-              <div id="achievements" class="achievements-content">
-                <ul>
-                  <li>Dean's List 2021 Second Semester SY 2020-2021</li>
-                  <li>Dean's List 2022 First Semester SY 2021-2022</li>
-                  <li>Dean's List 2023 Second Semester SY 2022-2023</li>
-                  <li>Idea2Startup 2025 Project: <a href="#">DigiStall</a></li>
-                  <li>Open Source Contributor</li>
+
+              <!-- Achievements Section -->
+              <div class="achievements-card">
+                <h3>
+                  <i class="bi bi-trophy-fill"></i>
+                  My Achievements
+                </h3>
+                <ul class="achievements-list">
+                  <li>
+                    <span class="text"
+                      >Dean's List - Second Semester SY 2020-2021</span
+                    >
+                    <span class="year">2021</span>
+                  </li>
+                  <li>
+                    <span class="text"
+                      >Dean's List - First Semester SY 2021-2022</span
+                    >
+                    <span class="year">2022</span>
+                  </li>
+                  <li>
+                    <span class="text"
+                      >Dean's List - Second Semester SY 2022-2023</span
+                    >
+                    <span class="year">2023</span>
+                  </li>
+                  <li>
+                    <span class="text"
+                      >Idea2Startup 2025 Project: DigiStall</span
+                    >
+                    <span class="year">2025</span>
+                  </li>
+                  <li>
+                    <span class="text">Open Source Contributor</span>
+                    <span class="year">Ongoing</span>
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <!-- Projects Section with Carousel -->
+      <section id="projects" class="projects-section">
+        <div class="container">
+          <div class="section-header fade-in">
+            <h2 class="gradient-text">Featured Projects</h2>
+            <p class="section-subtitle">
+              A showcase of my recent work and creative endeavors
+            </p>
+          </div>
+
+          <!-- Bootstrap Carousel -->
+          <div
+            id="projectsCarousel"
+            class="carousel slide projects-carousel"
+            data-bs-ride="carousel"
+            data-bs-interval="6000"
+          >
+            <div class="carousel-inner">
+              <!-- Project 1 -->
+              <div class="carousel-item active">
+                <div class="project-card">
+                  <div class="project-card-inner">
+                    <div class="project-image">
+                      <img
+                        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
+                        alt="DigiStall E-commerce Platform"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="project-info">
+                      <span class="project-category">Web Application</span>
+                      <h3>DigiStall</h3>
+                      <p>
+                        An innovative e-commerce platform developed for the
+                        Idea2Startup 2025 competition. Features a modern UI,
+                        secure payment integration and inventory management
+                        system designed to help small businesses establish their
+                        digital presence.
+                      </p>
+                      <div class="project-tech">
+                        <span>Laravel</span>
+                        <span>Vue.js</span>
+                        <span>MySQL</span>
+                        <span>Bootstrap</span>
+                      </div>
+                      <div class="project-links">
+                        <a href="#" class="btn btn-primary">
+                          <i class="bi bi-eye"></i> Live Demo
+                        </a>
+                        <a
+                          href="https://github.com/AwfulLumos"
+                          class="btn btn-outline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <i class="bi bi-github"></i> Source Code
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 2 -->
+              <div class="carousel-item">
+                <div class="project-card">
+                  <div class="project-card-inner">
+                    <div class="project-image">
+                      <img
+                        src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop"
+                        alt="Portfolio Website"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="project-info">
+                      <span class="project-category">Personal Project</span>
+                      <h3>Portfolio Website</h3>
+                      <p>
+                        A modern, responsive portfolio website built with
+                        Bootstrap 5 and custom CSS. Features smooth animations,
+                        glass morphism design, interactive elements and
+                        optimized performance for an exceptional user
+                        experience.
+                      </p>
+                      <div class="project-tech">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                        <span>Bootstrap 5</span>
+                      </div>
+                      <div class="project-links">
+                        <a href="#" class="btn btn-primary">
+                          <i class="bi bi-eye"></i> Live Demo
+                        </a>
+                        <a
+                          href="https://github.com/AwfulLumos/Portfolio-VIF"
+                          class="btn btn-outline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <i class="bi bi-github"></i> Source Code
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 3 -->
+              <div class="carousel-item">
+                <div class="project-card">
+                  <div class="project-card-inner">
+                    <div class="project-image">
+                      <img
+                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
+                        alt="Task Management System"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="project-info">
+                      <span class="project-category"
+                        >Full Stack Application</span
+                      >
+                      <h3>Task Management System</h3>
+                      <p>
+                        A comprehensive task management application with user
+                        authentication, team collaboration features and
+                        real-time updates. Built with a RESTful API backend and
+                        modern frontend technologies.
+                      </p>
+                      <div class="project-tech">
+                        <span>Spring Boot</span>
+                        <span>React</span>
+                        <span>PostgreSQL</span>
+                        <span>JWT</span>
+                      </div>
+                      <div class="project-links">
+                        <a href="#" class="btn btn-primary">
+                          <i class="bi bi-eye"></i> Live Demo
+                        </a>
+                        <a
+                          href="https://github.com/AwfulLumos"
+                          class="btn btn-outline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <i class="bi bi-github"></i> Source Code
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#projectsCarousel"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#projectsCarousel"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#projectsCarousel"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Project 1"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#projectsCarousel"
+                data-bs-slide-to="1"
+                aria-label="Project 2"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#projectsCarousel"
+                data-bs-slide-to="2"
+                aria-label="Project 3"
+              ></button>
+            </div>
+          </div>
+
+          <!-- View All Projects Button -->
+          <div class="text-center mt-4 fade-in">
+            <a
+              href="https://github.com/AwfulLumos?tab=repositories"
+              class="btn btn-outline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="bi bi-github"></i> View All Projects on GitHub
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="contact-section">
+        <div class="container">
+          <div class="section-header fade-in">
+            <h2 class="gradient-text">Get In Touch</h2>
+            <p class="section-subtitle">
+              Have a project in mind? Let's work together!
+            </p>
+          </div>
+
+          <div class="contact-content">
+            <!-- Contact Info -->
+            <div class="contact-info fade-in-left">
+              <h3>Let's Connect</h3>
+              <p class="lead">
+                I'm always open to discussing new projects, creative ideas, or
+                opportunities to be part of your vision.
+              </p>
+              <p>
+                Whether you have a question, want to collaborate on a project,
+                or just want to say hello, feel free to reach out. I'll try my
+                best to get back to you as soon as possible!
+              </p>
+
+              <div class="contact-methods">
+                <a href="mailto:awfullumos@gmail.com" class="contact-method">
+                  <span class="icon">
+                    <i class="bi bi-envelope"></i>
+                  </span>
+                  <span class="details">
+                    <span class="label">Email</span>
+                    <span class="value">awfullumos@gmail.com</span>
+                  </span>
+                </a>
+
+                <a
+                  href="https://github.com/AwfulLumos"
+                  class="contact-method"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="icon">
+                    <i class="bi bi-github"></i>
+                  </span>
+                  <span class="details">
+                    <span class="label">GitHub</span>
+                    <span class="value">@AwfulLumos</span>
+                  </span>
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/voun-irish-florence-dejumo-6b2393287/"
+                  class="contact-method"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="icon">
+                    <i class="bi bi-linkedin"></i>
+                  </span>
+                  <span class="details">
+                    <span class="label">LinkedIn</span>
+                    <span class="value">Voun Irish Florence Dejumo</span>
+                  </span>
+                </a>
+              </div>
+
+              <div class="social-links">
+                <a
+                  href="https://github.com/AwfulLumos"
+                  class="social-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <i class="bi bi-github"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/voun-irish-florence-dejumo-6b2393287/"
+                  class="social-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <i class="bi bi-linkedin"></i>
+                </a>
+                <a
+                  href="mailto:awfullumos@gmail.com"
+                  class="social-link"
+                  aria-label="Email"
+                >
+                  <i class="bi bi-envelope"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-wrapper fade-in-right">
+              <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                  <label for="name">Your Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    placeholder="John Doe"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Your Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="john@example.com"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="subject">Subject</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="subject"
+                    name="subject"
+                    placeholder="Project Inquiry"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Your Message</label>
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    name="message"
+                    placeholder="Tell me about your project..."
+                    required
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-submit">
+                  <i class="bi bi-send"></i>
+                  Send Message
+                </button>
+
+                <div class="form-message" id="formMessage"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
+    <!-- Footer -->
     <footer class="site-footer">
-      <div class="footer-container">
-        <p>&copy; 2025 VIF.Dev. All Rights Reserved.</p>
-        <ul class="footer-links">
-          <li>
-            <a
-              href="https://github.com/AwfulLumos"
-              target="_blank"
-              rel="noopener noreferrer"
-              >GitHub</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/voun-irish-florence-dejumo-6b2393287/"
-              target="_blank"
-              rel="noopener noreferrer"
-              >LinkedIn</a
-            >
-          </li>
-          <li><a href="awfullumos@gmail.com">Email</a></li>
-        </ul>
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <span class="logo">VIF.Dev</span>
+            <p>
+              Full Stack Developer passionate about creating exceptional web
+              experiences. Let's build something amazing together.
+            </p>
+            <div class="footer-social">
+              <a
+                href="https://github.com/AwfulLumos"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                <i class="bi bi-github"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/voun-irish-florence-dejumo-6b2393287/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <i class="bi bi-linkedin"></i>
+              </a>
+              <a href="mailto:awfullumos@gmail.com" aria-label="Email">
+                <i class="bi bi-envelope"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+              <li>
+                <a href="#hero"><i class="bi bi-chevron-right"></i> Home</a>
+              </li>
+              <li>
+                <a href="#about"><i class="bi bi-chevron-right"></i> About</a>
+              </li>
+              <li>
+                <a href="#skills"><i class="bi bi-chevron-right"></i> Skills</a>
+              </li>
+              <li>
+                <a href="#projects"
+                  ><i class="bi bi-chevron-right"></i> Projects</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul class="footer-links">
+              <li>
+                <a href="#education"
+                  ><i class="bi bi-chevron-right"></i> Education</a
+                >
+              </li>
+              <li>
+                <a href="#contact"
+                  ><i class="bi bi-chevron-right"></i> Contact</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/AwfulLumos"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><i class="bi bi-chevron-right"></i> GitHub</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Contact</h4>
+            <ul class="footer-links">
+              <li>
+                <a href="mailto:awfullumos@gmail.com"
+                  ><i class="bi bi-chevron-right"></i> Email Me</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/voun-irish-florence-dejumo-6b2393287/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><i class="bi bi-chevron-right"></i> LinkedIn</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 VIF.Dev. All Rights Reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
       </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <!-- Bootstrap Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    <script src="AnimationTrigger.js"></script>
+
+    <!-- Custom JavaScript - Modular Architecture -->
+    <script src="js/utils.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/interactive.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

@@ -1,0 +1,197 @@
+/* ========================================
+   Education Section Styles
+   ======================================== */
+
+.education-section {
+  padding: var(--spacing-xl) 0;
+  position: relative;
+}
+
+.education-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* School Card - Static Display */
+.school-card-wrapper {
+  position: sticky;
+  top: 120px;
+  text-align: center;
+}
+
+.school-card-static {
+  background: linear-gradient(145deg, var(--color-white), #f0f0f0);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-cubic);
+  min-height: 320px;
+}
+
+.school-card-static:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+.school-card-static img {
+  max-width: 85%;
+  max-height: 280px;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+}
+
+.school-name {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.school-name i {
+  color: var(--color-accent);
+}
+
+/* Education Info */
+.education-info h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-secondary));
+  border-radius: 2px;
+  margin-top: 1rem;
+}
+
+.education-info .lead {
+  margin: 1.5rem 0;
+}
+
+.education-info p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* Achievements */
+.achievements-card {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-cubic);
+}
+
+.achievements-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-lg);
+}
+
+.achievements-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-white);
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--glass-border);
+}
+
+.achievements-card h3 i {
+  color: var(--color-accent);
+  font-size: 1.75rem;
+}
+
+.achievements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.achievements-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid var(--glass-border);
+  transition: var(--transition-base);
+}
+
+.achievements-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.achievements-list li:hover {
+  padding-left: 0.5rem;
+  background: rgba(0, 212, 255, 0.05);
+  margin: 0 -0.5rem;
+  padding-right: 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.achievements-list .trophy {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.achievements-list .text {
+  flex: 1;
+}
+
+.achievements-list .year {
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  background: rgba(0, 212, 255, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+/* Responsive Education */
+@media (max-width: 992px) {
+  .education-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .school-card-wrapper {
+    position: relative;
+    top: 0;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .school-card {
+    height: 320px;
+  }
+}
+
+@media (max-width: 576px) {
+  .school-card {
+    height: 280px;
+  }
+  
+  .school-card-front,
+  .school-card-back {
+    padding: 1.5rem;
+  }
+  
+  .school-card-back h4 {
+    font-size: 1.25rem;
+  }
+  
+  .school-card-back p {
+    font-size: 0.9rem;
+  }
+}
