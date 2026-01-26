@@ -163,11 +163,10 @@
 }
 
 /* Carousel Indicators */
+
+/* Hide carousel indicators completely */
 .carousel-indicators {
-  position: relative;
-  bottom: 0;
-  margin-top: 2rem;
-  margin-bottom: 0;
+  display: none !important;
 }
 
 .carousel-indicators button {
