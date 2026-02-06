@@ -111,7 +111,7 @@ class AnimationManager {
     // Create particles
     const particleCount = 12;
     const sizes = ['small', 'medium', 'large'];
-    const drifts = ['', 'drift-left', 'drift-right'];
+    const drifts = ['drift-left', 'drift-right'];
 
     for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement('div');
@@ -122,7 +122,8 @@ class AnimationManager {
       
       // Random drift (30% chance)
       if (Math.random() > 0.7) {
-        particle.classList.add(drifts[Math.floor(Math.random() * drifts.length)]);
+        const drift = drifts[Math.floor(Math.random() * drifts.length)];
+        particle.classList.add(drift);
       }
 
       container.appendChild(particle);

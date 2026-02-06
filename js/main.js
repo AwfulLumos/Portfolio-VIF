@@ -20,7 +20,7 @@
       { name: 'contact', target: '#contact-placeholder' },
       { name: 'footer', target: '#footer-placeholder' }
     ],
-    debug: false
+    debug: true // Enable debug mode to see component loading
   };
 
   /**

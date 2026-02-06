@@ -110,13 +110,46 @@ class InteractiveComponents {
    * Initialize contact form handling
    */
   initContactForm() {
+    console.log('[ContactForm] initContactForm() called');
+    
     const form = document.getElementById('contactForm');
     const messageDiv = document.getElementById('formMessage');
     
-    if (!form) return;
+    console.log('[ContactForm] Form element:', form);
+    console.log('[ContactForm] Message div:', messageDiv);
+    
+    if (!form) {
+      console.error('[ContactForm] Form element not found!');
+      return;
+    }
 
+    console.log('[ContactForm] Contact form found, initializing...');
+
+    // Check if EmailJS is loaded
+    if (typeof emailjs === 'undefined') {
+      console.error('[ContactForm] EmailJS library not loaded! Make sure the script tag is present.');
+      return;
+    }
+
+    console.log('[ContactForm] EmailJS library detected');
+
+    // Initialize EmailJS with your Public Key
+    try {
+      emailjs.init('cs8QoSnqtKqc4SkwX');
+      console.log('[ContactForm] EmailJS initialized with public key');
+    } catch (error) {
+      console.error('[ContactForm] Failed to initialize EmailJS:', error);
+      return;
+    }
+
+    // Add submit event listener
+    console.log('[ContactForm] Attaching submit event listener...');
+    
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      e.stopPropagation();
+      console.log('[ContactForm] ===== FORM SUBMITTED =====');
+      console.log('[ContactForm] Event:', e);
 
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerHTML;
@@ -126,17 +159,35 @@ class InteractiveComponents {
       submitBtn.disabled = true;
 
       // Collect form data
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData);
+      const formData = {
+        from_name: form.name.value,
+        from_email: form.email.value,
+        subject: form.subject.value || 'No subject',
+        message: form.message.value,
+        to_name: 'Voun Irish Florence Dejumo' // Your name
+      };
 
-      // Simulate form submission (replace with actual API call)
+      console.log('[ContactForm] Form data collected:', formData);
+
       try {
-        // Simulate network delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        // EmailJS Configuration
+        const serviceId = 'service_g6jsrwq';
+        const templateId = 'template_pxji6pp';
 
-        // For demo purposes, we'll show a success message
-        // In production, you would send this to your backend
-        console.log('Form submission data:', data);
+        console.log('[ContactForm] Using Service ID:', serviceId);
+        console.log('[ContactForm] Using Template ID:', templateId);
+        console.log('[ContactForm] Sending email via EmailJS...');
+
+        // Send email using EmailJS
+        const response = await emailjs.send(
+          serviceId,
+          templateId,
+          formData
+        );
+
+        console.log('[ContactForm] Email sent successfully:', response);
+        console.log('[ContactForm] Response status:', response.status);
+        console.log('[ContactForm] Response text:', response.text);
 
         // Show success message
         if (messageDiv) {
@@ -155,10 +206,19 @@ class InteractiveComponents {
         }, 5000);
 
       } catch (error) {
-        console.error('Form submission error:', error);
+        console.error('[ContactForm] Form submission error:', error);
         
         if (messageDiv) {
-          messageDiv.textContent = '✕ Something went wrong. Please try again or email me directly.';
+          let errorMessage = '✕ Something went wrong. Please try again or email me directly.';
+          
+          // Provide helpful error messages
+          if (error.message && error.message.includes('not configured')) {
+            errorMessage = '✕ Email service not configured yet. Please email me directly at awfullumos@gmail.com';
+          } else if (error.text) {
+            errorMessage = `✕ Error: ${error.text}`;
+          }
+          
+          messageDiv.textContent = errorMessage;
           messageDiv.className = 'form-message error';
         }
       } finally {
@@ -182,6 +242,8 @@ class InteractiveComponents {
         input.style.borderColor = '';
       });
     });
+    
+    console.log('[ContactForm] Contact form initialized successfully! Event listener attached.');
   }
 
   /**
