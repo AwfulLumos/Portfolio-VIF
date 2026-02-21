@@ -213,7 +213,7 @@ class InteractiveComponents {
           
           // Provide helpful error messages
           if (error.message && error.message.includes('not configured')) {
-            errorMessage = '✕ Email service not configured yet. Please email me directly at awfullumos@gmail.com';
+            errorMessage = '✕ Email service not configured yet. Please email me directly at vounirishflorence.dejumo@gmail.com';
           } else if (error.text) {
             errorMessage = `✕ Error: ${error.text}`;
           }

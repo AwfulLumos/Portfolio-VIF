@@ -122,7 +122,7 @@ Your EmailJS is already configured:
 - **Service ID**: `service_g6jsrwq`
 - **Template ID**: `template_pxji6pp`
 
-Contact form will send emails to: **awfullumos@gmail.com**
+Contact form will send emails to: **vounirishflorence.dejumo@gmail.com**
 
 ## 📦 Deployment
 
