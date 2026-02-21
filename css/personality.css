@@ -10,9 +10,9 @@
 .personality-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: var(--spacing-lg);
   align-items: start;
-  margin-top: 3rem;
+  margin-top: var(--spacing-lg);
 }
 
 /* ----------------------------------------
@@ -215,7 +215,7 @@
 @media (max-width: 992px) {
   .personality-content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: var(--spacing-md);
   }
 }
 

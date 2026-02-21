@@ -12,8 +12,10 @@ Portfolio-VIF/
 │   ├── navbar.html
 │   ├── hero.html
 │   ├── about.html
+│   ├── personality.html
 │   ├── skills.html
 │   ├── education.html
+│   ├── certifications.html     ← NEW: Certifications & Awards
 │   ├── projects.html
 │   ├── contact.html
 │   └── footer.html
@@ -122,7 +124,7 @@ Your EmailJS is already configured:
 - **Service ID**: `service_g6jsrwq`
 - **Template ID**: `template_pxji6pp`
 
-Contact form will send emails to: **awfullumos@gmail.com**
+Contact form will send emails to: **vounirishflorence.dejumo@gmail.com**
 
 ## 📦 Deployment
 

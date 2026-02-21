@@ -10,7 +10,7 @@
 .education-content {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 4rem;
+  gap: var(--spacing-lg);
   align-items: start;
 }
 
@@ -270,7 +270,7 @@
 @media (max-width: 992px) {
   .education-content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: var(--spacing-md);
   }
   
   .school-card-wrapper {

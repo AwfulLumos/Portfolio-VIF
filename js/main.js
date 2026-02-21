@@ -17,6 +17,7 @@
       { name: 'personality', target: '#personality-placeholder' },
       { name: 'skills', target: '#skills-placeholder' },
       { name: 'education', target: '#education-placeholder' },
+      { name: 'certifications', target: '#certifications-placeholder' },
       { name: 'projects', target: '#projects-placeholder' },
       { name: 'contact', target: '#contact-placeholder' },
       { name: 'footer', target: '#footer-placeholder' }

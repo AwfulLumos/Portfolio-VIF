@@ -222,10 +222,59 @@ const KonamiCode = {
   }
 };
 
+/**
+ * Certificate Modal Functions
+ */
+const certImages = {
+  hack4smart: 'css/Hack4Smart-Certificate.jpg',
+  idea2startup: 'css/Idea2startupCertificate.png'
+};
+
+function openCertModal(certId) {
+  const modal = document.getElementById('certModal');
+  const modalImg = document.getElementById('certModalImage');
+  
+  if (modal && modalImg && certImages[certId]) {
+    modalImg.src = certImages[certId];
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeCertModal() {
+  const modal = document.getElementById('certModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+// Close modal on background click only
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('certModal');
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      // Only close if clicking the background (not the image)
+      if (e.target === modal) {
+        closeCertModal();
+      }
+    });
+  }
+  
+  // Close modal on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeCertModal();
+    }
+  });
+});
+
 // Export utilities
 window.Utils = Utils;
 window.KonamiCode = KonamiCode;
+window.openCertModal = openCertModal;
+window.closeCertModal = closeCertModal;
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { Utils, KonamiCode };
+  module.exports = { Utils, KonamiCode, openCertModal, closeCertModal };
 }

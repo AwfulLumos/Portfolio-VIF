@@ -10,7 +10,7 @@
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: var(--spacing-lg);
   align-items: center;
 }
 
@@ -168,7 +168,7 @@
 @media (max-width: 992px) {
   .about-content {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: var(--spacing-md);
   }
   
   .about-image-wrapper {

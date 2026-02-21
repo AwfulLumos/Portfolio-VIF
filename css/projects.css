@@ -11,7 +11,7 @@
 /* Projects Carousel */
 .projects-carousel {
   position: relative;
-  padding: 2rem 0;
+  padding: var(--spacing-md) 0;
 }
 
 .carousel-inner {
@@ -21,7 +21,7 @@
 
 /* Project Card */
 .project-card {
-  padding: 3rem;
+  padding: var(--spacing-lg);
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
@@ -32,7 +32,7 @@
 .project-card-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: var(--spacing-lg);
   align-items: center;
   height: 100%;
 }
@@ -188,8 +188,8 @@
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
 }
 
 .project-grid-card {

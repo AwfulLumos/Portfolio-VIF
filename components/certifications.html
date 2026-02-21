@@ -1,0 +1,90 @@
+<!-- Certifications & Awards Section Component -->
+<section id="certifications" class="certifications-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2 class="gradient-text">Certifications & Awards</h2>
+      <p class="section-subtitle">
+        Recognition and achievements in my development journey
+      </p>
+    </div>
+
+    <div class="certifications-grid">
+      <!-- Hack4Smart Certificate -->
+      <div class="certification-card fade-in delay-1">
+        <div class="cert-image-wrapper">
+          <img
+            src="css/Hack4Smart-Certificate.jpg"
+            alt="Hack4Smart Hackathon Certificate"
+            loading="lazy"
+          />
+          <div class="cert-overlay">
+            <button class="view-cert-btn" onclick="openCertModal('hack4smart')">
+              <i class="bi bi-zoom-in"></i> View Certificate
+            </button>
+          </div>
+        </div>
+        <div class="cert-info">
+          <div class="cert-badge">
+            <i class="bi bi-trophy-fill"></i>
+          </div>
+          <h3>Hack4Smart Hackathon</h3>
+          <p class="cert-issuer">
+            <i class="bi bi-building"></i> Hackathon Competition
+          </p>
+          <p class="cert-description">
+            Participated in the Hack4Smart Hackathon, demonstrating problem-solving
+            skills and innovative thinking in developing technology solutions.
+          </p>
+          <div class="cert-date">
+            <i class="bi bi-calendar-check"></i>
+            <span>2025</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Idea2Startup Certificate -->
+      <div class="certification-card fade-in delay-2">
+        <div class="cert-image-wrapper">
+          <img
+            src="css/Idea2startupCertificate.png"
+            alt="Idea2Startup Certificate"
+            loading="lazy"
+          />
+          <div class="cert-overlay">
+            <button class="view-cert-btn" onclick="openCertModal('idea2startup')">
+              <i class="bi bi-zoom-in"></i> View Certificate
+            </button>
+          </div>
+        </div>
+        <div class="cert-info">
+          <div class="cert-badge">
+            <i class="bi bi-lightbulb-fill"></i>
+          </div>
+          <h3>Idea2Startup Program</h3>
+          <p class="cert-issuer">
+            <i class="bi bi-building"></i> Entrepreneurship Program
+          </p>
+          <p class="cert-description">
+            Completed the Idea2Startup program, gaining valuable insights into
+            entrepreneurship, business development, and transforming innovative
+            ideas into viable startup ventures.
+          </p>
+          <div class="cert-date">
+            <i class="bi bi-calendar-check"></i>
+            <span>2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certificate Modal -->
+<div id="certModal" class="cert-modal">
+  <div class="cert-modal-content">
+    <button class="cert-modal-close-btn" onclick="closeCertModal()" aria-label="Close certificate modal">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <img id="certModalImage" src="" alt="Certificate" />
+  </div>
+</div>

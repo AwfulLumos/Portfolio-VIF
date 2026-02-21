@@ -10,7 +10,7 @@
 .contact-content {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  gap: 4rem;
+  gap: var(--spacing-lg);
   align-items: start;
 }
 
@@ -121,7 +121,7 @@
 
 /* Contact Form */
 .contact-form-wrapper {
-  padding: 2.5rem;
+  padding: var(--spacing-md);
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
@@ -199,7 +199,7 @@
 @media (max-width: 992px) {
   .contact-content {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: var(--spacing-md);
   }
   
   .contact-form-wrapper {
