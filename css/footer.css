@@ -4,7 +4,7 @@
 
 .site-footer {
   padding: 4rem 0 2rem;
-  background: linear-gradient(180deg, transparent, rgba(10, 15, 28, 0.8));
+  background: linear-gradient(180deg, transparent, rgba(49, 54, 71, 0.9));
   position: relative;
   margin-top: var(--spacing-lg);
 }

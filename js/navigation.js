@@ -1,6 +1,6 @@
 /**
  * VIF.Dev Portfolio - Navigation Module
- * Handles navbar behavior, smooth scrolling, and active link highlighting
+ * Handles navbar behavior, smooth scrolling and active link highlighting
  */
 
 class NavigationManager {

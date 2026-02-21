@@ -1,6 +1,6 @@
 /**
  * VIF.Dev Portfolio - Animations Module
- * Handles scroll animations, transitions, and visual effects
+ * Handles scroll animations, transitions and visual effects
  */
 
 class AnimationManager {
@@ -21,6 +21,7 @@ class AnimationManager {
     this.initScrollAnimations();
     this.initHeroAnimations();
     this.initParticleSystem();
+    this.initProgressBars();
   }
 
   /**
@@ -29,6 +30,13 @@ class AnimationManager {
   showAllElements() {
     document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach(el => {
       el.classList.add('visible');
+    });
+    // Fill progress bars instantly for reduced-motion users
+    document.querySelectorAll('.bar-fill[data-width]').forEach(bar => {
+      const targetWidth = bar.getAttribute('data-width');
+      bar.style.setProperty('--bar-target-width', `${targetWidth}%`);
+      bar.style.transition = 'none';
+      bar.classList.add('animated');
     });
   }
 
@@ -153,6 +161,31 @@ class AnimationManager {
     if (observer) {
       observer.observe(element);
     }
+  }
+
+  /**
+   * Initialize personality progress bar animations
+   */
+  initProgressBars() {
+    const bars = document.querySelectorAll('.bar-fill[data-width]');
+    if (bars.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const bar = entry.target;
+          const targetWidth = bar.getAttribute('data-width');
+          // Set CSS variable then add class to trigger transition
+          bar.style.setProperty('--bar-target-width', `${targetWidth}%`);
+          // Small delay so the transition is visible after paint
+          setTimeout(() => bar.classList.add('animated'), 100);
+          observer.unobserve(bar);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    bars.forEach(bar => observer.observe(bar));
+    this.observers.set('progressBars', observer);
   }
 
   /**

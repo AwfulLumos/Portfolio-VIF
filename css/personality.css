@@ -1,0 +1,231 @@
+/* ========================================
+   Personality Section Styles
+   ======================================== */
+
+.personality-section {
+  padding: var(--spacing-xl) 0;
+  position: relative;
+}
+
+.personality-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  margin-top: 3rem;
+}
+
+/* ----------------------------------------
+   Trait Cards (Left Column)
+   ---------------------------------------- */
+.personality-traits {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.trait-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(20px);
+  transition: var(--transition-cubic);
+  position: relative;
+  overflow: hidden;
+}
+
+.trait-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--color-accent), var(--color-accent-secondary), #000000);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--transition-base);
+  border-radius: 0 0 0 var(--radius-md);
+}
+
+.trait-card:hover::before {
+  transform: scaleY(1);
+}
+
+.trait-card:hover {
+  transform: translateX(6px);
+  border-color: rgba(163, 176, 135, 0.35);
+  box-shadow: 0 8px 30px rgba(163, 176, 135, 0.1);
+}
+
+.trait-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(163, 176, 135, 0.15), rgba(255, 248, 212, 0.06));
+  border: 1px solid rgba(163, 176, 135, 0.22);
+  border-radius: var(--radius-sm);
+  font-size: 1.2rem;
+  color: var(--color-accent);
+  transition: var(--transition-base);
+}
+
+.trait-card:hover .trait-icon {
+  background: linear-gradient(135deg, rgba(163, 176, 135, 0.25), rgba(255, 248, 212, 0.12));
+  box-shadow: 0 0 16px rgba(163, 176, 135, 0.3);
+}
+
+.trait-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.trait-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-white);
+  letter-spacing: 0.01em;
+}
+
+.trait-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ----------------------------------------
+   Progress Bars (Right Column)
+   ---------------------------------------- */
+.personality-bars {
+  padding: 2rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-cubic);
+}
+
+.personality-bars:hover {
+  border-color: rgba(163, 176, 135, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(163, 176, 135, 0.08);
+}
+
+.bars-title {
+  font-size: 1.35rem;
+  color: var(--color-white);
+  margin-bottom: 0.25rem;
+}
+
+.bars-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+}
+
+.personality-bar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bar-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bar-label {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text-light);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.bar-label i {
+  color: var(--color-accent);
+  font-size: 0.9rem;
+}
+
+.bar-value {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  background: rgba(163, 176, 135, 0.12);
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(163, 176, 135, 0.2);
+}
+
+.bar-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(90deg, #A3B087, #FFF8D4, #d1d1d1);
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+/* Animated state - triggered by JS */
+.bar-fill.animated {
+  width: var(--bar-target-width);
+}
+
+/* ----------------------------------------
+   Responsive
+   ---------------------------------------- */
+@media (max-width: 992px) {
+  .personality-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .personality-bars {
+    padding: 1.5rem;
+  }
+
+  .trait-card {
+    padding: 1rem 1.25rem;
+  }
+}
+

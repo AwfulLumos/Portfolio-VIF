@@ -23,8 +23,8 @@
   height: 120%;
   background: radial-gradient(
     ellipse at center,
-    rgba(0, 212, 255, 0.08) 0%,
-    rgba(255, 107, 107, 0.05) 30%,
+    rgba(163, 176, 135, 0.1) 0%,
+    rgba(255, 248, 212, 0.05) 30%,
     transparent 70%
   );
   animation: heroGlow 6s ease-in-out infinite alternate;

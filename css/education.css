@@ -158,6 +158,114 @@
   flex-shrink: 0;
 }
 
+/* Academic Skills Card */
+.academic-skills-card {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-cubic);
+}
+
+.academic-skills-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-glow);
+}
+
+.academic-skills-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-white);
+  font-size: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--glass-border);
+}
+
+.academic-skills-card h3 i {
+  color: var(--color-accent);
+  font-size: 1.5rem;
+}
+
+.academic-skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.academic-skill-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.academic-skill-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.academic-skill-label i {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+}
+
+.academic-skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.academic-tag {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.78rem;
+  background: rgba(163, 176, 135, 0.1);
+  border: 1px solid rgba(163, 176, 135, 0.22);
+  border-radius: var(--radius-xl);
+  color: var(--color-accent);
+  transition: var(--transition-base);
+  cursor: default;
+}
+
+.academic-tag:hover {
+  background: rgba(163, 176, 135, 0.2);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(163, 176, 135, 0.2);
+}
+
+.academic-tag-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.1rem 0.4rem;
+  margin-left: 0.25rem;
+  background: rgba(255, 248, 212, 0.12);
+  border: 1px solid rgba(255, 248, 212, 0.25);
+  border-radius: var(--radius-sm);
+  color: var(--color-accent-secondary);
+  vertical-align: middle;
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 768px) {
+  .academic-skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
 /* Responsive Education */
 @media (max-width: 992px) {
   .education-content {

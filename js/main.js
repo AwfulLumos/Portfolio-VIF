@@ -14,6 +14,7 @@
       { name: 'navbar', target: '#navbar-placeholder' },
       { name: 'hero', target: '#hero-placeholder' },
       { name: 'about', target: '#about-placeholder' },
+      { name: 'personality', target: '#personality-placeholder' },
       { name: 'skills', target: '#skills-placeholder' },
       { name: 'education', target: '#education-placeholder' },
       { name: 'projects', target: '#projects-placeholder' },
