@@ -1,0 +1,477 @@
+/* CV Styles — Clean Black & White Theme */
+
+/* ── Color Tokens ─────────────────────────────── */
+:root {
+    --white:        #ffffff;
+    --gray-light:   #f5f5f5;
+    --gray-mid:     #e0e0e0;
+    --gray-dark:    #666666;
+    --black:        #000000;
+    --black-soft:   #222222;
+    --black-mid:    #333333;
+    --black-light:  #555555;
+    --border:       #000000;
+    --paper:        #ffffff;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f0f0;
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--black);
+}
+
+/* Download Controls - Only visible on screen */
+.download-controls {
+    max-width: 900px;
+    margin: 0 auto 20px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.download-btn,
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.download-btn {
+    background: var(--black);
+    color: var(--white);
+}
+
+.download-btn:hover {
+    background: var(--black-mid);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn {
+    background: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
+}
+
+.back-btn:hover {
+    background: var(--gray-light);
+    transform: translateY(-2px);
+}
+
+/* CV Container */
+.cv-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    overflow: hidden;
+    border: 1px solid var(--black);
+}
+
+/* Header */
+.cv-header {
+    background: var(--white);
+    border-bottom: 2px solid var(--black);
+    color: var(--black);
+    padding: 22px 32px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Remove decorative ornaments for clean design */
+.cv-header::before,
+.cv-header::after {
+    display: none;
+}
+
+.cv-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.cv-name-section h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+    color: var(--black);
+}
+
+.cv-title {
+    font-size: 1.05rem;
+    color: var(--black-light);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.cv-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--black-mid);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-item i {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+    color: var(--black);
+}
+
+/* Main Content */
+.cv-main {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 0;
+}
+
+.cv-left-column {
+    padding: 20px 24px;
+    border-right: 1px solid var(--black);
+    background: var(--white);
+}
+
+.cv-right-column {
+    padding: 20px 24px;
+    background: var(--gray-light);
+}
+
+/* Sections */
+.cv-section {
+    margin-bottom: 16px;
+}
+
+.cv-section:last-child {
+    margin-bottom: 0;
+}
+
+.cv-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--black);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.cv-section h2 i {
+    font-size: 0.95rem;
+    color: var(--black);
+}
+
+.cv-section > p {
+    line-height: 1.55;
+    color: var(--black-mid);
+    font-size: 0.88rem;
+}
+
+/* Entry Styles */
+.cv-entry {
+    margin-bottom: 12px;
+}
+
+.cv-entry:last-child {
+    margin-bottom: 0;
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 2px;
+}
+
+.entry-header h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.entry-date {
+    font-size: 0.78rem;
+    color: var(--black-light);
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.entry-organization {
+    font-size: 0.82rem;
+    color: var(--black-light);
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.entry-description {
+    font-size: 0.82rem;
+    color: var(--black-mid);
+    line-height: 1.5;
+}
+
+/* Skills */
+.skills-category {
+    margin-bottom: 10px;
+}
+
+.skills-category:last-child {
+    margin-bottom: 0;
+}
+
+.skills-category h4 {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--black-mid);
+    margin-bottom: 5px;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.skill-item {
+    background: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.soft-skills .skill-item {
+    background: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
+}
+
+/* Achievements */
+.achievements-list {
+    list-style: none;
+}
+
+.achievements-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--gray-mid);
+    font-size: 0.82rem;
+}
+
+.achievements-list li:last-child {
+    border-bottom: none;
+}
+
+.achievement-text {
+    color: var(--black-mid);
+}
+
+.achievement-year {
+    color: var(--black-light);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Languages */
+.languages-list {
+    list-style: none;
+}
+
+.languages-list li {
+    padding: 4px 0;
+    font-size: 0.82rem;
+    color: var(--black-mid);
+    display: flex;
+    align-items: center;
+}
+
+.languages-list li::before {
+    content: "•";
+    color: var(--black);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .cv-header {
+        padding: 16px 18px;
+    }
+
+    .cv-header-content {
+        flex-direction: column;
+    }
+
+    .cv-name-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .cv-main {
+        grid-template-columns: 1fr;
+    }
+
+    .cv-left-column {
+        border-right: none;
+        border-bottom: 1px solid var(--black);
+    }
+
+    .download-controls {
+        justify-content: center;
+    }
+}
+
+/* Print & PDF Styles */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .download-controls {
+        display: none !important;
+    }
+
+    .cv-container {
+        box-shadow: none;
+        border-radius: 0;
+        border: none;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .cv-section {
+        break-inside: avoid;
+    }
+}
+
+/* PDF Generation specific */
+.cv-container.generating-pdf {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+}
+
+/* Balanced spacing for PDF — fills 1 page exactly */
+.cv-container.generating-pdf .cv-header {
+    padding: 28px 36px;
+}
+
+.cv-container.generating-pdf .cv-name-section h1 {
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+}
+
+.cv-container.generating-pdf .cv-title {
+    font-size: 1.1rem;
+}
+
+.cv-container.generating-pdf .cv-contact-info {
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.cv-container.generating-pdf .cv-left-column,
+.cv-container.generating-pdf .cv-right-column {
+    padding: 24px 28px;
+}
+
+.cv-container.generating-pdf .cv-section {
+    margin-bottom: 20px;
+}
+
+.cv-container.generating-pdf .cv-section h2 {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+}
+
+.cv-container.generating-pdf .cv-section > p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.cv-container.generating-pdf .cv-entry {
+    margin-bottom: 14px;
+}
+
+.cv-container.generating-pdf .entry-header h3 {
+    font-size: 1rem;
+}
+
+.cv-container.generating-pdf .entry-organization {
+    font-size: 0.88rem;
+    margin-bottom: 4px;
+}
+
+.cv-container.generating-pdf .entry-description {
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+
+.cv-container.generating-pdf .skills-category {
+    margin-bottom: 12px;
+}
+
+.cv-container.generating-pdf .skills-category h4 {
+    font-size: 0.88rem;
+    margin-bottom: 6px;
+}
+
+.cv-container.generating-pdf .skill-item {
+    padding: 3px 10px;
+    font-size: 0.8rem;
+}
+
+.cv-container.generating-pdf .achievements-list li {
+    padding: 6px 0;
+    font-size: 0.88rem;
+}
+
+.cv-container.generating-pdf .languages-list li {
+    padding: 5px 0;
+    font-size: 0.88rem;
+}

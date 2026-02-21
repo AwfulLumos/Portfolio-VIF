@@ -130,3 +130,31 @@
     background: rgba(163, 176, 135, 0.12);
   }
 }
+
+/* CV Link Special Styling */
+.nav-link.cv-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #8a7560, #6b5a47);
+  color: #f5f0e8 !important;
+  font-weight: 600;
+  border-radius: var(--radius-xl);
+  padding: 0.5rem 1rem !important;
+  transition: var(--transition-cubic);
+}
+
+.nav-link.cv-link:hover {
+  background: linear-gradient(135deg, #6b5a47, #8a7560);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(107, 90, 71, 0.35);
+  color: #f5f0e8 !important;
+}
+
+.nav-link.cv-link::before {
+  display: none;
+}
+
+.nav-link.cv-link i {
+  font-size: 1rem;
+}
