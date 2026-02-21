@@ -271,7 +271,7 @@ section {
 .section-header h2::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -12px;
   left: 50%;
   transform: translateX(-50%);
   width: 80px;
@@ -283,7 +283,7 @@ section {
 .section-subtitle {
   color: var(--color-text-muted);
   font-size: var(--font-size-lg);
-  margin-top: var(--spacing-sm);
+  margin-top: calc(var(--spacing-sm) + 0.5rem);
 }
 
 /* ========================================
@@ -394,6 +394,10 @@ section {
   .btn {
     padding: 0.625rem 1.25rem;
     font-size: 0.9rem;
+  }
+
+  .section-header {
+    margin-bottom: var(--spacing-md);
   }
 }
 

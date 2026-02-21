@@ -3,7 +3,7 @@
    ======================================== */
 
 .site-footer {
-  padding: 4rem 0 2rem;
+  padding: var(--spacing-lg) 0 var(--spacing-md);
   background: linear-gradient(180deg, transparent, rgba(49, 54, 71, 0.9));
   position: relative;
   margin-top: var(--spacing-lg);
@@ -23,8 +23,8 @@
 .footer-top {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 3rem;
-  padding-bottom: 3rem;
+  gap: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
   border-bottom: 1px solid var(--glass-border);
 }
 

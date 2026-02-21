@@ -10,8 +10,8 @@
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
 }
 
 /* Skill Category Card */
@@ -106,8 +106,8 @@
 
 /* Tech Stack Showcase */
 .tech-stack {
-  margin-top: 4rem;
-  padding: 2.5rem;
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
   background: var(--glass-bg);
   border-radius: var(--radius-lg);
   border: 1px solid var(--glass-border);
@@ -187,7 +187,7 @@
 @media (max-width: 768px) {
   .skills-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: var(--spacing-sm);
   }
   
   .skill-category {

@@ -12,8 +12,10 @@ Portfolio-VIF/
 │   ├── navbar.html
 │   ├── hero.html
 │   ├── about.html
+│   ├── personality.html
 │   ├── skills.html
 │   ├── education.html
+│   ├── certifications.html     ← NEW: Certifications & Awards
 │   ├── projects.html
 │   ├── contact.html
 │   └── footer.html
