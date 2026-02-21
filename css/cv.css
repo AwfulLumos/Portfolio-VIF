@@ -113,7 +113,7 @@ body {
 }
 
 .cv-name-section h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 700;
     margin-bottom: 2px;
     letter-spacing: -0.5px;
@@ -350,7 +350,7 @@ body {
     }
 
     .cv-name-section h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .cv-main {
@@ -414,7 +414,7 @@ body {
 }
 
 .cv-container.generating-pdf .cv-name-section h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-bottom: 3px;
 }
 
