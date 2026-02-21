@@ -289,10 +289,12 @@ body {
 .achievements-list li {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 5px 0;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 0;
     border-bottom: 1px solid var(--gray-mid);
-    font-size: 0.82rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
 }
 
 .achievements-list li:last-child {
@@ -301,12 +303,16 @@ body {
 
 .achievement-text {
     color: var(--black-mid);
+    flex: 1;
 }
 
 .achievement-year {
     color: var(--black-light);
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 500;
+    white-space: nowrap;
+    min-width: 80px;
+    text-align: right;
 }
 
 /* Languages */
