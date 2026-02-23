@@ -17,6 +17,7 @@ class InteractiveComponents {
     // this.initAchievementsToggle(); // Disabled - achievements now displayed as static card
     this.initContactForm();
     this.initCarouselEnhancements();
+    this.initSchoolCardToggle();
   }
 
   /**
@@ -327,6 +328,39 @@ class InteractiveComponents {
       }
       el = el.parentElement;
     }
+  }
+
+  /**
+   * Initialize school card dropdown toggle
+   */
+  initSchoolCardToggle() {
+    console.log('[InteractiveComponents] initSchoolCardToggle() called');
+    
+    const schoolCard = document.getElementById('schoolCard');
+    const dropdown = document.getElementById('schoolDropdown');
+    
+    if (!schoolCard || !dropdown) {
+      console.warn('[InteractiveComponents] School card elements not found');
+      return;
+    }
+
+    schoolCard.addEventListener('click', () => {
+      console.log('[InteractiveComponents] School card clicked');
+      
+      const isExpanded = dropdown.classList.contains('show');
+      
+      if (isExpanded) {
+        // Collapse
+        dropdown.classList.remove('show');
+        schoolCard.classList.remove('expanded');
+      } else {
+        // Expand
+        dropdown.classList.add('show');
+        schoolCard.classList.add('expanded');
+      }
+    });
+
+    console.log('[InteractiveComponents] School card toggle initialized');
   }
 }
 

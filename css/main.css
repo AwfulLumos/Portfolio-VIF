@@ -63,6 +63,12 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100%;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
@@ -76,8 +82,41 @@ body {
   background: linear-gradient(-45deg, #313647, #3a4050, #435663, #2c3240, #3d4f5c, #313647);
   background-size: 400% 400%;
   animation: gradientShift 20s ease infinite;
-  overflow-x: hidden;
   min-height: 100vh;
+  position: relative;
+}
+
+/* Prevent horizontal overflow on all wrappers - but not sections to allow sticky positioning */
+main,
+.container,
+.row,
+nav,
+header,
+footer {
+  max-width: 100%;
+}
+
+/* Prevent overflow but allow sticky positioning */
+section {
+  max-width: 100%;
+}
+
+/* Force hide horizontal scrollbar - all browsers */
+::-webkit-scrollbar:horizontal {
+  display: none !important;
+  height: 0 !important;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+}
+
+/* Hide horizontal scrollbar in Firefox */
+@supports (scrollbar-width: none) {
+  html, body {
+    scrollbar-width: none;
+  }
 }
 
 @keyframes gradientShift {
@@ -321,7 +360,7 @@ section {
 
 .fade-in-left {
   opacity: 0;
-  transform: translateX(-50px);
+  transform: translateX(-30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
@@ -332,7 +371,7 @@ section {
 
 .fade-in-right {
   opacity: 0;
-  transform: translateX(50px);
+  transform: translateX(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
@@ -383,12 +422,22 @@ section {
     --spacing-xl: 3rem;
     --spacing-lg: 2rem;
   }
+  
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
   :root {
     --spacing-xl: 2.5rem;
     --spacing-lg: 1.5rem;
+    --font-size-base: 0.95rem;
+  }
+  
+  html {
+    scroll-padding-top: 70px;
   }
   
   .btn {
@@ -399,10 +448,68 @@ section {
   .section-header {
     margin-bottom: var(--spacing-md);
   }
+  
+  .section-header h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+  
+  .section-header h2::after {
+    width: 60px;
+    height: 3px;
+  }
+  
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  h1 { font-size: clamp(2rem, 8vw, 2.5rem); }
+  h2 { font-size: clamp(1.5rem, 6vw, 2rem); }
+  h3 { font-size: clamp(1.25rem, 5vw, 1.5rem); }
+  h4 { font-size: clamp(1.1rem, 4vw, 1.25rem); }
+  
+  .lead {
+    font-size: 1rem;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 @media (max-width: 576px) {
   :root {
     --spacing-xl: 2rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 1.25rem;
+  }
+  
+  html {
+    scroll-padding-top: 65px;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    gap: 0.35rem;
+  }
+  
+  .btn i {
+    font-size: 0.9rem;
+  }
+  
+  .glass-card {
+    border-radius: var(--radius-md);
+  }
+  
+  section {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  /* Mobile-specific container padding */
+  .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    max-width: 100% !important;
   }
 }

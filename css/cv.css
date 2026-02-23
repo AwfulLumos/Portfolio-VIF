@@ -336,6 +336,21 @@ body {
 }
 
 /* Responsive */
+@media (max-width: 992px) {
+    .cv-main {
+        grid-template-columns: 1fr;
+    }
+    
+    .cv-left-column {
+        border-right: none;
+        border-bottom: 1px solid var(--black);
+    }
+    
+    .cv-right-column {
+        padding: 20px 24px;
+    }
+}
+
 @media (max-width: 768px) {
     body {
         padding: 10px;
@@ -347,23 +362,140 @@ body {
 
     .cv-header-content {
         flex-direction: column;
+        gap: 12px;
+    }
+    
+    .cv-name-section {
+        text-align: center;
+        width: 100%;
     }
 
     .cv-name-section h1 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
-
-    .cv-main {
-        grid-template-columns: 1fr;
+    
+    .cv-title {
+        font-size: 0.95rem;
     }
-
-    .cv-left-column {
-        border-right: none;
-        border-bottom: 1px solid var(--black);
+    
+    .cv-contact-info {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 16px;
+        font-size: 0.8rem;
+    }
+    
+    .cv-left-column,
+    .cv-right-column {
+        padding: 16px 18px;
+    }
+    
+    .cv-section h2 {
+        font-size: 0.95rem;
+    }
+    
+    .entry-header h3 {
+        font-size: 0.95rem;
     }
 
     .download-controls {
         justify-content: center;
+    }
+    
+    .download-btn,
+    .back-btn {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 8px;
+    }
+    
+    .download-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .download-btn,
+    .back-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 16px;
+    }
+    
+    .cv-header {
+        padding: 14px 14px;
+    }
+    
+    .cv-name-section h1 {
+        font-size: 1.35rem;
+    }
+    
+    .cv-title {
+        font-size: 0.9rem;
+    }
+    
+    .cv-contact-info {
+        font-size: 0.75rem;
+        gap: 8px 12px;
+    }
+    
+    .contact-item i {
+        font-size: 0.9rem;
+        width: 16px;
+    }
+    
+    .cv-left-column,
+    .cv-right-column {
+        padding: 14px 14px;
+    }
+    
+    .cv-section {
+        margin-bottom: 14px;
+    }
+    
+    .cv-section h2 {
+        font-size: 0.9rem;
+        gap: 6px;
+    }
+    
+    .cv-section h2 i {
+        font-size: 0.85rem;
+    }
+    
+    .cv-section > p {
+        font-size: 0.85rem;
+    }
+    
+    .entry-header h3 {
+        font-size: 0.9rem;
+    }
+    
+    .entry-organization {
+        font-size: 0.8rem;
+    }
+    
+    .entry-description {
+        font-size: 0.82rem;
+    }
+    
+    .skill-item {
+        padding: 2px 8px;
+        font-size: 0.75rem;
+    }
+    
+    .achievements-list li {
+        font-size: 0.82rem;
+        padding: 5px 0;
+    }
+    
+    .languages-list li {
+        font-size: 0.82rem;
     }
 }
 
