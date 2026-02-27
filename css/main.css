@@ -41,6 +41,12 @@
   --spacing-lg: 3rem;
   --spacing-xl: 5rem;
   
+  /* Container Controls - Adjust these to control left/right spacing */
+  --container-max-width: 1320px;
+  --container-padding-x: 2rem;
+  --container-padding-x-md: 1.5rem;
+  --container-padding-x-sm: 1rem;
+  
   /* Border Radius */
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -99,6 +105,27 @@ footer {
 /* Prevent overflow but allow sticky positioning */
 section {
   max-width: 100%;
+}
+
+/* ========================================
+   Main Container - Unified Layout Control
+   Use .main-container inside sections for consistent spacing
+   Adjust --container-* variables in :root to change globally
+   ======================================== */
+.main-container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding-x);
+  padding-right: var(--container-padding-x);
+}
+
+/* Override Bootstrap container to match our settings */
+.container {
+  max-width: var(--container-max-width) !important;
+  padding-left: var(--container-padding-x) !important;
+  padding-right: var(--container-padding-x) !important;
 }
 
 /* Force hide horizontal scrollbar - all browsers */
@@ -421,11 +448,7 @@ section {
   :root {
     --spacing-xl: 3rem;
     --spacing-lg: 2rem;
-  }
-  
-  .container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    --container-padding-x: var(--container-padding-x-md);
   }
 }
 
@@ -434,6 +457,7 @@ section {
     --spacing-xl: 2.5rem;
     --spacing-lg: 1.5rem;
     --font-size-base: 0.95rem;
+    --container-padding-x: var(--container-padding-x-sm);
   }
   
   html {
@@ -470,11 +494,6 @@ section {
   .lead {
     font-size: 1rem;
   }
-  
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
 }
 
 @media (max-width: 576px) {
@@ -482,6 +501,7 @@ section {
     --spacing-xl: 2rem;
     --spacing-md: 1.5rem;
     --spacing-lg: 1.25rem;
+    --container-padding-x: var(--container-padding-x-sm);
   }
   
   html {
@@ -505,11 +525,155 @@ section {
   section {
     padding: var(--spacing-lg) 0;
   }
+}
+
+/* =========================================
+   Loading Skeletons
+   ========================================= */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Navbar Skeleton */
+.skeleton-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(10, 15, 28, 0.85);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1050;
+}
+
+.skeleton-logo {
+  width: 100px;
+  height: 28px;
+}
+
+.skeleton-nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.skeleton-link {
+  width: 60px;
+  height: 20px;
+  border-radius: 20px;
+}
+
+/* Hero Skeleton */
+.skeleton-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.skeleton-badge {
+  width: 140px;
+  height: 32px;
+  border-radius: 20px;
+}
+
+.skeleton-title {
+  width: min(500px, 90%);
+  height: 48px;
+}
+
+.skeleton-subtitle {
+  width: min(400px, 80%);
+  height: 24px;
+}
+
+.skeleton-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.skeleton-btn {
+  width: 140px;
+  height: 48px;
+  border-radius: 25px;
+}
+
+/* Section Skeleton */
+.skeleton-section {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.skeleton-heading {
+  width: 200px;
+  height: 36px;
+  margin: 0 auto 3rem;
+}
+
+.skeleton-content-row {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.skeleton-image {
+  width: 300px;
+  height: 300px;
+  border-radius: var(--radius-lg);
+  flex-shrink: 0;
+}
+
+.skeleton-text-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.skeleton-text {
+  height: 20px;
+  width: 100%;
+}
+
+.skeleton-text.short {
+  width: 60%;
+}
+
+@media (max-width: 768px) {
+  .skeleton-navbar {
+    padding: 0.75rem 1rem;
+  }
   
-  /* Mobile-specific container padding */
-  .container {
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-    max-width: 100% !important;
+  .skeleton-nav-links {
+    display: none;
+  }
+  
+  .skeleton-content-row {
+    flex-direction: column;
+  }
+  
+  .skeleton-image {
+    width: 200px;
+    height: 200px;
   }
 }

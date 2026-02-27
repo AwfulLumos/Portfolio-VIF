@@ -186,10 +186,37 @@
 
 /* Project Grid (Alternative to Carousel) */
 .projects-grid {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
   gap: var(--spacing-md);
   margin-top: var(--spacing-lg);
+}
+
+.projects-grid.active {
+  display: grid;
+}
+
+/* Grid view card adjustments - hide images, adjust layout */
+.projects-grid .project-card {
+  min-height: auto;
+  padding: var(--spacing-md);
+}
+
+.projects-grid .project-card .project-image {
+  display: none;
+}
+
+.projects-grid .project-card .project-card-inner {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.projects-grid .project-card .project-info {
+  padding: 0;
+}
+
+.projects-grid .project-card .project-info h3 {
+  font-size: 1.35rem;
 }
 
 .project-grid-card {
@@ -382,5 +409,177 @@
   
   .project-grid-content {
     padding: 1rem;
+  }
+}
+
+/* =========================================
+   Project Controls & Enhancements
+   ========================================= */
+
+.projects-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.projects-counter {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.projects-counter span:first-child {
+  color: var(--color-accent);
+  font-size: 1.5rem;
+}
+
+.projects-counter-divider {
+  opacity: 0.4;
+}
+
+.projects-view-toggle {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.view-toggle-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-size: 1rem;
+}
+
+.view-toggle-btn:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.view-toggle-btn.active {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(163, 176, 135, 0.3);
+}
+
+/* Thumbnail Navigation */
+.projects-thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.project-thumb {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 90px;
+}
+
+.project-thumb img {
+  width: 80px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+
+.thumb-title {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.project-thumb:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(163, 176, 135, 0.3);
+}
+
+.project-thumb:hover img {
+  transform: scale(1.05);
+}
+
+.project-thumb:hover .thumb-title {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.project-thumb.active {
+  border-color: var(--color-accent);
+  background: rgba(163, 176, 135, 0.1);
+}
+
+.project-thumb.active .thumb-title {
+  color: var(--color-accent);
+}
+
+@media (max-width: 768px) {
+  .projects-controls {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .projects-thumbnails {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  
+  .project-thumb {
+    min-width: 70px;
+  }
+  
+  .project-thumb img {
+    width: 60px;
+    height: 40px;
+  }
+  
+  .thumb-title {
+    font-size: 0.65rem;
+  }
+  
+  /* Grid view responsive */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .projects-grid .project-card {
+    padding: 1rem;
+  }
+  
+  .projects-grid .project-card .project-info h3 {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .projects-view-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .projects-thumbnails {
+    width: 100%;
+    justify-content: center;
   }
 }

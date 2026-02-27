@@ -414,3 +414,313 @@
     height: 160px;
   }
 }
+
+/* =========================================
+   LinkedIn Certificates Subsection
+   ========================================= */
+
+.linkedin-certs-section {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 1;
+}
+
+.linkedin-certs-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.linkedin-logo-badge {
+  width: 52px;
+  height: 52px;
+  background: #0a66c2;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(10, 102, 194, 0.4);
+}
+
+.linkedin-certs-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.3rem;
+}
+
+.linkedin-certs-subtitle {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Filter Tabs */
+.linkedin-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.linkedin-filter-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.65);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.linkedin-filter-btn:hover {
+  background: rgba(10, 102, 194, 0.18);
+  border-color: rgba(10, 102, 194, 0.5);
+  color: #fff;
+}
+
+.linkedin-filter-btn.active {
+  background: #0a66c2;
+  border-color: #0a66c2;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.35);
+}
+
+.filter-count {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 1px 7px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.linkedin-filter-btn.active .filter-count {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* PDF Cert Cards Grid */
+.linkedin-certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: 1rem;
+}
+
+.pdf-cert-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.pdf-cert-card:hover {
+  background: rgba(10, 102, 194, 0.12);
+  border-color: rgba(10, 102, 194, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(10, 102, 194, 0.15);
+  text-decoration: none;
+  color: inherit;
+}
+
+.pdf-cert-card.hidden {
+  display: none;
+}
+
+.pdf-cert-icon {
+  font-size: 1.8rem;
+  color: #e74c3c;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.pdf-cert-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.pdf-cert-category {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-bottom: 0.4rem;
+}
+
+.pdf-cert-category.web        { background: rgba(46, 204, 113, 0.15); color: #2ecc71; }
+.pdf-cert-category.agile      { background: rgba(52, 152, 219, 0.15); color: #3498db; }
+.pdf-cert-category.architecture { background: rgba(155, 89, 182, 0.15); color: #a855f7; }
+.pdf-cert-category.testing    { background: rgba(231, 76, 60, 0.15);  color: #e74c3c; }
+.pdf-cert-category.design     { background: rgba(241, 196, 15, 0.15); color: #f1c40f; }
+.pdf-cert-category.other      { background: rgba(255, 255, 255, 0.08); color: rgba(255,255,255,0.6); }
+
+.pdf-cert-body h4 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pdf-cert-issuer {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pdf-cert-action {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+  transition: color 0.25s ease;
+}
+
+.pdf-cert-card:hover .pdf-cert-action {
+  color: #0a66c2;
+}
+
+/* Search Input */
+.linkedin-search-wrapper {
+  position: relative;
+  margin-bottom: 1.25rem;
+  max-width: 400px;
+}
+
+.linkedin-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.95rem;
+  pointer-events: none;
+}
+
+.linkedin-search-input {
+  width: 100%;
+  padding: 10px 40px 10px 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 25px;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+}
+
+.linkedin-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.linkedin-search-input:focus {
+  outline: none;
+  border-color: #0a66c2;
+  background: rgba(10, 102, 194, 0.1);
+  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.15);
+}
+
+.linkedin-search-clear {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.linkedin-search-clear:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* No-results message */
+.linkedin-no-results {
+  text-align: center;
+  color: rgba(255,255,255,0.4);
+  padding: 3rem 2rem;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.linkedin-no-results i {
+  font-size: 2rem;
+  opacity: 0.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .linkedin-certs-title {
+    font-size: 1.3rem;
+  }
+
+  .linkedin-certs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pdf-cert-body h4 {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .linkedin-certs-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .linkedin-filter-tabs {
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .linkedin-filter-btn {
+    font-size: 0.78rem;
+    padding: 5px 12px;
+  }
+  
+  .linkedin-search-wrapper {
+    max-width: 100%;
+  }
+  
+  .linkedin-search-input {
+    font-size: 0.85rem;
+    padding: 9px 36px;
+  }
+}

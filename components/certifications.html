@@ -13,7 +13,7 @@
       <div class="certification-card fade-in delay-1">
         <div class="cert-image-wrapper">
           <img
-            src="css/Hack4Smart-Certificate.jpg"
+            src="assets/images/Hack4Smart-Certificate.jpg"
             alt="Hack4Smart Hackathon Certificate"
             loading="lazy"
           />
@@ -46,7 +46,7 @@
       <div class="certification-card fade-in delay-2">
         <div class="cert-image-wrapper">
           <img
-            src="css/Idea2startupCertificate.png"
+            src="assets/images/Idea2startupCertificate.png"
             alt="Idea2Startup Certificate"
             loading="lazy"
           />
@@ -76,7 +76,522 @@
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- LinkedIn Certificates Subsection -->
+    <div class="linkedin-certs-section fade-in">
+      <div class="linkedin-certs-header">
+        <div class="linkedin-logo-badge">
+          <i class="bi bi-linkedin"></i>
+        </div>
+        <div>
+          <h3 class="linkedin-certs-title">LinkedIn Learning Certificates</h3>
+          <p class="linkedin-certs-subtitle">46 courses completed across software development, design, and agile practices</p>
+        </div>
+      </div>
+
+      <!-- Search Input -->
+      <div class="linkedin-search-wrapper">
+        <i class="bi bi-search linkedin-search-icon"></i>
+        <input 
+          type="text" 
+          id="linkedinCertSearch" 
+          class="linkedin-search-input" 
+          placeholder="Search certificates..." 
+          aria-label="Search LinkedIn certificates"
+        />
+        <button class="linkedin-search-clear" id="linkedinSearchClear" aria-label="Clear search" style="display: none;">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="linkedin-filter-tabs" role="tablist" aria-label="Certificate categories">
+        <button class="linkedin-filter-btn active" data-filter="all" role="tab" aria-selected="true">All <span class="filter-count">46</span></button>
+        <button class="linkedin-filter-btn" data-filter="web" role="tab" aria-selected="false">Web Dev <span class="filter-count">10</span></button>
+        <button class="linkedin-filter-btn" data-filter="agile" role="tab" aria-selected="false">Agile &amp; BA <span class="filter-count">14</span></button>
+        <button class="linkedin-filter-btn" data-filter="architecture" role="tab" aria-selected="false">Architecture &amp; APIs <span class="filter-count">8</span></button>
+        <button class="linkedin-filter-btn" data-filter="testing" role="tab" aria-selected="false">Testing <span class="filter-count">6</span></button>
+        <button class="linkedin-filter-btn" data-filter="design" role="tab" aria-selected="false">Design <span class="filter-count">5</span></button>
+        <button class="linkedin-filter-btn" data-filter="other" role="tab" aria-selected="false">Other <span class="filter-count">3</span></button>
+      </div>
+
+      <!-- No Results Message -->
+      <div class="linkedin-no-results" id="linkedinNoResults" style="display: none;">
+        <i class="bi bi-search"></i>
+        <p>No certificates found matching your search.</p>
+      </div>
+
+      <div class="linkedin-certs-grid" id="linkedinCertsGrid">
+
+        <!-- Web Dev -->
+        <a class="pdf-cert-card" data-category="web" href="assets/certificates/CertificateOfCompletion_Getting Started as a FullStack Web Developer.pdf" target="_blank" rel="noopener" aria-label="View Getting Started as a Full-Stack Web Developer certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category web">Web Dev</span>
+            <h4>Getting Started as a Full‑Stack Web Developer</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="web" href="assets/certificates/CertificateOfCompletion_Getting Started as a FullStack Web Developer (1).pdf" target="_blank" rel="noopener" aria-label="View Getting Started as a Full-Stack Web Developer (2) certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category web">Web Dev</span>
+            <h4>Getting Started as a Full‑Stack Web Developer (2)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="web" href="assets/certificates/CertificateOfCompletion_HTTP Essential Training.pdf" target="_blank" rel="noopener" aria-label="View HTTP Essential Training certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category web">Web Dev</span>
+            <h4>HTTP Essential Training</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="web" href="assets/certificates/CertificateOfCompletion_Learning Chrome Web Developer Tools.pdf" target="_blank" rel="noopener" aria-label="View Learning Chrome Web Developer Tools certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category web">Web Dev</span>
+            <h4>Learning Chrome Web Developer Tools</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="web" href="assets/certificates/CertificateOfCompletion_Learning Vue.js.pdf" target="_blank" rel="noopener" aria-label="View Learning Vue.js certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category web">Web Dev</span>
+            <h4>Learning Vue.js</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="web" href="assets/certificates/CertificateOfCompletion_React Building Progressive Web Apps PWAs.pdf" target="_blank" rel="noopener" aria-label="View React Building Progressive Web Apps certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category web">Web Dev</span>
+            <h4>React: Building Progressive Web Apps (PWAs)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="web" href="assets/certificates/CertificateOfCompletion_AI for React Developers.pdf" target="_blank" rel="noopener" aria-label="View AI for React Developers certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category web">Web Dev</span>
+            <h4>AI for React Developers</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="web" href="assets/certificates/CertificateOfCompletion_ChatGPT for Web Developers.pdf" target="_blank" rel="noopener" aria-label="View ChatGPT for Web Developers certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category web">Web Dev</span>
+            <h4>ChatGPT for Web Developers</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="web" href="assets/certificates/CertificateOfCompletion_Git Essential Training 2023.pdf" target="_blank" rel="noopener" aria-label="View Git Essential Training certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category web">Web Dev</span>
+            <h4>Git Essential Training (2023)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="web" href="assets/certificates/CertificateOfCompletion_Career Essentials in System Administration by Microsoft and LinkedIn.pdf" target="_blank" rel="noopener" aria-label="View Career Essentials in System Administration certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category web">Web Dev</span>
+            <h4>Career Essentials in System Administration</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> Microsoft &amp; LinkedIn</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <!-- Agile & BA -->
+        <a class="pdf-cert-card" data-category="agile" href="assets/certificates/CertificateOfCompletion_Agile Software Development.pdf" target="_blank" rel="noopener" aria-label="View Agile Software Development certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category agile">Agile &amp; BA</span>
+            <h4>Agile Software Development</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="agile" href="assets/certificates/CertificateOfCompletion_Agile Software Development (1).pdf" target="_blank" rel="noopener" aria-label="View Agile Software Development (2) certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category agile">Agile &amp; BA</span>
+            <h4>Agile Software Development (2)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="agile" href="assets/certificates/CertificateOfCompletion_Agile Software Development (2).pdf" target="_blank" rel="noopener" aria-label="View Agile Software Development (3) certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category agile">Agile &amp; BA</span>
+            <h4>Agile Software Development (3)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="agile" href="assets/certificates/CertificateOfCompletion_A Beginners Guide to Writing User Stories.pdf" target="_blank" rel="noopener" aria-label="View A Beginner's Guide to Writing User Stories certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category agile">Agile &amp; BA</span>
+            <h4>A Beginner's Guide to Writing User Stories</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="agile" href="assets/certificates/CertificateOfCompletion_Building and Mapping User Stories.pdf" target="_blank" rel="noopener" aria-label="View Building and Mapping User Stories certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category agile">Agile &amp; BA</span>
+            <h4>Building and Mapping User Stories</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="agile" href="assets/certificates/CertificateOfCompletion_Asking Effective Questions During Requirements Elicitation.pdf" target="_blank" rel="noopener" aria-label="View Asking Effective Questions During Requirements Elicitation certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category agile">Agile &amp; BA</span>
+            <h4>Asking Effective Questions During Requirements Elicitation</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="agile" href="assets/certificates/CertificateOfCompletion_Requirements Elicitation and Analysis.pdf" target="_blank" rel="noopener" aria-label="View Requirements Elicitation and Analysis certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category agile">Agile &amp; BA</span>
+            <h4>Requirements Elicitation and Analysis</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="agile" href="assets/certificates/CertificateOfCompletion_Requirements Elicitation and Analysis (1).pdf" target="_blank" rel="noopener" aria-label="View Requirements Elicitation and Analysis (2) certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category agile">Agile &amp; BA</span>
+            <h4>Requirements Elicitation and Analysis (2)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="agile" href="assets/certificates/CertificateOfCompletion_Requirements Elicitation and Analysis (2).pdf" target="_blank" rel="noopener" aria-label="View Requirements Elicitation and Analysis (3) certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category agile">Agile &amp; BA</span>
+            <h4>Requirements Elicitation and Analysis (3)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="agile" href="assets/certificates/CertificateOfCompletion_Business Analysis Foundations Business Process Modeling.pdf" target="_blank" rel="noopener" aria-label="View Business Analysis Foundations: Business Process Modeling certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category agile">Agile &amp; BA</span>
+            <h4>Business Analysis Foundations: Business Process Modeling</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="agile" href="assets/certificates/CertificateOfCompletion_Business Analysis Foundations Business Process Modeling (1).pdf" target="_blank" rel="noopener" aria-label="View Business Analysis Foundations: Business Process Modeling (2) certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category agile">Agile &amp; BA</span>
+            <h4>Business Analysis Foundations: Business Process Modeling (2)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="agile" href="assets/certificates/CertificateOfCompletion_Business Analysis Foundations Business Process Modeling (2).pdf" target="_blank" rel="noopener" aria-label="View Business Analysis Foundations: Business Process Modeling (3) certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category agile">Agile &amp; BA</span>
+            <h4>Business Analysis Foundations: Business Process Modeling (3)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="agile" href="assets/certificates/CertificateOfCompletion_Software Development Life Cycle SDLC 2019.pdf" target="_blank" rel="noopener" aria-label="View Software Development Life Cycle (SDLC) certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category agile">Agile &amp; BA</span>
+            <h4>Software Development Life Cycle (SDLC)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="agile" href="assets/certificates/CertificateOfCompletion_Systems Thinking.pdf" target="_blank" rel="noopener" aria-label="View Systems Thinking certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category agile">Agile &amp; BA</span>
+            <h4>Systems Thinking</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <!-- Architecture & APIs -->
+        <a class="pdf-cert-card" data-category="architecture" href="assets/certificates/CertificateOfCompletion_Software Architecture Foundations.pdf" target="_blank" rel="noopener" aria-label="View Software Architecture Foundations certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category architecture">Architecture &amp; APIs</span>
+            <h4>Software Architecture Foundations</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="architecture" href="assets/certificates/CertificateOfCompletion_Software Architecture Patterns for Developers 2020.pdf" target="_blank" rel="noopener" aria-label="View Software Architecture Patterns for Developers certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category architecture">Architecture &amp; APIs</span>
+            <h4>Software Architecture Patterns for Developers</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="architecture" href="assets/certificates/CertificateOfCompletion_Designing RESTful APIs.pdf" target="_blank" rel="noopener" aria-label="View Designing RESTful APIs certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category architecture">Architecture &amp; APIs</span>
+            <h4>Designing RESTful APIs</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="architecture" href="assets/certificates/CertificateOfCompletion_Introduction to Web APIs.pdf" target="_blank" rel="noopener" aria-label="View Introduction to Web APIs certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category architecture">Architecture &amp; APIs</span>
+            <h4>Introduction to Web APIs</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="architecture" href="assets/certificates/CertificateOfCompletion_Introduction to Web APIs (1).pdf" target="_blank" rel="noopener" aria-label="View Introduction to Web APIs (2) certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category architecture">Architecture &amp; APIs</span>
+            <h4>Introduction to Web APIs (2)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="architecture" href="assets/certificates/CertificateOfCompletion_Programming Foundations APIs and Web Services 2019.pdf" target="_blank" rel="noopener" aria-label="View Programming Foundations: APIs and Web Services certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category architecture">Architecture &amp; APIs</span>
+            <h4>Programming Foundations: APIs and Web Services</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="architecture" href="assets/certificates/CertificateOfCompletion_DevOps Foundations.pdf" target="_blank" rel="noopener" aria-label="View DevOps Foundations certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category architecture">Architecture &amp; APIs</span>
+            <h4>DevOps Foundations</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="architecture" href="assets/certificates/CertificateOfCompletion_DevOps Foundations (1).pdf" target="_blank" rel="noopener" aria-label="View DevOps Foundations (2) certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category architecture">Architecture &amp; APIs</span>
+            <h4>DevOps Foundations (2)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <!-- Testing -->
+        <a class="pdf-cert-card" data-category="testing" href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Management.pdf" target="_blank" rel="noopener" aria-label="View Software Testing Foundations: Test Management certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category testing">Testing</span>
+            <h4>Software Testing Foundations: Test Management</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="testing" href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Planning.pdf" target="_blank" rel="noopener" aria-label="View Software Testing Foundations: Test Planning certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category testing">Testing</span>
+            <h4>Software Testing Foundations: Test Planning</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="testing" href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Preparation.pdf" target="_blank" rel="noopener" aria-label="View Software Testing Foundations: Test Preparation certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category testing">Testing</span>
+            <h4>Software Testing Foundations: Test Preparation</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="testing" href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Preparation (1).pdf" target="_blank" rel="noopener" aria-label="View Software Testing Foundations: Test Preparation (2) certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category testing">Testing</span>
+            <h4>Software Testing Foundations: Test Preparation (2)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="testing" href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Techniques.pdf" target="_blank" rel="noopener" aria-label="View Software Testing Foundations: Test Techniques certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category testing">Testing</span>
+            <h4>Software Testing Foundations: Test Techniques</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="testing" href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Techniques (1).pdf" target="_blank" rel="noopener" aria-label="View Software Testing Foundations: Test Techniques (2) certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category testing">Testing</span>
+            <h4>Software Testing Foundations: Test Techniques (2)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <!-- Design -->
+        <a class="pdf-cert-card" data-category="design" href="assets/certificates/CertificateOfCompletion_Learning Design Thinking.pdf" target="_blank" rel="noopener" aria-label="View Learning Design Thinking certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category design">Design</span>
+            <h4>Learning Design Thinking</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="design" href="assets/certificates/CertificateOfCompletion_Design Thinking Implementing the Process.pdf" target="_blank" rel="noopener" aria-label="View Design Thinking: Implementing the Process certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category design">Design</span>
+            <h4>Design Thinking: Implementing the Process</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="design" href="assets/certificates/CertificateOfCompletion_Design Thinking Implementing the Process (1).pdf" target="_blank" rel="noopener" aria-label="View Design Thinking: Implementing the Process (2) certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category design">Design</span>
+            <h4>Design Thinking: Implementing the Process (2)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="design" href="assets/certificates/CertificateOfCompletion_Design Thinking Implementing the Process (2).pdf" target="_blank" rel="noopener" aria-label="View Design Thinking: Implementing the Process (3) certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category design">Design</span>
+            <h4>Design Thinking: Implementing the Process (3)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="design" href="assets/certificates/CertificateOfCompletion_Using Style Guides to Bridge Design and Development.pdf" target="_blank" rel="noopener" aria-label="View Using Style Guides to Bridge Design and Development certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category design">Design</span>
+            <h4>Using Style Guides to Bridge Design and Development</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <!-- Other -->
+        <a class="pdf-cert-card" data-category="other" href="assets/certificates/CertificateOfCompletion_Software Design Modeling with UML.pdf" target="_blank" rel="noopener" aria-label="View Software Design: Modeling with UML certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category other">Other</span>
+            <h4>Software Design: Modeling with UML</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="other" href="assets/certificates/CertificateOfCompletion_Streamlining Information Architecture.pdf" target="_blank" rel="noopener" aria-label="View Streamlining Information Architecture certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category other">Other</span>
+            <h4>Streamlining Information Architecture</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+        <a class="pdf-cert-card" data-category="other" href="assets/certificates/CertificateOfCompletion_DevOps Foundations (2).pdf" target="_blank" rel="noopener" aria-label="View DevOps Foundations (3) certificate">
+          <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
+          <div class="pdf-cert-body">
+            <span class="pdf-cert-category other">Other</span>
+            <h4>DevOps Foundations (3)</h4>
+            <p class="pdf-cert-issuer"><i class="bi bi-linkedin"></i> LinkedIn Learning</p>
+          </div>
+          <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
+        </a>
+
+      </div><!-- /.linkedin-certs-grid -->
+    </div><!-- /.linkedin-certs-section -->
+  </div><!-- /.container -->
 </section>
 
 <!-- Certificate Modal -->
@@ -88,3 +603,4 @@
     <img id="certModalImage" src="" alt="Certificate" />
   </div>
 </div>
+

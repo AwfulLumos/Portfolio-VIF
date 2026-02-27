@@ -226,8 +226,8 @@ const KonamiCode = {
  * Certificate Modal Functions
  */
 const certImages = {
-  hack4smart: 'css/Hack4Smart-Certificate.jpg',
-  idea2startup: 'css/Idea2startupCertificate.png'
+  hack4smart: 'assets/images/Hack4Smart-Certificate.jpg',
+  idea2startup: 'assets/images/Idea2startupCertificate.png'
 };
 
 function openCertModal(certId) {
@@ -268,6 +268,81 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// LinkedIn certificate category filter & search
+// Must run AFTER components are dynamically injected into the DOM
+function initLinkedInFilter() {
+  const filterBtns = document.querySelectorAll('.linkedin-filter-btn');
+  const certCards  = document.querySelectorAll('.pdf-cert-card');
+  const searchInput = document.getElementById('linkedinCertSearch');
+  const clearBtn = document.getElementById('linkedinSearchClear');
+  const noResults = document.getElementById('linkedinNoResults');
+  const grid = document.getElementById('linkedinCertsGrid');
+
+  if (!filterBtns.length) return;
+
+  let currentFilter = 'all';
+  let currentSearch = '';
+
+  function applyFilters() {
+    let visibleCount = 0;
+    const searchLower = currentSearch.toLowerCase();
+
+    certCards.forEach(card => {
+      const categoryMatch = currentFilter === 'all' || card.dataset.category === currentFilter;
+      const title = card.querySelector('h4')?.textContent.toLowerCase() || '';
+      const searchMatch = !currentSearch || title.includes(searchLower);
+      const isVisible = categoryMatch && searchMatch;
+
+      card.classList.toggle('hidden', !isVisible);
+      if (isVisible) visibleCount++;
+    });
+
+    // Show/hide no results message
+    if (noResults && grid) {
+      noResults.style.display = visibleCount === 0 ? 'flex' : 'none';
+      grid.style.display = visibleCount === 0 ? 'none' : 'grid';
+    }
+  }
+
+  // Category filter buttons
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentFilter = btn.dataset.filter;
+
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      applyFilters();
+    });
+  });
+
+  // Search input
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      currentSearch = e.target.value.trim();
+      if (clearBtn) clearBtn.style.display = currentSearch ? 'flex' : 'none';
+      applyFilters();
+    });
+  }
+
+  // Clear button
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      currentSearch = '';
+      clearBtn.style.display = 'none';
+      applyFilters();
+      searchInput.focus();
+    });
+  }
+}
+
+document.addEventListener('allComponentsLoaded', initLinkedInFilter);
 
 // Export utilities
 window.Utils = Utils;

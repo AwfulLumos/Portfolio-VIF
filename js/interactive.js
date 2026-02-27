@@ -252,7 +252,66 @@ class InteractiveComponents {
    */
   initCarouselEnhancements() {
     const carousel = document.getElementById('projectsCarousel');
+    const currentIndexEl = document.getElementById('projectCurrentIndex');
+    const totalCountEl = document.getElementById('projectTotalCount');
+    const thumbnails = document.querySelectorAll('.project-thumb');
+    const carouselViewBtn = document.getElementById('carouselViewBtn');
+    const gridViewBtn = document.getElementById('gridViewBtn');
+    const projectsGrid = document.getElementById('projectsGrid');
+    const thumbContainer = document.getElementById('projectsThumbnails');
+    
     if (!carousel) return;
+
+    // Get total slides
+    const slides = carousel.querySelectorAll('.carousel-item');
+    const totalSlides = slides.length;
+    
+    if (totalCountEl) totalCountEl.textContent = totalSlides;
+
+    // Update counter and thumbnails on slide change
+    carousel.addEventListener('slid.bs.carousel', (e) => {
+      const newIndex = e.to + 1;
+      if (currentIndexEl) currentIndexEl.textContent = newIndex;
+      
+      // Update thumbnail active state
+      thumbnails.forEach((thumb, idx) => {
+        thumb.classList.toggle('active', idx === e.to);
+      });
+    });
+
+    // Thumbnail click handlers
+    thumbnails.forEach((thumb, idx) => {
+      thumb.addEventListener('click', () => {
+        const bsCarousel = bootstrap.Carousel.getInstance(carousel);
+        if (bsCarousel) bsCarousel.to(idx);
+      });
+    });
+
+    // View toggle (Carousel vs Grid)
+    if (carouselViewBtn && gridViewBtn) {
+      carouselViewBtn.addEventListener('click', () => {
+        carouselViewBtn.classList.add('active');
+        gridViewBtn.classList.remove('active');
+        carousel.style.display = 'block';
+        if (projectsGrid) projectsGrid.style.display = 'none';
+        if (thumbContainer) thumbContainer.style.display = 'flex';
+      });
+
+      gridViewBtn.addEventListener('click', () => {
+        gridViewBtn.classList.add('active');
+        carouselViewBtn.classList.remove('active');
+        carousel.style.display = 'none';
+        if (thumbContainer) thumbContainer.style.display = 'none';
+        
+        // Populate grid if empty
+        if (projectsGrid) {
+          if (projectsGrid.children.length === 0) {
+            this.populateProjectsGrid(projectsGrid, slides);
+          }
+          projectsGrid.style.display = 'grid';
+        }
+      });
+    }
 
     // Pause carousel on hover
     carousel.addEventListener('mouseenter', () => {
@@ -278,6 +337,20 @@ class InteractiveComponents {
     });
 
     // Touch/swipe support is built into Bootstrap 5
+  }
+
+  /**
+   * Populate grid view from carousel slides
+   */
+  populateProjectsGrid(gridContainer, slides) {
+    slides.forEach(slide => {
+      const card = slide.querySelector('.project-card');
+      if (!card) return;
+      
+      const clone = card.cloneNode(true);
+      clone.classList.add('project-grid-card');
+      gridContainer.appendChild(clone);
+    });
   }
 
   /**

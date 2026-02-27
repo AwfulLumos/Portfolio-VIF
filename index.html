@@ -33,6 +33,14 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="assets/images/myProfile.jpg" as="image" />
+    <link rel="preload" href="css/main.css" as="style" />
+    <link rel="preload" href="js/componentLoader.js" as="script" />
+
+    <!-- Preconnect to CDNs -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -75,15 +83,47 @@
     <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
 
     <!-- Navigation Component -->
-    <div id="navbar-placeholder"></div>
+    <div id="navbar-placeholder">
+      <div class="skeleton-navbar">
+        <div class="skeleton skeleton-logo"></div>
+        <div class="skeleton-nav-links">
+          <div class="skeleton skeleton-link"></div>
+          <div class="skeleton skeleton-link"></div>
+          <div class="skeleton skeleton-link"></div>
+          <div class="skeleton skeleton-link"></div>
+        </div>
+      </div>
+    </div>
 
     <!-- Main Content -->
     <main id="main-content">
       <!-- Hero Section Component -->
-      <div id="hero-placeholder"></div>
+      <div id="hero-placeholder">
+        <div class="skeleton-hero">
+          <div class="skeleton skeleton-badge"></div>
+          <div class="skeleton skeleton-title"></div>
+          <div class="skeleton skeleton-subtitle"></div>
+          <div class="skeleton-buttons">
+            <div class="skeleton skeleton-btn"></div>
+            <div class="skeleton skeleton-btn"></div>
+          </div>
+        </div>
+      </div>
 
       <!-- About Section Component -->
-      <div id="about-placeholder"></div>
+      <div id="about-placeholder">
+        <div class="skeleton-section">
+          <div class="skeleton skeleton-heading"></div>
+          <div class="skeleton-content-row">
+            <div class="skeleton skeleton-image"></div>
+            <div class="skeleton-text-block">
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text short"></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Personality Section Component -->
       <div id="personality-placeholder"></div>
