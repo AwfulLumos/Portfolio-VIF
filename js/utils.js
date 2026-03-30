@@ -249,6 +249,52 @@ function closeCertModal() {
   }
 }
 
+/**
+ * Toggle LinkedIn certificates section
+ */
+function toggleLinkedInCerts() {
+  const header = document.querySelector('.linkedin-certs-header');
+  const content = document.getElementById('linkedinCertsContent');
+
+  if (!header || !content) return;
+
+  const isExpanded = header.getAttribute('aria-expanded') === 'true';
+
+  if (isExpanded) {
+    // Collapse
+    header.setAttribute('aria-expanded', 'false');
+    content.classList.remove('expanded');
+    content.classList.add('collapsed');
+
+    // Hide after animation
+    setTimeout(() => {
+      if (header.getAttribute('aria-expanded') === 'false') {
+        content.style.display = 'none';
+        content.classList.remove('collapsed');
+      }
+    }, 300);
+  } else {
+    // Expand
+    header.setAttribute('aria-expanded', 'true');
+    content.style.display = 'block';
+    content.classList.add('expanded');
+    content.classList.remove('collapsed');
+  }
+}
+
+// Also allow keyboard Enter/Space to toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('.linkedin-certs-header');
+  if (header) {
+    header.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleLinkedInCerts();
+      }
+    });
+  }
+});
+
 // Close modal on background click only
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('certModal');
@@ -344,12 +390,67 @@ function initLinkedInFilter() {
 
 document.addEventListener('allComponentsLoaded', initLinkedInFilter);
 
+// Certificate folder toggle functionality (accordion style)
+function toggleCertFolder(folderId) {
+  const clickedFolder = document.querySelector(`.cert-folder[data-folder="${folderId}"]`);
+  const clickedContent = document.getElementById(`folder-${folderId}`);
+  const clickedHeader = clickedFolder?.querySelector('.cert-folder-header');
+
+  if (!clickedFolder || !clickedContent || !clickedHeader) return;
+
+  const isExpanded = clickedFolder.classList.contains('expanded');
+
+  // Close all other folders first (accordion behavior)
+  const allFolders = document.querySelectorAll('.cert-folder');
+  allFolders.forEach(folder => {
+    if (folder !== clickedFolder) {
+      folder.classList.remove('expanded');
+      const header = folder.querySelector('.cert-folder-header');
+      const content = folder.querySelector('.cert-folder-content');
+      if (header) header.setAttribute('aria-expanded', 'false');
+      if (content) content.classList.remove('show');
+    }
+  });
+
+  // Toggle clicked folder
+  if (isExpanded) {
+    // Collapse
+    clickedFolder.classList.remove('expanded');
+    clickedHeader.setAttribute('aria-expanded', 'false');
+    clickedContent.classList.remove('show');
+  } else {
+    // Expand
+    clickedFolder.classList.add('expanded');
+    clickedHeader.setAttribute('aria-expanded', 'true');
+    clickedContent.classList.add('show');
+  }
+}
+
+// Allow keyboard navigation for folder headers
+document.addEventListener('allComponentsLoaded', () => {
+  const folderHeaders = document.querySelectorAll('.cert-folder-header');
+  folderHeaders.forEach(header => {
+    header.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const folder = header.closest('.cert-folder');
+        if (folder) {
+          const folderId = folder.dataset.folder;
+          toggleCertFolder(folderId);
+        }
+      }
+    });
+  });
+});
+
 // Export utilities
 window.Utils = Utils;
 window.KonamiCode = KonamiCode;
 window.openCertModal = openCertModal;
 window.closeCertModal = closeCertModal;
+window.toggleLinkedInCerts = toggleLinkedInCerts;
+window.toggleCertFolder = toggleCertFolder;
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { Utils, KonamiCode, openCertModal, closeCertModal };
+  module.exports = { Utils, KonamiCode, openCertModal, closeCertModal, toggleLinkedInCerts, toggleCertFolder };
 }

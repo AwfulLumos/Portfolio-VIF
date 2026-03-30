@@ -431,13 +431,165 @@
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
+  cursor: pointer;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.linkedin-certs-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(10, 102, 194, 0.1), transparent);
+  transition: left 0.8s ease;
+}
+
+.linkedin-certs-header:hover::before {
+  left: 100%;
+}
+
+.linkedin-certs-header:hover {
+  background: rgba(10, 102, 194, 0.08);
+  border-color: rgba(10, 102, 194, 0.3);
+  box-shadow: 0 4px 16px rgba(10, 102, 194, 0.15);
+}
+
+.linkedin-header-text {
+  flex: 1;
+}
+
+.linkedin-toggle-btn {
+  background: linear-gradient(135deg, rgba(10, 102, 194, 0.2), rgba(10, 102, 194, 0.1));
+  border: 1.5px solid rgba(10, 102, 194, 0.3);
+  color: #fff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(10, 102, 194, 0.15);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.linkedin-toggle-btn .btn-text {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+.linkedin-toggle-btn:hover .btn-text {
+  animation: textPulse 0.6s ease;
+}
+
+@keyframes textPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.linkedin-toggle-btn .btn-icon {
+  position: relative;
+  z-index: 1;
+  font-size: 0.9rem;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.linkedin-certs-header[aria-expanded="true"] .linkedin-toggle-btn .btn-icon {
+  transform: rotate(180deg);
+}
+
+.linkedin-toggle-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 25px;
+  background: rgba(10, 102, 194, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.linkedin-toggle-btn:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.linkedin-toggle-btn:hover {
+  background: linear-gradient(135deg, #0a66c2, #0858a8);
+  border-color: #0a66c2;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(10, 102, 194, 0.35);
+}
+
+.linkedin-toggle-btn:active {
+  transform: translateY(0);
+}
+
+.linkedin-certs-content {
+  margin-top: 1.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.linkedin-certs-content.expanded {
+  display: block !important;
+  animation: contentFadeIn 0.4s ease forwards;
+}
+
+.linkedin-certs-content.collapsed {
+  animation: contentFadeOut 0.3s ease forwards;
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes contentFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .linkedin-logo-badge {
   width: 52px;
   height: 52px;
-  background: #0a66c2;
+  background: linear-gradient(135deg, #0a66c2, #0858a8);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -446,6 +598,22 @@
   color: #fff;
   flex-shrink: 0;
   box-shadow: 0 4px 16px rgba(10, 102, 194, 0.4);
+  transition: all 0.3s ease;
+  animation: badgePulse 3s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    box-shadow: 0 4px 16px rgba(10, 102, 194, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(10, 102, 194, 0.6), 0 0 30px rgba(10, 102, 194, 0.3);
+  }
+}
+
+.linkedin-certs-header:hover .linkedin-logo-badge {
+  transform: scale(1.05) rotate(-5deg);
+  box-shadow: 0 6px 24px rgba(10, 102, 194, 0.5);
 }
 
 .linkedin-certs-title {
@@ -696,13 +864,57 @@
   .pdf-cert-body h4 {
     white-space: normal;
   }
+
+  .linkedin-certs-header {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .linkedin-toggle-btn {
+    padding: 0.45rem 1rem;
+    font-size: 0.8rem;
+    gap: 0.4rem;
+  }
+
+  .linkedin-toggle-btn .btn-icon {
+    font-size: 0.85rem;
+  }
+
+  .linkedin-logo-badge {
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+  }
 }
 
 @media (max-width: 480px) {
   .linkedin-certs-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
+    gap: 0.875rem;
+    padding: 0.875rem;
+  }
+
+  .linkedin-logo-badge {
+    width: 44px;
+    height: 44px;
+    font-size: 1.3rem;
+  }
+
+  .linkedin-certs-title {
+    font-size: 1.15rem;
+  }
+
+  .linkedin-certs-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .linkedin-toggle-btn {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.75rem;
+    gap: 0.35rem;
+  }
+
+  .linkedin-toggle-btn .btn-icon {
+    font-size: 0.8rem;
   }
 
   .linkedin-filter-tabs {
@@ -714,13 +926,378 @@
     font-size: 0.78rem;
     padding: 5px 12px;
   }
-  
+
   .linkedin-search-wrapper {
     max-width: 100%;
   }
-  
+
   .linkedin-search-input {
     font-size: 0.85rem;
     padding: 9px 36px;
+  }
+}
+
+/* =========================================
+   Certificate Folders UI (Accordion Style)
+   ========================================= */
+
+.cert-folders-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Stagger animation for folders */
+.cert-folder {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: folderAppear 0.5s ease forwards;
+  will-change: transform, opacity;
+}
+
+/* Stagger delays for each folder */
+.cert-folder:nth-child(1) { animation-delay: 0.05s; }
+.cert-folder:nth-child(2) { animation-delay: 0.1s; }
+.cert-folder:nth-child(3) { animation-delay: 0.15s; }
+.cert-folder:nth-child(4) { animation-delay: 0.2s; }
+.cert-folder:nth-child(5) { animation-delay: 0.25s; }
+.cert-folder:nth-child(6) { animation-delay: 0.3s; }
+
+@keyframes folderAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Remove will-change after animation completes */
+.cert-folder:hover {
+  will-change: transform;
+}
+
+.cert-folder:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.cert-folder.expanded {
+  border-color: rgba(10, 102, 194, 0.5);
+  background: rgba(10, 102, 194, 0.04);
+  box-shadow: 0 6px 20px rgba(10, 102, 194, 0.2);
+}
+
+.cert-folder-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-folder-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+  transition: left 0.5s ease;
+}
+
+.cert-folder-header:hover::before {
+  left: 100%;
+}
+
+.cert-folder-header:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.cert-folder-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.cert-folder-icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: inherit;
+  opacity: 0;
+  transform: scale(1.3);
+  transition: all 0.3s ease;
+}
+
+.cert-folder:hover .cert-folder-icon::after {
+  opacity: 0.3;
+  transform: scale(1);
+}
+
+.cert-folder-icon.web { background: rgba(46, 204, 113, 0.15); color: #2ecc71; }
+.cert-folder-icon.agile { background: rgba(52, 152, 219, 0.15); color: #3498db; }
+.cert-folder-icon.architecture { background: rgba(155, 89, 182, 0.15); color: #a855f7; }
+.cert-folder-icon.testing { background: rgba(231, 76, 60, 0.15); color: #e74c3c; }
+.cert-folder-icon.design { background: rgba(241, 196, 15, 0.15); color: #f1c40f; }
+.cert-folder-icon.other { background: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.6); }
+
+.cert-folder.expanded .cert-folder-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cert-folder-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cert-folder-info h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 0.15rem;
+}
+
+.cert-folder-count {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.cert-folder-toggle {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.cert-folder-toggle i {
+  transition: transform 0.3s ease;
+}
+
+.cert-folder.expanded .cert-folder-toggle i {
+  transform: rotate(180deg);
+}
+
+.cert-folder-header:hover .cert-folder-toggle {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Folder Content - Certificate List */
+.cert-folder-content {
+  display: none;
+  padding: 0 1rem 1rem;
+}
+
+.cert-folder-content.show {
+  display: block;
+  animation: folderSlideIn 0.25s ease;
+}
+
+@keyframes folderSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Certificate list inside folder */
+.cert-folder-content .pdf-cert-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  margin-bottom: 0.4rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: certCardSlideIn 0.3s ease forwards;
+  will-change: transform, opacity;
+}
+
+/* Stagger animation for certificate cards */
+.cert-folder-content .pdf-cert-card:nth-child(1) { animation-delay: 0.05s; }
+.cert-folder-content .pdf-cert-card:nth-child(2) { animation-delay: 0.08s; }
+.cert-folder-content .pdf-cert-card:nth-child(3) { animation-delay: 0.11s; }
+.cert-folder-content .pdf-cert-card:nth-child(4) { animation-delay: 0.14s; }
+.cert-folder-content .pdf-cert-card:nth-child(5) { animation-delay: 0.17s; }
+.cert-folder-content .pdf-cert-card:nth-child(6) { animation-delay: 0.2s; }
+.cert-folder-content .pdf-cert-card:nth-child(7) { animation-delay: 0.23s; }
+.cert-folder-content .pdf-cert-card:nth-child(8) { animation-delay: 0.26s; }
+.cert-folder-content .pdf-cert-card:nth-child(9) { animation-delay: 0.29s; }
+.cert-folder-content .pdf-cert-card:nth-child(10) { animation-delay: 0.32s; }
+.cert-folder-content .pdf-cert-card:nth-child(n+11) { animation-delay: 0.35s; }
+
+@keyframes certCardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* GPU acceleration for smooth animations */
+.cert-folder-content .pdf-cert-card,
+.cert-folder,
+.linkedin-toggle-btn,
+.cert-folder-icon {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.cert-folder-content .pdf-cert-card:last-child {
+  margin-bottom: 0;
+}
+
+.cert-folder-content .pdf-cert-card:hover {
+  background: rgba(10, 102, 194, 0.12);
+  border-color: rgba(10, 102, 194, 0.35);
+  transform: translateX(6px) scale(1.01);
+  box-shadow: 0 2px 8px rgba(10, 102, 194, 0.15);
+}
+
+.cert-folder-content .pdf-cert-icon {
+  font-size: 1.2rem;
+  color: #e74c3c;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cert-folder-content .pdf-cert-card:hover .pdf-cert-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.cert-folder-content .pdf-cert-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.cert-folder-content .pdf-cert-body h4 {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.cert-folder-content .pdf-cert-action {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.cert-folder-content .pdf-cert-card:hover .pdf-cert-action {
+  color: #0a66c2;
+}
+
+/* Folder Responsive */
+@media (max-width: 768px) {
+  .cert-folder-header {
+    padding: 0.875rem 1rem;
+  }
+
+  .cert-folder-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .cert-folder-info h4 {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cert-folder-header {
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .cert-folder-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+  }
+
+  .cert-folder-info h4 {
+    font-size: 0.85rem;
+  }
+
+  .cert-folder-count {
+    font-size: 0.7rem;
+  }
+
+  .cert-folder-content {
+    padding: 0 0.75rem 0.75rem;
+  }
+
+  .cert-folder-content .pdf-cert-card {
+    padding: 0.5rem 0.65rem;
+  }
+
+  .cert-folder-content .pdf-cert-body h4 {
+    font-size: 0.75rem;
+  }
+}
+
+/* Reduce motion for accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .cert-folder,
+  .cert-folder-content .pdf-cert-card {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .linkedin-logo-badge {
+    animation: none;
   }
 }
