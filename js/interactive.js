@@ -6,6 +6,7 @@
 class InteractiveComponents {
   constructor() {
     this.achievementsExpanded = false;
+    this.formSubmissions = [];
   }
 
   /**
@@ -15,6 +16,26 @@ class InteractiveComponents {
     this.initContactForm();
     this.initCarouselEnhancements();
     this.initSchoolCardToggle();
+  }
+
+  /**
+   * Check rate limiting for form submissions
+   */
+  checkRateLimit() {
+    const config = window.EmailConfig?.rateLimiting || { maxAttempts: 3, windowMs: 60000 };
+    const now = Date.now();
+    
+    // Clean old submissions
+    this.formSubmissions = this.formSubmissions.filter(
+      time => now - time < config.windowMs
+    );
+    
+    if (this.formSubmissions.length >= config.maxAttempts) {
+      return false;
+    }
+    
+    this.formSubmissions.push(now);
+    return true;
   }
 
   /**
@@ -32,9 +53,16 @@ class InteractiveComponents {
       return;
     }
 
-    // Initialize EmailJS with your Public Key
+    // Get config
+    const config = window.EmailConfig;
+    if (!config) {
+      console.error('[ContactForm] EmailConfig not loaded!');
+      return;
+    }
+
+    // Initialize EmailJS with Public Key
     try {
-      emailjs.init('cs8QoSnqtKqc4SkwX');
+      emailjs.init(config.publicKey);
     } catch (error) {
       console.error('[ContactForm] Failed to initialize EmailJS:', error);
       return;
@@ -44,6 +72,28 @@ class InteractiveComponents {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       e.stopPropagation();
+
+      // Check honeypot field (bot detection)
+      const honeypot = form.querySelector('[name="website"]');
+      if (honeypot && honeypot.value) {
+        // Bot detected - silently fail
+        console.warn('[ContactForm] Bot detected via honeypot');
+        if (messageDiv) {
+          messageDiv.textContent = '✓ Message sent successfully!';
+          messageDiv.className = 'form-message success';
+        }
+        form.reset();
+        return;
+      }
+
+      // Check rate limiting
+      if (!this.checkRateLimit()) {
+        if (messageDiv) {
+          messageDiv.textContent = '✕ Too many attempts. Please wait a minute before trying again.';
+          messageDiv.className = 'form-message error';
+        }
+        return;
+      }
 
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerHTML;
@@ -58,24 +108,22 @@ class InteractiveComponents {
         from_email: form.email.value,
         subject: form.subject.value || 'No subject',
         message: form.message.value,
-        to_name: 'Voun Irish Florence Dejumo'
+        to_name: config.recipientName
       };
 
       try {
-        // EmailJS Configuration
-        const serviceId = 'service_g6jsrwq';
-        const templateId = 'template_pxji6pp';
-
         // Send email using EmailJS
         const response = await emailjs.send(
-          serviceId,
-          templateId,
+          config.serviceId,
+          config.templateId,
           formData
         );
 
         // Show success message
         if (messageDiv) {
-          messageDiv.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+          const successMsg = window.languageManager?.t('contact.form.success') || 
+            '✓ Message sent successfully! I\'ll get back to you soon.';
+          messageDiv.textContent = '✓ ' + successMsg;
           messageDiv.className = 'form-message success';
         }
 
@@ -93,7 +141,8 @@ class InteractiveComponents {
         console.error('[ContactForm] Form submission error:', error);
 
         if (messageDiv) {
-          let errorMessage = '✕ Something went wrong. Please try again or email me directly.';
+          let errorMessage = window.languageManager?.t('contact.form.error') ||
+            '✕ Something went wrong. Please try again or email me directly.';
 
           // Provide helpful error messages
           if (error.message && error.message.includes('not configured')) {
@@ -112,7 +161,7 @@ class InteractiveComponents {
     });
 
     // Real-time validation feedback
-    const inputs = form.querySelectorAll('input, textarea');
+    const inputs = form.querySelectorAll('input:not([name="website"]), textarea');
     inputs.forEach(input => {
       input.addEventListener('blur', () => {
         if (input.validity.valid) {

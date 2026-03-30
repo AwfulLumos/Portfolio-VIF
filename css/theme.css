@@ -1,0 +1,285 @@
+/* ========================================
+   VIF.Dev Portfolio - Theme System
+   Light/Dark mode with smooth transitions
+   ======================================== */
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  bottom: 90px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: var(--color-text-light);
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background: var(--color-accent);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.theme-toggle:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Dark theme (default) - show sun icon */
+[data-theme="dark"] .theme-toggle .icon-sun {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+[data-theme="dark"] .theme-toggle .icon-moon {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+/* Light theme - show moon icon */
+[data-theme="light"] .theme-toggle .icon-sun {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+[data-theme="light"] .theme-toggle .icon-moon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* ========================================
+   Light Theme Variables
+   ======================================== */
+[data-theme="light"] {
+  /* Color Palette - Light Mode */
+  --color-primary: #f5f7fa;
+  --color-secondary: #e8ecf1;
+  --color-accent: #5a7a5c;
+  --color-accent-secondary: #7a9a7c;
+  --color-text-light: #2c3e50;
+  --color-text-muted: #5a6c7d;
+  --color-white: #1a1a2e;
+  --color-black: #ffffff;
+
+  /* Glass Effect Colors - Light */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(90, 122, 92, 0.2);
+  --glass-highlight: rgba(90, 122, 92, 0.3);
+
+  /* Shadows - Light */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 30px rgba(90, 122, 92, 0.2);
+}
+
+/* Light theme body background */
+[data-theme="light"] body {
+  background: linear-gradient(-45deg, #f5f7fa, #e8ecf1, #dfe6ed, #f0f4f8, #e5eaf0, #f5f7fa);
+  background-size: 400% 400%;
+}
+
+/* Light theme scrollbar */
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #e8ecf1;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #5a7a5c, #7a9a7c);
+  border: 2px solid #e8ecf1;
+}
+
+/* Light theme navbar */
+[data-theme="light"] .navbar {
+  background: rgba(245, 247, 250, 0.9) !important;
+  border-bottom: 1px solid rgba(90, 122, 92, 0.1);
+}
+
+[data-theme="light"] .navbar-brand {
+  color: #2c3e50 !important;
+}
+
+[data-theme="light"] .nav-link {
+  color: #5a6c7d !important;
+}
+
+[data-theme="light"] .nav-link:hover,
+[data-theme="light"] .nav-link.active {
+  color: #5a7a5c !important;
+}
+
+/* Light theme cards */
+[data-theme="light"] .glass-card,
+[data-theme="light"] .glass {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(90, 122, 92, 0.15);
+}
+
+/* Light theme buttons */
+[data-theme="light"] .btn-primary {
+  background: linear-gradient(135deg, #5a7a5c, #7a9a7c);
+  color: #ffffff;
+}
+
+[data-theme="light"] .btn-outline {
+  border-color: #5a7a5c;
+  color: #5a7a5c;
+}
+
+[data-theme="light"] .btn-outline:hover {
+  background: #5a7a5c;
+  color: #ffffff;
+}
+
+/* Light theme gradient text */
+[data-theme="light"] .gradient-text {
+  background: linear-gradient(135deg, #2c3e50, #5a7a5c, #7a9a7c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Light theme section headers */
+[data-theme="light"] .section-header h2::after {
+  background: linear-gradient(90deg, #5a7a5c, #7a9a7c);
+}
+
+/* Light theme hero */
+[data-theme="light"] .hero-badge {
+  background: rgba(90, 122, 92, 0.15);
+  border-color: rgba(90, 122, 92, 0.3);
+}
+
+[data-theme="light"] .highlight {
+  color: #5a7a5c;
+}
+
+/* Light theme skill tags */
+[data-theme="light"] .skill-tag {
+  background: rgba(90, 122, 92, 0.1);
+  color: #2c3e50;
+  border-color: rgba(90, 122, 92, 0.2);
+}
+
+/* Light theme tech icons */
+[data-theme="light"] .tech-icon {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(90, 122, 92, 0.15);
+}
+
+[data-theme="light"] .tech-icon:hover {
+  border-color: #5a7a5c;
+  box-shadow: 0 10px 30px rgba(90, 122, 92, 0.2);
+}
+
+/* Light theme contact form */
+[data-theme="light"] .form-control {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(90, 122, 92, 0.2);
+  color: #2c3e50;
+}
+
+[data-theme="light"] .form-control:focus {
+  border-color: #5a7a5c;
+  box-shadow: 0 0 0 3px rgba(90, 122, 92, 0.1);
+}
+
+[data-theme="light"] .form-control::placeholder {
+  color: #8a9bab;
+}
+
+/* Light theme footer */
+[data-theme="light"] footer {
+  background: rgba(245, 247, 250, 0.95);
+  border-top: 1px solid rgba(90, 122, 92, 0.1);
+}
+
+/* Light theme back to top */
+[data-theme="light"] .back-to-top {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(90, 122, 92, 0.2);
+  color: #5a7a5c;
+}
+
+[data-theme="light"] .back-to-top:hover {
+  background: #5a7a5c;
+  color: #ffffff;
+}
+
+/* Light theme project cards */
+[data-theme="light"] .project-card {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .project-tech span {
+  background: rgba(90, 122, 92, 0.1);
+  color: #5a7a5c;
+}
+
+/* Light theme particles (more subtle) */
+[data-theme="light"] .particle {
+  background: radial-gradient(circle, rgba(90, 122, 92, 0.3), transparent);
+}
+
+/* Invert icons that need it in light mode */
+[data-theme="light"] .icon-invert {
+  filter: invert(0);
+}
+
+/* Theme transition for smooth switching */
+body,
+.navbar,
+.glass-card,
+.glass,
+.btn,
+.form-control,
+footer,
+.back-to-top,
+.theme-toggle {
+  transition: background 0.3s ease, 
+              background-color 0.3s ease, 
+              border-color 0.3s ease, 
+              color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .theme-toggle {
+    bottom: 80px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .theme-toggle {
+    bottom: 75px;
+    right: 15px;
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
+}
