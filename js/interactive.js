@@ -144,8 +144,15 @@ class InteractiveComponents {
           let errorMessage = window.languageManager?.t('contact.form.error') ||
             '✕ Something went wrong. Please try again or email me directly.';
 
-          // Provide helpful error messages
-          if (error.message && error.message.includes('not configured')) {
+          // Provide helpful error messages based on error status
+          if (error.status === 412) {
+            errorMessage = '✕ Email service configuration error. Please contact me directly at vounirishflorence.dejumo@gmail.com';
+            console.error('[ContactForm] EmailJS 412 Error - Check: 1) Service ID, 2) Template ID, 3) Public Key, 4) Account verification');
+          } else if (error.status === 400) {
+            errorMessage = '✕ Invalid form data. Please check your inputs and try again.';
+          } else if (error.status === 403) {
+            errorMessage = '✕ Access denied. Email service may be restricted to certain domains.';
+          } else if (error.message && error.message.includes('not configured')) {
             errorMessage = '✕ Email service not configured yet. Please email me directly at vounirishflorence.dejumo@gmail.com';
           } else if (error.text) {
             errorMessage = `✕ Error: ${error.text}`;
