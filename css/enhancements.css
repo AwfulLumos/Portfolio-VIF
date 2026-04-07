@@ -1,0 +1,545 @@
+/* ============================================
+   PORTFOLIO DESIGN ENHANCEMENTS
+   Enhanced visual depth, animations, and interactivity
+   ============================================ */
+
+/* ============================================
+   1. ENHANCED DEPTH & SHADOWS
+   ============================================ */
+
+/* Standardized layered shadows for depth */
+:root {
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.12);
+  --shadow-glow-sage: 0 0 20px rgba(163, 176, 135, 0.3);
+  --shadow-glow-cream: 0 0 20px rgba(255, 248, 212, 0.2);
+}
+
+/* Enhanced glass effect with consistent opacity */
+.glass-card-enhanced,
+.skill-card,
+.project-card,
+.certification-card {
+  background: rgba(163, 176, 135, 0.08) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(163, 176, 135, 0.2) !important;
+  box-shadow: var(--shadow-md);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-enhanced:hover,
+.skill-card:hover,
+.project-card:hover,
+.certification-card:hover {
+  background: rgba(163, 176, 135, 0.12) !important;
+  border-color: rgba(163, 176, 135, 0.4) !important;
+  box-shadow: var(--shadow-lg), var(--shadow-glow-sage);
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* ============================================
+   2. ANIMATED GRADIENT BUTTONS
+   ============================================ */
+
+/* Primary CTA with animated gradient */
+.btn-primary-enhanced {
+  background: linear-gradient(135deg, #a3b087 0%, #8a9a6f 50%, #a3b087 100%);
+  background-size: 200% 100%;
+  border: none;
+  color: #1a1d24;
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.btn-primary-enhanced:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg), var(--shadow-glow-sage);
+  animation: gradientShift 1.5s ease infinite;
+}
+
+.btn-primary-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary-enhanced:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Outline button with hover fill */
+.btn-outline-enhanced {
+  background: transparent;
+  border: 2px solid rgba(163, 176, 135, 0.5);
+  color: #a3b087;
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(163, 176, 135, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-outline-enhanced:hover::before {
+  left: 100%;
+}
+
+.btn-outline-enhanced:hover {
+  background: rgba(163, 176, 135, 0.1);
+  border-color: rgba(163, 176, 135, 0.8);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   3. SCROLL-TRIGGERED ANIMATIONS
+   ============================================ */
+
+/* Fade-up animation with stagger */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for grouped elements */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+
+/* Scale-in animation */
+.scale-in-scroll {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scale-in-scroll.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ============================================
+   4. COUNTER ANIMATION FOR STATS
+   ============================================ */
+
+.counter-stat {
+  display: inline-block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #a3b087, #fff8d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.counter-stat.counting {
+  animation: counterPulse 0.3s ease;
+}
+
+@keyframes counterPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ============================================
+   5. ENHANCED HOVER INTERACTIONS
+   ============================================ */
+
+/* Skill card icon rotation on hover */
+.skill-card .skill-icon {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card:hover .skill-icon {
+  transform: rotateY(360deg) scale(1.1);
+}
+
+/* Project card image with overlay */
+.project-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.project-image-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(163, 176, 135, 0.2), rgba(255, 248, 212, 0.2));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.project-card:hover .project-image-wrapper::before {
+  opacity: 1;
+}
+
+.project-image-wrapper img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover .project-image-wrapper img {
+  transform: scale(1.08);
+}
+
+/* Tech stack badge hover effect */
+.tech-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(163, 176, 135, 0.1);
+  border: 1px solid rgba(163, 176, 135, 0.3);
+  border-radius: 20px;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.tech-badge:hover {
+  background: rgba(163, 176, 135, 0.2);
+  border-color: rgba(163, 176, 135, 0.6);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   6. PARALLAX EFFECTS
+   ============================================ */
+
+.parallax-element {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Will be controlled via JS for smooth parallax */
+.parallax-slow {
+  transform: translateY(var(--parallax-y, 0));
+}
+
+.parallax-fast {
+  transform: translateY(calc(var(--parallax-y, 0) * 1.5));
+}
+
+/* ============================================
+   7. ANIMATED UNDERLINES FOR HEADINGS
+   ============================================ */
+
+.heading-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+}
+
+.heading-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #a3b087, #fff8d4);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.heading-underline.visible::after,
+.heading-underline:hover::after {
+  width: 100%;
+}
+
+/* ============================================
+   8. GLOW EFFECTS ON ACCENT ELEMENTS
+   ============================================ */
+
+.glow-sage {
+  box-shadow: 0 0 15px rgba(163, 176, 135, 0.4);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-sage:hover {
+  box-shadow: 0 0 25px rgba(163, 176, 135, 0.6);
+}
+
+.glow-cream {
+  box-shadow: 0 0 15px rgba(255, 248, 212, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-cream:hover {
+  box-shadow: 0 0 25px rgba(255, 248, 212, 0.5);
+}
+
+/* ============================================
+   9. IMPROVED CARD ELEVATION
+   ============================================ */
+
+.elevated-card {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.elevated-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(163, 176, 135, 0.1), rgba(255, 248, 212, 0.05));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.elevated-card:hover::before {
+  opacity: 1;
+}
+
+/* ============================================
+   10. CURSOR TRAIL EFFECT (Optional)
+   ============================================ */
+
+.hero-title-interactive {
+  position: relative;
+  display: inline-block;
+}
+
+.cursor-glow {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(163, 176, 135, 0.4), transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+.cursor-glow.active {
+  opacity: 1;
+}
+
+/* ============================================
+   11. FLOATING ANIMATION FOR DECORATIVE ELEMENTS
+   ============================================ */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.float-element {
+  animation: float 4s ease-in-out infinite;
+}
+
+.float-element-slow {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ============================================
+   12. SHIMMER EFFECT FOR LOADING/EMPHASIS
+   ============================================ */
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(163, 176, 135, 0.3) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ============================================
+   13. IMPROVED NAVIGATION ACTIVE STATE
+   ============================================ */
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #a3b087, #fff8d4);
+  transform: translateX(-50%);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+  width: 80%;
+}
+
+/* ============================================
+   14. PROGRESS BAR ANIMATION
+   ============================================ */
+
+.skill-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(163, 176, 135, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.skill-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #a3b087, #fff8d4);
+  border-radius: 3px;
+  width: 0;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(163, 176, 135, 0.5);
+}
+
+.skill-progress-fill.animate {
+  width: var(--progress, 0%);
+}
+
+/* ============================================
+   15. TOOLTIP ANIMATIONS
+   ============================================ */
+
+.tooltip-enhanced {
+  position: absolute;
+  background: rgba(26, 29, 36, 0.95);
+  color: #fff8d4;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 1000;
+  border: 1px solid rgba(163, 176, 135, 0.3);
+}
+
+.tooltip-enhanced.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   16. RESPONSIVE ENHANCEMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Reduce animation intensity on mobile */
+  .glass-card-enhanced:hover,
+  .skill-card:hover,
+  .project-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+  
+  /* Disable parallax on mobile for performance */
+  .parallax-element {
+    transform: none !important;
+  }
+  
+  /* Simplify hover effects */
+  .btn-primary-enhanced:hover,
+  .btn-outline-enhanced:hover {
+    transform: translateY(-1px);
+  }
+}
+
+/* ============================================
+   17. DARK MODE ADJUSTMENTS
+   ============================================ */
+
+[data-theme="light"] .glass-card-enhanced,
+[data-theme="light"] .skill-card,
+[data-theme="light"] .project-card {
+  background: rgba(163, 176, 135, 0.05) !important;
+  border-color: rgba(163, 176, 135, 0.15) !important;
+}
+
+[data-theme="light"] .glass-card-enhanced:hover,
+[data-theme="light"] .skill-card:hover,
+[data-theme="light"] .project-card:hover {
+  background: rgba(163, 176, 135, 0.1) !important;
+  border-color: rgba(163, 176, 135, 0.3) !important;
+}
+
+/* ============================================
+   18. ACCESSIBILITY - REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .parallax-element {
+    transform: none !important;
+  }
+}
