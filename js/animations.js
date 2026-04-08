@@ -20,6 +20,7 @@ class AnimationManager {
 
     this.initScrollAnimations();
     this.initHeroAnimations();
+    this.initTypedText();
     this.initParticleSystem();
     this.initProgressBars();
   }
@@ -102,6 +103,58 @@ class AnimationManager {
         ticking = true;
       }
     }, { passive: true });
+  }
+
+  /**
+   * Initialize typed text effect in hero
+   */
+  initTypedText() {
+    const typedEl = document.getElementById('typedText');
+    if (!typedEl) return;
+
+    const phrases = [
+      'Full Stack Developer',
+      'React & Vue.js Enthusiast',
+      'Building Modern Web Experiences',
+      'Clean Code Advocate',
+      'Problem Solver & Innovator'
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 80;
+
+    const type = () => {
+      const currentPhrase = phrases[phraseIndex];
+      
+      if (isDeleting) {
+        typedEl.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+        typingSpeed = 40;
+      } else {
+        typedEl.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+        typingSpeed = 80;
+      }
+
+      // Finished typing current phrase
+      if (!isDeleting && charIndex === currentPhrase.length) {
+        typingSpeed = 2000; // Pause at end
+        isDeleting = true;
+      }
+      // Finished deleting
+      else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        typingSpeed = 500; // Pause before next phrase
+      }
+
+      setTimeout(type, typingSpeed);
+    };
+
+    // Start typing after a short delay
+    setTimeout(type, 1000);
   }
 
   /**

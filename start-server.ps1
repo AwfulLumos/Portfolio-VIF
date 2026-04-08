@@ -1,5 +1,6 @@
 # VIF.Dev Portfolio - Local Development Server
 # Run this script to start the development server
+# python -m http.server 8000  
 
 Write-Host "🚀 Starting VIF.Dev Portfolio Development Server..." -ForegroundColor Cyan
 Write-Host ""
@@ -17,7 +18,6 @@ if ($pythonCheck) {
     $pythonVersion = python --version 2>&1
     Write-Host "✓ Python found: $pythonVersion" -ForegroundColor Green
     Write-Host ""
-    
     # Start Python HTTP server
     python -m http.server 8000
 } else {
@@ -28,5 +28,5 @@ if ($pythonCheck) {
     Write-Host "  npm install -g http-server" -ForegroundColor Cyan
     Write-Host "  http-server -p 8000" -ForegroundColor Cyan
     Write-Host ""
-    pause
+    Read-Host -Prompt "Press Enter to continue..."
 }

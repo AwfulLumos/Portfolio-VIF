@@ -226,8 +226,8 @@ const KonamiCode = {
  * Certificate Modal Functions
  */
 const certImages = {
-  hack4smart: 'css/Hack4Smart-Certificate.jpg',
-  idea2startup: 'css/Idea2startupCertificate.png'
+  hack4smart: 'assets/images/Hack4Smart-Certificate.jpg',
+  idea2startup: 'assets/images/Idea2startupCertificate.png'
 };
 
 function openCertModal(certId) {
@@ -249,6 +249,52 @@ function closeCertModal() {
   }
 }
 
+/**
+ * Toggle LinkedIn certificates section
+ */
+function toggleLinkedInCerts() {
+  const header = document.querySelector('.linkedin-certs-header');
+  const content = document.getElementById('linkedinCertsContent');
+
+  if (!header || !content) return;
+
+  const isExpanded = header.getAttribute('aria-expanded') === 'true';
+
+  if (isExpanded) {
+    // Collapse
+    header.setAttribute('aria-expanded', 'false');
+    content.classList.remove('expanded');
+    content.classList.add('collapsed');
+
+    // Hide after animation
+    setTimeout(() => {
+      if (header.getAttribute('aria-expanded') === 'false') {
+        content.style.display = 'none';
+        content.classList.remove('collapsed');
+      }
+    }, 300);
+  } else {
+    // Expand
+    header.setAttribute('aria-expanded', 'true');
+    content.style.display = 'block';
+    content.classList.add('expanded');
+    content.classList.remove('collapsed');
+  }
+}
+
+// Also allow keyboard Enter/Space to toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('.linkedin-certs-header');
+  if (header) {
+    header.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleLinkedInCerts();
+      }
+    });
+  }
+});
+
 // Close modal on background click only
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('certModal');
@@ -269,12 +315,142 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// LinkedIn certificate category filter & search
+// Must run AFTER components are dynamically injected into the DOM
+function initLinkedInFilter() {
+  const filterBtns = document.querySelectorAll('.linkedin-filter-btn');
+  const certCards  = document.querySelectorAll('.pdf-cert-card');
+  const searchInput = document.getElementById('linkedinCertSearch');
+  const clearBtn = document.getElementById('linkedinSearchClear');
+  const noResults = document.getElementById('linkedinNoResults');
+  const grid = document.getElementById('linkedinCertsGrid');
+
+  if (!filterBtns.length) return;
+
+  let currentFilter = 'all';
+  let currentSearch = '';
+
+  function applyFilters() {
+    let visibleCount = 0;
+    const searchLower = currentSearch.toLowerCase();
+
+    certCards.forEach(card => {
+      const categoryMatch = currentFilter === 'all' || card.dataset.category === currentFilter;
+      const title = card.querySelector('h4')?.textContent.toLowerCase() || '';
+      const searchMatch = !currentSearch || title.includes(searchLower);
+      const isVisible = categoryMatch && searchMatch;
+
+      card.classList.toggle('hidden', !isVisible);
+      if (isVisible) visibleCount++;
+    });
+
+    // Show/hide no results message
+    if (noResults && grid) {
+      noResults.style.display = visibleCount === 0 ? 'flex' : 'none';
+      grid.style.display = visibleCount === 0 ? 'none' : 'grid';
+    }
+  }
+
+  // Category filter buttons
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentFilter = btn.dataset.filter;
+
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      applyFilters();
+    });
+  });
+
+  // Search input
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      currentSearch = e.target.value.trim();
+      if (clearBtn) clearBtn.style.display = currentSearch ? 'flex' : 'none';
+      applyFilters();
+    });
+  }
+
+  // Clear button
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      currentSearch = '';
+      clearBtn.style.display = 'none';
+      applyFilters();
+      searchInput.focus();
+    });
+  }
+}
+
+document.addEventListener('allComponentsLoaded', initLinkedInFilter);
+
+// Certificate folder toggle functionality (accordion style)
+function toggleCertFolder(folderId) {
+  const clickedFolder = document.querySelector(`.cert-folder[data-folder="${folderId}"]`);
+  const clickedContent = document.getElementById(`folder-${folderId}`);
+  const clickedHeader = clickedFolder?.querySelector('.cert-folder-header');
+
+  if (!clickedFolder || !clickedContent || !clickedHeader) return;
+
+  const isExpanded = clickedFolder.classList.contains('expanded');
+
+  // Close all other folders first (accordion behavior)
+  const allFolders = document.querySelectorAll('.cert-folder');
+  allFolders.forEach(folder => {
+    if (folder !== clickedFolder) {
+      folder.classList.remove('expanded');
+      const header = folder.querySelector('.cert-folder-header');
+      const content = folder.querySelector('.cert-folder-content');
+      if (header) header.setAttribute('aria-expanded', 'false');
+      if (content) content.classList.remove('show');
+    }
+  });
+
+  // Toggle clicked folder
+  if (isExpanded) {
+    // Collapse
+    clickedFolder.classList.remove('expanded');
+    clickedHeader.setAttribute('aria-expanded', 'false');
+    clickedContent.classList.remove('show');
+  } else {
+    // Expand
+    clickedFolder.classList.add('expanded');
+    clickedHeader.setAttribute('aria-expanded', 'true');
+    clickedContent.classList.add('show');
+  }
+}
+
+// Allow keyboard navigation for folder headers
+document.addEventListener('allComponentsLoaded', () => {
+  const folderHeaders = document.querySelectorAll('.cert-folder-header');
+  folderHeaders.forEach(header => {
+    header.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const folder = header.closest('.cert-folder');
+        if (folder) {
+          const folderId = folder.dataset.folder;
+          toggleCertFolder(folderId);
+        }
+      }
+    });
+  });
+});
+
 // Export utilities
 window.Utils = Utils;
 window.KonamiCode = KonamiCode;
 window.openCertModal = openCertModal;
 window.closeCertModal = closeCertModal;
+window.toggleLinkedInCerts = toggleLinkedInCerts;
+window.toggleCertFolder = toggleCertFolder;
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { Utils, KonamiCode, openCertModal, closeCertModal };
+  module.exports = { Utils, KonamiCode, openCertModal, closeCertModal, toggleLinkedInCerts, toggleCertFolder };
 }
