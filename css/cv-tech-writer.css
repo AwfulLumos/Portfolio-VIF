@@ -1,0 +1,145 @@
+/* Secondary CV visual refresh for Technical Writer profile */
+
+.cv-tech-writer-page {
+    background:
+        radial-gradient(1200px 420px at 15% -10%, rgba(145, 166, 194, 0.28), transparent 65%),
+        radial-gradient(900px 360px at 95% 0%, rgba(182, 164, 140, 0.24), transparent 62%),
+        linear-gradient(180deg, #eef2f8 0%, #e8ecf4 100%);
+    color: #1f2733;
+}
+
+.cv-tech-writer-page .download-btn {
+    background: linear-gradient(135deg, #2f4159, #1f2e44);
+    border: 1px solid #1f2e44;
+}
+
+.cv-tech-writer-page .download-btn:hover {
+    background: linear-gradient(135deg, #24364f, #19273d);
+    box-shadow: 0 8px 20px rgba(31, 46, 68, 0.28);
+}
+
+.cv-tech-writer-page .back-btn {
+    border: 1px solid #3c4f69;
+    color: #223047;
+}
+
+.cv-tech-writer-page .cv-container {
+    border: 1px solid #c3cedd;
+    border-radius: 14px;
+    box-shadow: 0 14px 36px rgba(18, 30, 49, 0.14);
+    overflow: hidden;
+}
+
+.cv-tech-writer-page .cv-header {
+    background:
+        linear-gradient(120deg, #202f45 0%, #2c435f 55%, #3b5c7f 100%);
+    border-bottom: none;
+    color: #f8fbff;
+    padding: 22px 32px;
+}
+
+.cv-tech-writer-page .cv-name-section h1,
+.cv-tech-writer-page .cv-title,
+.cv-tech-writer-page .cv-contact-info,
+.cv-tech-writer-page .contact-item i {
+    color: #f8fbff;
+}
+
+.cv-tech-writer-page .cv-title {
+    opacity: 0.9;
+}
+
+.cv-tech-writer-page .cv-main {
+    grid-template-columns: 1.35fr 1fr;
+}
+
+.cv-tech-writer-page .cv-left-column {
+    background: #f9fbff;
+    border-right: 1px solid #c7d2e2;
+}
+
+.cv-tech-writer-page .cv-right-column {
+    background:
+        linear-gradient(180deg, #edf2f9 0%, #e6ecf5 100%);
+}
+
+.cv-tech-writer-page .cv-section h2 {
+    border-bottom: 2px solid #3b5678;
+    color: #223047;
+    letter-spacing: 0.6px;
+}
+
+.cv-tech-writer-page .cv-section h2 i {
+    color: #345174;
+}
+
+.cv-tech-writer-page .entry-header h3 {
+    color: #1e2d45;
+}
+
+.cv-tech-writer-page .entry-date,
+.cv-tech-writer-page .entry-organization {
+    color: #445b79;
+}
+
+.cv-tech-writer-page .entry-description,
+.cv-tech-writer-page .cv-section > p,
+.cv-tech-writer-page .languages-list li,
+.cv-tech-writer-page .achievement-text {
+    color: #2f3f56;
+}
+
+.cv-tech-writer-page .skill-item {
+    background: #ffffff;
+    color: #1f2d42;
+    border: 1px solid #88a1bf;
+}
+
+.cv-tech-writer-page .soft-skills .skill-item {
+    background: #f6f9ff;
+    border-color: #9aafca;
+}
+
+.cv-tech-writer-page .skills-category h4,
+.cv-tech-writer-page .achievement-year {
+    color: #425d7e;
+}
+
+.cv-tech-writer-page .languages-list li::before {
+    color: #345174;
+}
+
+@media (max-width: 768px) {
+    .cv-tech-writer-page .cv-header {
+        padding: 18px 18px;
+    }
+
+    .cv-tech-writer-page .cv-container {
+        border-radius: 10px;
+    }
+}
+
+@media print {
+    .cv-tech-writer-page {
+        background: #ffffff;
+    }
+
+    .cv-tech-writer-page .cv-container {
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .cv-tech-writer-page .cv-header {
+        background: #ffffff;
+        color: #000000;
+        border-bottom: 2px solid #000000;
+    }
+
+    .cv-tech-writer-page .cv-name-section h1,
+    .cv-tech-writer-page .cv-title,
+    .cv-tech-writer-page .cv-contact-info,
+    .cv-tech-writer-page .contact-item i {
+        color: #000000;
+    }
+}

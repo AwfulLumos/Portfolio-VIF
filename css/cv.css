@@ -620,3 +620,91 @@ body {
     padding: 5px 0;
     font-size: 0.88rem;
 }
+
+/* Tech Support CV: compact PDF tuning to keep single-page output */
+.cv-container.cv-tech-support.generating-pdf .cv-header {
+    padding: 17px 30px;
+}
+
+.cv-container.cv-tech-support.generating-pdf .cv-header-content {
+    gap: 12px;
+}
+
+.cv-container.cv-tech-support.generating-pdf .cv-name-section h1 {
+    font-size: 1.55rem;
+    margin-bottom: 2px;
+}
+
+.cv-container.cv-tech-support.generating-pdf .cv-title {
+    font-size: 0.97rem;
+}
+
+.cv-container.cv-tech-support.generating-pdf .cv-contact-info {
+    font-size: 0.81rem;
+    gap: 4px;
+}
+
+.cv-container.cv-tech-support.generating-pdf .cv-left-column,
+.cv-container.cv-tech-support.generating-pdf .cv-right-column {
+    padding: 19px 23px;
+}
+
+.cv-container.cv-tech-support.generating-pdf .cv-section {
+    margin-bottom: 14px;
+}
+
+.cv-container.cv-tech-support.generating-pdf .cv-section h2 {
+    font-size: 1rem;
+    margin-bottom: 9px;
+    padding-bottom: 4px;
+}
+
+.cv-container.cv-tech-support.generating-pdf .cv-section > p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.cv-container.cv-tech-support.generating-pdf .cv-entry {
+    margin-bottom: 11px;
+}
+
+.cv-container.cv-tech-support.generating-pdf .entry-header h3 {
+    font-size: 0.93rem;
+}
+
+.cv-container.cv-tech-support.generating-pdf .entry-date {
+    font-size: 0.75rem;
+}
+
+.cv-container.cv-tech-support.generating-pdf .entry-organization {
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+}
+
+.cv-container.cv-tech-support.generating-pdf .entry-description {
+    font-size: 0.82rem;
+    line-height: 1.43;
+}
+
+.cv-container.cv-tech-support.generating-pdf .skills-category {
+    margin-bottom: 10px;
+}
+
+.cv-container.cv-tech-support.generating-pdf .skills-category h4 {
+    font-size: 0.82rem;
+    margin-bottom: 5px;
+}
+
+.cv-container.cv-tech-support.generating-pdf .skills-list {
+    gap: 6px;
+}
+
+.cv-container.cv-tech-support.generating-pdf .skill-item {
+    padding: 2px 8px;
+    font-size: 0.74rem;
+}
+
+.cv-container.cv-tech-support.generating-pdf .languages-list li {
+    padding: 5px 0;
+    font-size: 0.82rem;
+}

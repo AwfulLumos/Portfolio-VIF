@@ -190,8 +190,11 @@
   background: linear-gradient(135deg, #8a7560, #6b5a47);
   color: #f5f0e8 !important;
   font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1.1;
+  white-space: nowrap;
   border-radius: var(--radius-xl);
-  padding: 0.5rem 1rem !important;
+  padding: 0.45rem 0.8rem !important;
   transition: var(--transition-cubic);
 }
 
