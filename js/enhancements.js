@@ -6,6 +6,9 @@
 (function() {
   'use strict';
 
+  const isReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let initialized = false;
+
   // ============================================
   // 1. INTERSECTION OBSERVER FOR SCROLL ANIMATIONS
   // ============================================
@@ -87,6 +90,7 @@
   }
   
   function requestParallaxUpdate() {
+    if (isReducedMotion) return;
     if (!ticking && window.innerWidth > 768) {
       window.requestAnimationFrame(updateParallax);
       ticking = true;
@@ -326,11 +330,8 @@
   // ============================================
   
   function init() {
-    // Wait for DOM to be fully loaded
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
-      return;
-    }
+    if (initialized) return;
+    initialized = true;
     
     // Apply enhanced classes
     applyEnhancedClasses();
@@ -354,28 +355,30 @@
     
     // Initialize cursor glow (optional, can be disabled)
     // initCursorGlow();
-    
-    // Scroll event listeners with debouncing
-    window.addEventListener('scroll', requestParallaxUpdate);
-    window.addEventListener('scroll', debounce(updateActiveNav, 100));
-    
-    // Navigation smooth scroll
-    document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = this.getAttribute('href');
-        smoothScrollWithOffset(target);
-      });
-    });
-    
-    // Initial active nav update
-    updateActiveNav();
+
+    // Parallax (skip for reduced-motion users)
+    if (!isReducedMotion) {
+      window.addEventListener('scroll', requestParallaxUpdate, { passive: true });
+    }
     
     console.log('✨ Portfolio enhancements loaded successfully!');
   }
 
   // Start initialization
-  init();
+  // If using dynamic component loading, wait until components are injected.
+  // Otherwise, initialize as soon as DOM is ready.
+  const hasPlaceholders = !!document.querySelector('#navbar-placeholder, #hero-placeholder, #about-placeholder');
+  if (hasPlaceholders) {
+    document.addEventListener('allComponentsLoaded', init, { once: true });
+    // Safety fallback in case the event never fires (e.g., load error)
+    window.setTimeout(() => {
+      if (!initialized) init();
+    }, 3000);
+  } else if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
 
   // ============================================
   // 15. EXPORT FOR EXTERNAL USE

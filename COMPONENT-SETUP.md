@@ -1,13 +1,12 @@
 # 🎯 VIF.Dev Portfolio - Component-Based Setup
 
-Your portfolio now uses **modular components** for cleaner, more maintainable code!
+Your portfolio uses **modular components** for cleaner, more maintainable code.
 
 ## 📁 Project Structure
 
 ```
 Portfolio-VIF/
-├── index-modular.html          ← New clean HTML (only 130 lines!)
-├── index.html                  ← Old static HTML (982 lines - backup)
+├── index.html                  ← Modular entrypoint (loads components)
 ├── components/                 ← Modular HTML components
 │   ├── navbar.html
 │   ├── hero.html
@@ -39,7 +38,7 @@ Portfolio-VIF/
    ```powershell
    .\start-server.ps1
    ```
-3. Open browser to: **http://localhost:8000/index-modular.html**
+3. Open browser to: **http://localhost:8000/index.html**
 
 ### Option 2: Using Python Directly
 
@@ -47,7 +46,7 @@ Portfolio-VIF/
 python -m http.server 8000
 ```
 
-Then open: **http://localhost:8000/index-modular.html**
+Then open: **http://localhost:8000/index.html**
 
 ### Option 3: Using Node.js
 
@@ -55,7 +54,7 @@ Then open: **http://localhost:8000/index-modular.html**
 npx http-server -p 8000
 ```
 
-Then open: **http://localhost:8000/index-modular.html**
+Then open: **http://localhost:8000/index.html**
 
 ## ✨ Benefits of Component-Based Setup
 
@@ -128,27 +127,14 @@ Contact form will send emails to: **vounirishflorence.dejumo@gmail.com**
 
 ## 📦 Deployment
 
-### Option 1: Keep Using index-modular.html
+### Option 1: Deploy the modular site (recommended)
 
 1. Upload all files to your hosting
-2. Make sure `index-modular.html` is set as the main page
-3. Or rename `index-modular.html` to `index.html`
+2. Ensure `index.html` is set as the main page
 
-### Option 2: Switch Back to Static HTML
+### Option 2: Static HTML
 
-If you prefer the static approach later, just use the original `index.html` (no server needed).
-
-## 🔄 Migration Steps
-
-When you're ready to fully switch:
-
-```powershell
-# Backup old file
-Rename-Item index.html index-static-backup.html
-
-# Use modular version as main file
-Rename-Item index-modular.html index.html
-```
+If you want a single-file static HTML later, you can generate it by combining the component HTML into one file (not included by default).
 
 ## 🆘 Troubleshooting
 
@@ -162,7 +148,7 @@ Rename-Item index-modular.html index.html
 
 1. Hard refresh: **Ctrl + F5**
 2. Clear browser cache
-3. Check that you're opening `index-modular.html` not `index.html`
+3. Check that you're opening `index.html`
 
 ## 📚 Next Steps
 

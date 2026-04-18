@@ -121,9 +121,7 @@ class InteractiveComponents {
 
         // Show success message
         if (messageDiv) {
-          const successMsg = window.languageManager?.t('contact.form.success') || 
-            '✓ Message sent successfully! I\'ll get back to you soon.';
-          messageDiv.textContent = '✓ ' + successMsg;
+          messageDiv.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
           messageDiv.className = 'form-message success';
         }
 
@@ -141,8 +139,7 @@ class InteractiveComponents {
         console.error('[ContactForm] Form submission error:', error);
 
         if (messageDiv) {
-          let errorMessage = window.languageManager?.t('contact.form.error') ||
-            '✕ Something went wrong. Please try again or email me directly.';
+          let errorMessage = '✕ Something went wrong. Please try again or email me directly.';
 
           // Provide helpful error messages based on error status
           if (error.status === 412) {

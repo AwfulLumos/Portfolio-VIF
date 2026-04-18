@@ -10,8 +10,11 @@ Created the following files:
 - ✓ `manifest.webmanifest` - PWA manifest with app metadata
 - ✓ `icon.svg` - Scalable vector icon (VIF logo)
 
-**Still Need to Create:**
-- ⚠️ `favicon.ico` - Browser tab icon
+**Optional to Create (recommended for best cross-browser/PWA support):**
+
+Note: the current `manifest.webmanifest` only references `icon.svg`, so the PNG icons below are not required to avoid 404s — they just improve installability and platform support.
+
+- ⚠️ `favicon.ico` - Legacy browser tab icon
 - ⚠️ `apple-touch-icon.png` - iOS home screen icon (180×180)
 - ⚠️ `assets/images/icon-192.png` - Android icon (192×192)
 - ⚠️ `assets/images/icon-512.png` - Android icon (512×512)
