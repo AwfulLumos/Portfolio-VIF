@@ -49,6 +49,7 @@
 /* Navigation Links */
 .navbar-nav {
   gap: 0.5rem;
+  align-items: center;
 }
 
 .nav-link {
@@ -191,10 +192,10 @@
   color: #f5f0e8 !important;
   font-weight: 600;
   font-size: 0.9rem;
-  line-height: 1.1;
+  line-height: inherit;
   white-space: nowrap;
   border-radius: var(--radius-xl);
-  padding: 0.45rem 0.8rem !important;
+  padding: 0.625rem 0.8rem !important;
   transition: var(--transition-cubic);
 }
 
