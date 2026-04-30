@@ -4,18 +4,20 @@
     <div class="education-content">
       <!-- School Card -->
       <div class="school-card-wrapper fade-in-left">
-        <div class="school-card-static clickable expanded" id="schoolCard">
+        <div class="school-card-static clickable expanded" id="schoolCard" role="button" tabindex="0" aria-expanded="true" aria-controls="schoolDropdown" aria-label="Toggle university details">
           <img
             src="https://unc.neolms.eu/files/86109/1200px-University_of_Nueva_Caceres_Seal(6).png?lmsauth=0d3e8d79854064302d3a29dc0243b9cba24f367f"
             alt="Seal of the University of Nueva Caceres"
             loading="lazy"
+            decoding="async"
+            fetchpriority="low"
           />
           <div class="click-indicator">
             <i class="bi bi-chevron-down"></i>
             <span>Click to learn more</span>
           </div>
         </div>
-        <div class="school-info-dropdown show" id="schoolDropdown">
+        <div class="school-info-dropdown show" id="schoolDropdown" aria-hidden="false">
           <div class="dropdown-content">
             <h4><i class="bi bi-building"></i> About the University</h4>
             <p>

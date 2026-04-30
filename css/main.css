@@ -131,22 +131,9 @@ section {
   padding-right: var(--container-padding-x) !important;
 }
 
-/* Force hide horizontal scrollbar - all browsers */
-::-webkit-scrollbar:horizontal {
-  display: none !important;
-  height: 0 !important;
-}
-
 /* Firefox */
 html {
   scrollbar-width: thin;
-}
-
-/* Hide horizontal scrollbar in Firefox */
-@supports (scrollbar-width: none) {
-  html, body {
-    scrollbar-width: none;
-  }
 }
 
 @keyframes gradientShift {
@@ -224,6 +211,17 @@ a {
 
 a:hover {
   color: var(--color-white);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent-secondary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+main > div[id$="-placeholder"] {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1000px;
 }
 
 .btn {

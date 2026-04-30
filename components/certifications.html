@@ -16,6 +16,8 @@
             src="assets/images/Hack4Smart-Certificate.jpg"
             alt="Hack4Smart Hackathon Certificate"
             loading="lazy"
+            decoding="async"
+            fetchpriority="low"
           />
           <div class="cert-overlay">
             <button class="view-cert-btn" onclick="openCertModal('hack4smart')">
@@ -49,6 +51,8 @@
             src="assets/images/Idea2startupCertificate.png"
             alt="Idea2Startup Certificate"
             loading="lazy"
+            decoding="async"
+            fetchpriority="low"
           />
           <div class="cert-overlay">
             <button class="view-cert-btn" onclick="openCertModal('idea2startup')">
@@ -79,7 +83,7 @@
 
     <!-- LinkedIn Certificates Subsection -->
     <div class="linkedin-certs-section fade-in">
-      <div class="linkedin-certs-header" onclick="toggleLinkedInCerts()" role="button" tabindex="0" aria-expanded="false" aria-controls="linkedinCertsContent">
+      <div class="linkedin-certs-header" onclick="toggleLinkedInCerts()" role="button" tabindex="0" aria-expanded="false" aria-controls="linkedinCertsContent" aria-label="Toggle LinkedIn Learning certificates">
         <div class="linkedin-logo-badge">
           <i class="bi bi-linkedin"></i>
         </div>
@@ -87,21 +91,21 @@
           <h3 class="linkedin-certs-title">LinkedIn Learning Certificates</h3>
           <p class="linkedin-certs-subtitle">49 courses completed across software development, design, and agile practices</p>
         </div>
-        <button class="linkedin-toggle-btn" aria-label="Expand LinkedIn certificates">
+        <span class="linkedin-toggle-btn" aria-label="Expand LinkedIn certificates" aria-hidden="true">
           <span class="btn-text">Click Here</span>
           <i class="bi bi-chevron-down btn-icon"></i>
-        </button>
+        </span>
       </div>
 
       <!-- Collapsible Content -->
-      <div id="linkedinCertsContent" class="linkedin-certs-content" style="display: none;">
+      <div id="linkedinCertsContent" class="linkedin-certs-content" style="display: none;" aria-hidden="true">
 
         <!-- Certificate Folders Grid -->
         <div class="cert-folders-grid">
 
           <!-- Web Dev Folder -->
           <div class="cert-folder" data-folder="web">
-            <div class="cert-folder-header" onclick="toggleCertFolder('web')" role="button" tabindex="0" aria-expanded="false">
+            <div class="cert-folder-header" onclick="toggleCertFolder('web')" role="button" tabindex="0" aria-expanded="false" aria-controls="folder-web" aria-label="Toggle Web Development certificates">
               <div class="cert-folder-icon web">
                 <i class="bi bi-folder-fill"></i>
               </div>
@@ -113,7 +117,7 @@
                 <i class="bi bi-chevron-down"></i>
               </div>
             </div>
-            <div class="cert-folder-content" id="folder-web">
+            <div class="cert-folder-content" id="folder-web" aria-hidden="true">
               <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Getting Started as a FullStack Web Developer.pdf" target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
                 <div class="pdf-cert-body"><h4>Getting Started as a Full-Stack Web Developer</h4></div>
@@ -184,7 +188,7 @@
 
           <!-- Agile & BA Folder -->
           <div class="cert-folder" data-folder="agile">
-            <div class="cert-folder-header" onclick="toggleCertFolder('agile')" role="button" tabindex="0" aria-expanded="false">
+            <div class="cert-folder-header" onclick="toggleCertFolder('agile')" role="button" tabindex="0" aria-expanded="false" aria-controls="folder-agile" aria-label="Toggle Agile and Business Analysis certificates">
               <div class="cert-folder-icon agile">
                 <i class="bi bi-folder-fill"></i>
               </div>
@@ -196,7 +200,7 @@
                 <i class="bi bi-chevron-down"></i>
               </div>
             </div>
-            <div class="cert-folder-content" id="folder-agile">
+            <div class="cert-folder-content" id="folder-agile" aria-hidden="true">
               <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Agile Software Development.pdf" target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
                 <div class="pdf-cert-body"><h4>Agile Software Development</h4></div>
@@ -272,7 +276,7 @@
 
           <!-- Architecture & APIs Folder -->
           <div class="cert-folder" data-folder="architecture">
-            <div class="cert-folder-header" onclick="toggleCertFolder('architecture')" role="button" tabindex="0" aria-expanded="false">
+            <div class="cert-folder-header" onclick="toggleCertFolder('architecture')" role="button" tabindex="0" aria-expanded="false" aria-controls="folder-architecture" aria-label="Toggle Architecture and Design certificates">
               <div class="cert-folder-icon architecture">
                 <i class="bi bi-folder-fill"></i>
               </div>
@@ -284,7 +288,7 @@
                 <i class="bi bi-chevron-down"></i>
               </div>
             </div>
-            <div class="cert-folder-content" id="folder-architecture">
+            <div class="cert-folder-content" id="folder-architecture" aria-hidden="true">
               <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Software Architecture Foundations.pdf" target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
                 <div class="pdf-cert-body"><h4>Software Architecture Foundations</h4></div>
@@ -330,7 +334,7 @@
 
           <!-- Testing Folder -->
           <div class="cert-folder" data-folder="testing">
-            <div class="cert-folder-header" onclick="toggleCertFolder('testing')" role="button" tabindex="0" aria-expanded="false">
+            <div class="cert-folder-header" onclick="toggleCertFolder('testing')" role="button" tabindex="0" aria-expanded="false" aria-controls="folder-testing" aria-label="Toggle Testing and QA certificates">
               <div class="cert-folder-icon testing">
                 <i class="bi bi-folder-fill"></i>
               </div>
@@ -342,7 +346,7 @@
                 <i class="bi bi-chevron-down"></i>
               </div>
             </div>
-            <div class="cert-folder-content" id="folder-testing">
+            <div class="cert-folder-content" id="folder-testing" aria-hidden="true">
               <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Management.pdf" target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
                 <div class="pdf-cert-body"><h4>Software Testing Foundations: Test Management</h4></div>
@@ -378,7 +382,7 @@
 
           <!-- Design Folder -->
           <div class="cert-folder" data-folder="design">
-            <div class="cert-folder-header" onclick="toggleCertFolder('design')" role="button" tabindex="0" aria-expanded="false">
+            <div class="cert-folder-header" onclick="toggleCertFolder('design')" role="button" tabindex="0" aria-expanded="false" aria-controls="folder-design" aria-label="Toggle UX and Design certificates">
               <div class="cert-folder-icon design">
                 <i class="bi bi-folder-fill"></i>
               </div>
@@ -390,7 +394,7 @@
                 <i class="bi bi-chevron-down"></i>
               </div>
             </div>
-            <div class="cert-folder-content" id="folder-design">
+            <div class="cert-folder-content" id="folder-design" aria-hidden="true">
               <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Learning Design Thinking.pdf" target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
                 <div class="pdf-cert-body"><h4>Learning Design Thinking</h4></div>
@@ -421,7 +425,7 @@
 
           <!-- Other Folder -->
           <div class="cert-folder" data-folder="other">
-            <div class="cert-folder-header" onclick="toggleCertFolder('other')" role="button" tabindex="0" aria-expanded="false">
+            <div class="cert-folder-header" onclick="toggleCertFolder('other')" role="button" tabindex="0" aria-expanded="false" aria-controls="folder-other" aria-label="Toggle Other certificates">
               <div class="cert-folder-icon other">
                 <i class="bi bi-folder-fill"></i>
               </div>
@@ -433,7 +437,7 @@
                 <i class="bi bi-chevron-down"></i>
               </div>
             </div>
-            <div class="cert-folder-content" id="folder-other">
+            <div class="cert-folder-content" id="folder-other" aria-hidden="true">
               <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Software Design Modeling with UML.pdf" target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
                 <div class="pdf-cert-body"><h4>Software Design: Modeling with UML</h4></div>

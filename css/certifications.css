@@ -555,11 +555,16 @@
   margin-top: 1.5rem;
   overflow: hidden;
   transition: all 0.3s ease;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(10, 102, 194, 0.65) rgba(255, 255, 255, 0.08);
 }
 
 .linkedin-certs-content.expanded {
   display: block !important;
   animation: contentFadeIn 0.4s ease forwards;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-gutter: stable both-edges;
 }
 
 .linkedin-certs-content.collapsed {
@@ -1116,6 +1121,32 @@
 .cert-folder-content.show {
   display: block;
   animation: folderSlideIn 0.25s ease;
+  overflow-x: auto;
+  overflow-y: visible;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(10, 102, 194, 0.65) rgba(255, 255, 255, 0.08);
+}
+
+.linkedin-certs-content::-webkit-scrollbar,
+.cert-folder-content.show::-webkit-scrollbar {
+  height: 8px;
+}
+
+.linkedin-certs-content::-webkit-scrollbar-track,
+.cert-folder-content.show::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+
+.linkedin-certs-content::-webkit-scrollbar-thumb,
+.cert-folder-content.show::-webkit-scrollbar-thumb {
+  background: rgba(10, 102, 194, 0.65);
+  border-radius: 999px;
+}
+
+.linkedin-certs-content::-webkit-scrollbar-thumb:hover,
+.cert-folder-content.show::-webkit-scrollbar-thumb:hover {
+  background: rgba(10, 102, 194, 0.85);
 }
 
 @keyframes folderSlideIn {

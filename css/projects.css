@@ -184,90 +184,6 @@
   transform: scale(1.2);
 }
 
-/* Project Grid (Alternative to Carousel) */
-.projects-grid {
-  display: none;
-  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-lg);
-}
-
-.projects-grid.active {
-  display: grid;
-}
-
-/* Grid view card adjustments - hide images, adjust layout */
-.projects-grid .project-card {
-  min-height: auto;
-  padding: var(--spacing-md);
-}
-
-.projects-grid .project-card .project-image {
-  display: none;
-}
-
-.projects-grid .project-card .project-card-inner {
-  grid-template-columns: 1fr;
-  gap: 0;
-}
-
-.projects-grid .project-card .project-info {
-  padding: 0;
-}
-
-.projects-grid .project-card .project-info h3 {
-  font-size: 1.35rem;
-}
-
-.project-grid-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: var(--transition-cubic);
-}
-
-.project-grid-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--glass-highlight);
-}
-
-.project-grid-image {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
-}
-
-.project-grid-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--transition-slow);
-}
-
-.project-grid-card:hover .project-grid-image img {
-  transform: scale(1.1);
-}
-
-.project-grid-content {
-  padding: 1.5rem;
-}
-
-.project-grid-content h4 {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
-  color: var(--color-white);
-}
-
-.project-grid-content p {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
 /* Responsive Projects */
 @media (max-width: 992px) {
   .projects-section {
@@ -294,9 +210,6 @@
     display: none;
   }
   
-  .projects-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
 }
 
 @media (max-width: 768px) {
@@ -356,28 +269,6 @@
     font-size: 0.85rem;
   }
   
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-md);
-  }
-  
-  .project-grid-image {
-    height: 180px;
-  }
-  
-  .project-grid-content {
-    padding: 1.25rem;
-  }
-  
-  .project-grid-content h4 {
-    font-size: 1.15rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .project-grid-content p {
-    font-size: 0.85rem;
-    margin-bottom: 0.875rem;
-  }
 }
 
 @media (max-width: 576px) {
@@ -403,13 +294,6 @@
     font-size: 0.7rem;
   }
   
-  .project-grid-image {
-    height: 160px;
-  }
-  
-  .project-grid-content {
-    padding: 1rem;
-  }
 }
 
 /* =========================================
@@ -418,7 +302,7 @@
 
 .projects-controls {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 1.5rem;
 }
@@ -440,36 +324,6 @@
 
 .projects-counter-divider {
   opacity: 0.4;
-}
-
-.projects-view-toggle {
-  display: flex;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 4px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.view-toggle-btn {
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.5);
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  font-size: 1rem;
-}
-
-.view-toggle-btn:hover {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.view-toggle-btn.active {
-  background: var(--color-accent);
-  color: var(--color-primary);
-  box-shadow: 0 2px 8px rgba(163, 176, 135, 0.3);
 }
 
 /* Thumbnail Navigation */
@@ -557,27 +411,9 @@
     font-size: 0.65rem;
   }
   
-  /* Grid view responsive */
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-  
-  .projects-grid .project-card {
-    padding: 1rem;
-  }
-  
-  .projects-grid .project-card .project-info h3 {
-    font-size: 1.15rem;
-  }
 }
 
 @media (max-width: 576px) {
-  .projects-view-toggle {
-    width: 100%;
-    justify-content: center;
-  }
-  
   .projects-thumbnails {
     width: 100%;
     justify-content: center;

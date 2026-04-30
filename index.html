@@ -13,6 +13,7 @@
       content="Full Stack Developer, Web Developer, JavaScript, React, Vue.js, Laravel, Spring Boot, Portfolio"
     />
     <meta name="author" content="Voun Irish Florence Dejumo" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
 
     <!-- Open Graph / Social Media -->
     <meta
@@ -24,11 +25,16 @@
       content="Full Stack Developer crafting modern, responsive web experiences with passion for clean code and innovative solutions."
     />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="VIF.Dev" />
+    <meta property="og:locale" content="en_PH" />
     <meta property="og:url" content="https://vif.dev" />
     <meta
       property="og:image"
       content="https://vif.dev/assets/images/myProfile.jpg"
     />
+    <meta property="og:image:alt" content="VIF.Dev portfolio preview" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -41,7 +47,6 @@
       name="twitter:image"
       content="https://vif.dev/assets/images/myProfile.jpg"
     />
-
     <link rel="canonical" href="https://vif.dev/" />
     <meta name="theme-color" content="#313647" />
 
@@ -58,6 +63,8 @@
 
     <!-- Preconnect to CDNs -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="preconnect" href="https://unc.neolms.eu" crossorigin />
 
     <!-- Bootstrap CSS -->
     <link
@@ -95,6 +102,101 @@
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/particles.css" />
     <link rel="stylesheet" href="css/enhancements.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://vif.dev/#person",
+            "name": "Voun Irish Florence Dejumo",
+            "url": "https://vif.dev/",
+            "jobTitle": "Full Stack Developer",
+            "sameAs": [
+              "https://github.com/AwfulLumos",
+              "https://www.linkedin.com/in/voun-irish-florence-dejumo/"
+            ],
+            "knowsAbout": [
+              "JavaScript",
+              "TypeScript",
+              "React",
+              "Vue.js",
+              "Laravel",
+              "Spring Boot",
+              "Node.js"
+            ]
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://vif.dev/#projects",
+            "name": "Featured Projects",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "SoftwareSourceCode",
+                  "name": "DigiStall",
+                  "url": "https://github.com/AwfulLumos",
+                  "author": { "@id": "https://vif.dev/#person" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@type": "SoftwareSourceCode",
+                  "name": "HealthWatch Olongapo",
+                  "url": "https://github.com/AwfulLumos/HealthWatchOlongapo",
+                  "author": { "@id": "https://vif.dev/#person" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                  "@type": "SoftwareSourceCode",
+                  "name": "Wedding Invitation Website",
+                  "url": "https://github.com/AwfulLumos/WeddingInvitationWeb",
+                  "author": { "@id": "https://vif.dev/#person" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "item": {
+                  "@type": "SoftwareSourceCode",
+                  "name": "BiteBound Application",
+                  "url": "https://github.com/AwfulLumos/BiteBoundApplication",
+                  "author": { "@id": "https://vif.dev/#person" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 5,
+                "item": {
+                  "@type": "SoftwareSourceCode",
+                  "name": "Digital Cultural E-Portfolio",
+                  "url": "https://github.com/AwfulLumos/TCWFinalProjectGroupOne",
+                  "author": { "@id": "https://vif.dev/#person" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 6,
+                "item": {
+                  "@type": "SoftwareSourceCode",
+                  "name": "Portfolio Website",
+                  "url": "https://github.com/AwfulLumos/Portfolio-VIF",
+                  "author": { "@id": "https://vif.dev/#person" }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
 
   <body>
     <!-- Skip to main content for accessibility -->
@@ -175,17 +277,19 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
+      defer
     ></script>
 
     <!-- EmailJS SDK -->
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+      defer
     ></script>
 
     <!-- Custom JavaScript - Modular Architecture -->
-    <script src="js/emailConfig.js"></script>
-    <script src="js/componentLoader.js"></script>
+    <script src="js/emailConfig.js" defer></script>
+    <script src="js/componentLoader.js" defer></script>
     <script src="js/utils.js" defer></script>
     <script src="js/animations.js" defer></script>
     <script src="js/navigation.js" defer></script>

@@ -249,12 +249,37 @@ function closeCertModal() {
   }
 }
 
+function getStickyOffset() {
+  const navbar = document.querySelector('.navbar');
+  return (navbar?.getBoundingClientRect().height || 80) + 16;
+}
+
+function ensureElementVisible(element) {
+  if (!element) return;
+
+  const offset = getStickyOffset();
+  const rect = element.getBoundingClientRect();
+  const isAboveViewport = rect.top < offset;
+  const isBelowViewport = rect.bottom > window.innerHeight;
+
+  if (isAboveViewport || isBelowViewport) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targetTop = window.scrollY + rect.top - offset;
+
+    window.scrollTo({
+      top: Math.max(0, targetTop),
+      behavior: prefersReducedMotion ? 'auto' : 'smooth'
+    });
+  }
+}
+
 /**
  * Toggle LinkedIn certificates section
  */
 function toggleLinkedInCerts() {
   const header = document.querySelector('.linkedin-certs-header');
   const content = document.getElementById('linkedinCertsContent');
+  const toggleBtn = header?.querySelector('.linkedin-toggle-btn');
 
   if (!header || !content) return;
 
@@ -263,8 +288,10 @@ function toggleLinkedInCerts() {
   if (isExpanded) {
     // Collapse
     header.setAttribute('aria-expanded', 'false');
+    content.setAttribute('aria-hidden', 'true');
     content.classList.remove('expanded');
     content.classList.add('collapsed');
+    if (toggleBtn) toggleBtn.setAttribute('aria-label', 'Expand LinkedIn certificates');
 
     // Hide after animation
     setTimeout(() => {
@@ -276,16 +303,20 @@ function toggleLinkedInCerts() {
   } else {
     // Expand
     header.setAttribute('aria-expanded', 'true');
+    content.setAttribute('aria-hidden', 'false');
     content.style.display = 'block';
     content.classList.add('expanded');
     content.classList.remove('collapsed');
+    if (toggleBtn) toggleBtn.setAttribute('aria-label', 'Collapse LinkedIn certificates');
+
+    requestAnimationFrame(() => ensureElementVisible(content));
   }
 }
 
-// Also allow keyboard Enter/Space to toggle
-document.addEventListener('DOMContentLoaded', () => {
+function initCertificateInteractions() {
   const header = document.querySelector('.linkedin-certs-header');
-  if (header) {
+  if (header && !header.dataset.keyboardBound) {
+    header.dataset.keyboardBound = 'true';
     header.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -293,12 +324,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-});
 
-// Close modal on background click only
-document.addEventListener('DOMContentLoaded', () => {
+  // Close modal on background click only
   const modal = document.getElementById('certModal');
-  if (modal) {
+  if (modal && !modal.dataset.closeBound) {
+    modal.dataset.closeBound = 'true';
     modal.addEventListener('click', (e) => {
       // Only close if clicking the background (not the image)
       if (e.target === modal) {
@@ -308,12 +338,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   // Close modal on ESC key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeCertModal();
-    }
-  });
-});
+  if (!document.body.dataset.certEscBound) {
+    document.body.dataset.certEscBound = 'true';
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeCertModal();
+      }
+    });
+  }
+}
 
 // LinkedIn certificate category filter & search
 // Must run AFTER components are dynamically injected into the DOM
@@ -408,7 +441,10 @@ function toggleCertFolder(folderId) {
       const header = folder.querySelector('.cert-folder-header');
       const content = folder.querySelector('.cert-folder-content');
       if (header) header.setAttribute('aria-expanded', 'false');
-      if (content) content.classList.remove('show');
+      if (content) {
+        content.classList.remove('show');
+        content.setAttribute('aria-hidden', 'true');
+      }
     }
   });
 
@@ -418,18 +454,27 @@ function toggleCertFolder(folderId) {
     clickedFolder.classList.remove('expanded');
     clickedHeader.setAttribute('aria-expanded', 'false');
     clickedContent.classList.remove('show');
+    clickedContent.setAttribute('aria-hidden', 'true');
   } else {
     // Expand
     clickedFolder.classList.add('expanded');
     clickedHeader.setAttribute('aria-expanded', 'true');
     clickedContent.classList.add('show');
+    clickedContent.setAttribute('aria-hidden', 'false');
+
+    requestAnimationFrame(() => ensureElementVisible(clickedContent));
   }
 }
 
 // Allow keyboard navigation for folder headers
 document.addEventListener('allComponentsLoaded', () => {
+  initCertificateInteractions();
+
   const folderHeaders = document.querySelectorAll('.cert-folder-header');
   folderHeaders.forEach(header => {
+    if (header.dataset.keyboardBound) return;
+    header.dataset.keyboardBound = 'true';
+
     header.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -442,6 +487,8 @@ document.addEventListener('allComponentsLoaded', () => {
     });
   });
 });
+
+document.addEventListener('DOMContentLoaded', initCertificateInteractions);
 
 // Export utilities
 window.Utils = Utils;

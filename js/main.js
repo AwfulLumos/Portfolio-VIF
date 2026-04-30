@@ -103,6 +103,9 @@
 
     // Initialize stat counters
     initStatCounters();
+
+    // Apply loading optimizations to dynamically injected media
+    optimizeDeferredMedia();
   }
 
   /**
@@ -165,6 +168,21 @@
       // Resume animations when tab is visible
       document.body.classList.remove('animations-paused');
     }
+  }
+
+  /**
+   * Apply non-critical image loading defaults for better first render performance
+   */
+  function optimizeDeferredMedia() {
+    const images = document.querySelectorAll('img');
+    images.forEach((img) => {
+      if (!img.hasAttribute('loading')) {
+        img.setAttribute('loading', 'lazy');
+      }
+      if (!img.hasAttribute('decoding')) {
+        img.setAttribute('decoding', 'async');
+      }
+    });
   }
 
   // Event Listeners

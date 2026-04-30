@@ -189,18 +189,18 @@ class InteractiveComponents {
     const currentIndexEl = document.getElementById('projectCurrentIndex');
     const totalCountEl = document.getElementById('projectTotalCount');
     const thumbnails = document.querySelectorAll('.project-thumb');
-    const carouselViewBtn = document.getElementById('carouselViewBtn');
-    const gridViewBtn = document.getElementById('gridViewBtn');
-    const projectsGrid = document.getElementById('projectsGrid');
     const thumbContainer = document.getElementById('projectsThumbnails');
 
     if (!carousel) return;
 
     // Get total slides
-    const slides = carousel.querySelectorAll('.carousel-item');
+    const slides = carousel.querySelectorAll('.carousel-inner .carousel-item');
     const totalSlides = slides.length;
 
     if (totalCountEl) totalCountEl.textContent = totalSlides;
+    thumbnails.forEach((thumb, idx) => {
+      thumb.setAttribute('aria-current', idx === 0 ? 'true' : 'false');
+    });
 
     // Update counter and thumbnails on slide change
     carousel.addEventListener('slid.bs.carousel', (e) => {
@@ -210,6 +210,7 @@ class InteractiveComponents {
       // Update thumbnail active state
       thumbnails.forEach((thumb, idx) => {
         thumb.classList.toggle('active', idx === e.to);
+        thumb.setAttribute('aria-current', idx === e.to ? 'true' : 'false');
       });
     });
 
@@ -221,31 +222,7 @@ class InteractiveComponents {
       });
     });
 
-    // View toggle (Carousel vs Grid)
-    if (carouselViewBtn && gridViewBtn) {
-      carouselViewBtn.addEventListener('click', () => {
-        carouselViewBtn.classList.add('active');
-        gridViewBtn.classList.remove('active');
-        carousel.style.display = 'block';
-        if (projectsGrid) projectsGrid.style.display = 'none';
-        if (thumbContainer) thumbContainer.style.display = 'flex';
-      });
-
-      gridViewBtn.addEventListener('click', () => {
-        gridViewBtn.classList.add('active');
-        carouselViewBtn.classList.remove('active');
-        carousel.style.display = 'none';
-        if (thumbContainer) thumbContainer.style.display = 'none';
-
-        // Populate grid if empty
-        if (projectsGrid) {
-          if (projectsGrid.children.length === 0) {
-            this.populateProjectsGrid(projectsGrid, slides);
-          }
-          projectsGrid.style.display = 'grid';
-        }
-      });
-    }
+    if (thumbContainer) thumbContainer.style.display = 'flex';
 
     // Pause carousel on hover
     carousel.addEventListener('mouseenter', () => {
@@ -272,20 +249,6 @@ class InteractiveComponents {
   }
 
   /**
-   * Populate grid view from carousel slides
-   */
-  populateProjectsGrid(gridContainer, slides) {
-    slides.forEach(slide => {
-      const card = slide.querySelector('.project-card');
-      if (!card) return;
-
-      const clone = card.cloneNode(true);
-      clone.classList.add('project-grid-card');
-      gridContainer.appendChild(clone);
-    });
-  }
-
-  /**
    * Cleanup resources
    */
   destroy() {
@@ -301,15 +264,23 @@ class InteractiveComponents {
 
     if (!schoolCard || !dropdown) return;
 
+    const updateState = (isExpanded) => {
+      schoolCard.classList.toggle('expanded', isExpanded);
+      dropdown.classList.toggle('show', isExpanded);
+      schoolCard.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      dropdown.setAttribute('aria-hidden', isExpanded ? 'false' : 'true');
+    };
+
     schoolCard.addEventListener('click', () => {
       const isExpanded = dropdown.classList.contains('show');
+      updateState(!isExpanded);
+    });
 
-      if (isExpanded) {
-        dropdown.classList.remove('show');
-        schoolCard.classList.remove('expanded');
-      } else {
-        dropdown.classList.add('show');
-        schoolCard.classList.add('expanded');
+    schoolCard.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const isExpanded = dropdown.classList.contains('show');
+        updateState(!isExpanded);
       }
     });
   }

@@ -15,14 +15,6 @@
         <span class="projects-counter-divider">/</span>
         <span id="projectTotalCount">6</span>
       </div>
-      <div class="projects-view-toggle">
-        <button class="view-toggle-btn active" id="carouselViewBtn" aria-label="Carousel view" title="Carousel View">
-          <i class="bi bi-collection"></i>
-        </button>
-        <button class="view-toggle-btn" id="gridViewBtn" aria-label="Grid view" title="Grid View">
-          <i class="bi bi-grid-3x2-gap"></i>
-        </button>
-      </div>
     </div>
 
     <!-- Bootstrap Carousel -->
@@ -31,6 +23,9 @@
       class="carousel slide projects-carousel"
       data-bs-ride="carousel"
       data-bs-interval="6000"
+      aria-label="Featured projects carousel"
+      aria-roledescription="carousel"
+      tabindex="0"
     >
       <div class="carousel-inner">
         <!-- Project 1: DigiStall -->
@@ -39,9 +34,13 @@
             <div class="project-card-inner">
               <div class="project-image">
                 <img
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&h=400&q=70"
                   alt="DigiStall E-commerce Platform"
                   loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="600"
+                  height="400"
                 />
               </div>
               <div class="project-info">
@@ -81,9 +80,13 @@
             <div class="project-card-inner">
               <div class="project-image">
                 <img
-                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop"
+                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&h=400&q=70"
                   alt="HealthWatch Olongapo"
                   loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="600"
+                  height="400"
                 />
               </div>
               <div class="project-info">
@@ -122,9 +125,13 @@
             <div class="project-card-inner">
               <div class="project-image">
                 <img
-                  src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop"
+                  src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&h=400&q=70"
                   alt="Wedding Invitation Website"
                   loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="600"
+                  height="400"
                 />
               </div>
               <div class="project-info">
@@ -163,9 +170,13 @@
             <div class="project-card-inner">
               <div class="project-image">
                 <img
-                  src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop"
+                  src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=400&q=70"
                   alt="BiteBound Application"
                   loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="600"
+                  height="400"
                 />
               </div>
               <div class="project-info">
@@ -204,9 +215,13 @@
             <div class="project-card-inner">
               <div class="project-image">
                 <img
-                  src="https://images.unsplash.com/photo-1480796927426-f609979314bd?w=600&h=400&fit=crop"
+                  src="https://images.unsplash.com/photo-1480796927426-f609979314bd?auto=format&fit=crop&w=600&h=400&q=70"
                   alt="Digital Cultural E-Portfolio - Japan"
                   loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="600"
+                  height="400"
                 />
               </div>
               <div class="project-info">
@@ -247,9 +262,13 @@
             <div class="project-card-inner">
               <div class="project-image">
                 <img
-                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop"
+                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&h=400&q=70"
                   alt="Portfolio Website"
                   loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="600"
+                  height="400"
                 />
               </div>
               <div class="project-info">
@@ -307,35 +326,30 @@
 
     <!-- Thumbnail Navigation -->
     <div class="projects-thumbnails" id="projectsThumbnails">
-      <button class="project-thumb active" data-bs-target="#projectsCarousel" data-bs-slide-to="0" aria-label="Go to project 1">
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=100&h=60&fit=crop" alt="DigiStall" loading="lazy" />
+      <button class="project-thumb active" data-bs-target="#projectsCarousel" data-bs-slide-to="0" aria-label="Go to project 1" aria-current="true">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=100&h=60&q=60" alt="DigiStall" loading="lazy" decoding="async" fetchpriority="low" width="100" height="60" />
         <span class="thumb-title">DigiStall</span>
       </button>
       <button class="project-thumb" data-bs-target="#projectsCarousel" data-bs-slide-to="1" aria-label="Go to project 2">
-        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=100&h=60&fit=crop" alt="HealthWatch" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=100&h=60&q=60" alt="HealthWatch" loading="lazy" decoding="async" fetchpriority="low" width="100" height="60" />
         <span class="thumb-title">HealthWatch</span>
       </button>
       <button class="project-thumb" data-bs-target="#projectsCarousel" data-bs-slide-to="2" aria-label="Go to project 3">
-        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=100&h=60&fit=crop" alt="Wedding" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=100&h=60&q=60" alt="Wedding" loading="lazy" decoding="async" fetchpriority="low" width="100" height="60" />
         <span class="thumb-title">Wedding</span>
       </button>
       <button class="project-thumb" data-bs-target="#projectsCarousel" data-bs-slide-to="3" aria-label="Go to project 4">
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=100&h=60&fit=crop" alt="BiteBound" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=100&h=60&q=60" alt="BiteBound" loading="lazy" decoding="async" fetchpriority="low" width="100" height="60" />
         <span class="thumb-title">BiteBound</span>
       </button>
       <button class="project-thumb" data-bs-target="#projectsCarousel" data-bs-slide-to="4" aria-label="Go to project 5">
-        <img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?w=100&h=60&fit=crop" alt="E-Portfolio" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?auto=format&fit=crop&w=100&h=60&q=60" alt="E-Portfolio" loading="lazy" decoding="async" fetchpriority="low" width="100" height="60" />
         <span class="thumb-title">DC E-Portfolio</span>
       </button>
       <button class="project-thumb" data-bs-target="#projectsCarousel" data-bs-slide-to="5" aria-label="Go to project 6">
-        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=100&h=60&fit=crop" alt="Portfolio" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=100&h=60&q=60" alt="Portfolio" loading="lazy" decoding="async" fetchpriority="low" width="100" height="60" />
         <span class="thumb-title">Portfolio</span>
       </button>
-    </div>
-
-    <!-- Grid View (hidden by default) -->
-    <div class="projects-grid" id="projectsGrid" style="display: none;">
-      <!-- Grid cards will be dynamically populated or shown -->
     </div>
 
     <!-- View All Projects Button -->
