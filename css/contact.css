@@ -181,6 +181,29 @@
   width: 100%;
   padding: 1rem;
   font-size: 1rem;
+  min-height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.contact-form .btn-submit .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(0);
+  pointer-events: none;
+  animation: ripple-fade 600ms ease-out;
+}
+
+@keyframes ripple-fade {
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
 }
 
 /* Form Success/Error States */

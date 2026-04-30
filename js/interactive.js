@@ -7,6 +7,7 @@ class InteractiveComponents {
   constructor() {
     this.achievementsExpanded = false;
     this.formSubmissions = [];
+    this.isSubmitting = false;
   }
 
   /**
@@ -73,6 +74,10 @@ class InteractiveComponents {
       e.preventDefault();
       e.stopPropagation();
 
+      if (this.isSubmitting) {
+        return;
+      }
+
       // Check honeypot field (bot detection)
       const honeypot = form.querySelector('[name="website"]');
       if (honeypot && honeypot.value) {
@@ -96,7 +101,13 @@ class InteractiveComponents {
       }
 
       const submitBtn = form.querySelector('button[type="submit"]');
+      if (!submitBtn) {
+        console.error('[ContactForm] Submit button not found!');
+        return;
+      }
+
       const originalText = submitBtn.innerHTML;
+      this.isSubmitting = true;
 
       // Show loading state
       submitBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Sending...';
@@ -161,6 +172,7 @@ class InteractiveComponents {
       } finally {
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
+        this.isSubmitting = false;
       }
     });
 

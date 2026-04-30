@@ -2,14 +2,14 @@
   "name": "VIF.Dev - Full Stack Developer Portfolio",
   "short_name": "VIF.Dev",
   "description": "Full Stack Developer Portfolio showcasing modern web development projects and expertise",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#313647",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/icon.svg",
+      "src": "./icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"

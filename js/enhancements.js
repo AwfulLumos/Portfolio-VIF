@@ -302,7 +302,7 @@
   // ============================================
   
   function enhanceTechBadges() {
-    document.querySelectorAll('.tech-stack span, .technologies span').forEach(badge => {
+    document.querySelectorAll('.tech-stack .tech-name, .technologies span').forEach(badge => {
       if (!badge.classList.contains('tech-badge')) {
         badge.classList.add('tech-badge');
       }
