@@ -1,7 +1,146 @@
+#page-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #313647;
+  gap: 1.5rem;
+  pointer-events: none;
+  animation: introFadeOut 0.6s ease 1.8s forwards;
+}
+
+#page-intro .intro-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #A3B087, #FFF8D4, #A3B087);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: introLogoIn 0.8s ease forwards, introShimmer 2s linear infinite;
+  opacity: 0;
+}
+
+#page-intro .intro-tagline {
+  color: rgba(255, 248, 212, 0.5);
+  font-size: 0.875rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  animation: introTaglineIn 0.8s ease 0.4s forwards;
+  opacity: 0;
+}
+
+#page-intro .intro-bar {
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #A3B087, #FFF8D4);
+  border-radius: 2px;
+  animation: introBar 1.2s ease 0.2s forwards;
+}
+
+@keyframes introLogoIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introTaglineIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introBar {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 160px;
+  }
+}
+
+@keyframes introShimmer {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes introFadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Hide intro immediately for reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+  #page-intro {
+    display: none !important;
+  }
+}
+
 /* ============================================
-   PORTFOLIO DESIGN ENHANCEMENTS
-   Enhanced visual depth, animations, and interactivity
+   0b. CURSOR GLOW — Full-page trailing orb
    ============================================ */
+
+#cursor-glow {
+  position: fixed;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  /* Inner bright core + large soft halo */
+  background: radial-gradient(circle,
+      rgba(163, 176, 135, 0.15) 0%,
+      rgba(163, 176, 135, 0.06) 35%,
+      transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transition: left 0.12s linear, top 0.12s linear;
+  mix-blend-mode: screen;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #cursor-glow {
+    display: none;
+  }
+}
+
+@media (hover: none) {
+
+  /* Touch devices — no cursor, hide the glow */
+  #cursor-glow {
+    display: none;
+  }
+}
 
 /* ============================================
    1. ENHANCED DEPTH & SHADOWS
@@ -9,6 +148,7 @@
 
 /* Standardized layered shadows for depth
    Note: shadow tokens live in css/main.css (:root) to avoid global overrides. */
+
 
 /* Enhanced glass effect with consistent opacity */
 .glass-card-enhanced,
@@ -53,9 +193,12 @@
 }
 
 @keyframes gradientShift {
-  0%, 100% {
+
+  0%,
+  100% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
@@ -137,11 +280,25 @@
 }
 
 /* Stagger delays for grouped elements */
-.stagger-1 { transition-delay: 0.1s; }
-.stagger-2 { transition-delay: 0.2s; }
-.stagger-3 { transition-delay: 0.3s; }
-.stagger-4 { transition-delay: 0.4s; }
-.stagger-5 { transition-delay: 0.5s; }
+.stagger-1 {
+  transition-delay: 0.1s;
+}
+
+.stagger-2 {
+  transition-delay: 0.2s;
+}
+
+.stagger-3 {
+  transition-delay: 0.3s;
+}
+
+.stagger-4 {
+  transition-delay: 0.4s;
+}
+
+.stagger-5 {
+  transition-delay: 0.5s;
+}
 
 /* Scale-in animation */
 .scale-in-scroll {
@@ -174,8 +331,15 @@
 }
 
 @keyframes counterPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 /* ============================================
@@ -358,9 +522,12 @@
    ============================================ */
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }
@@ -382,18 +549,17 @@
   0% {
     background-position: -1000px 0;
   }
+
   100% {
     background-position: 1000px 0;
   }
 }
 
 .shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(163, 176, 135, 0.3) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(163, 176, 135, 0.3) 50%,
+      transparent 100%);
   background-size: 1000px 100%;
   animation: shimmer 2s infinite;
 }
@@ -479,18 +645,19 @@
    ============================================ */
 
 @media (max-width: 768px) {
+
   /* Reduce animation intensity on mobile */
   .glass-card-enhanced:hover,
   .skill-card:hover,
   .project-card:hover {
     transform: translateY(-4px) scale(1.01);
   }
-  
+
   /* Disable parallax on mobile for performance */
   .parallax-element {
     transform: none !important;
   }
-  
+
   /* Simplify hover effects */
   .btn-primary-enhanced:hover,
   .btn-outline-enhanced:hover {
@@ -521,6 +688,7 @@
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -528,7 +696,7 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   .parallax-element {
     transform: none !important;
   }
