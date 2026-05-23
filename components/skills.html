@@ -58,6 +58,9 @@
         <div class="skill-tags">
           <span class="skill-tag">MySQL</span>
           <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">Supabase</span>
+            <span class="skill-tag">Vercel</span>
+            <span class="skill-tag">Render</span>
           <span class="skill-tag"><i class="bi bi-git"></i> Git</span>
           <span class="skill-tag"><i class="bi bi-github"></i> GitHub</span>
           <span class="skill-tag">Docker</span>
@@ -277,6 +280,52 @@
             <span class="popup-percentage">85%</span>
           </div>
         </div>
+        <div class="tech-icon" data-proficiency="90">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg"
+            alt="Supabase" />
+          <span class="tech-name">Supabase</span>
+          <div class="tech-popup">
+            <div class="popup-header">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg"
+                alt="Supabase" />
+              <span>Supabase</span>
+            </div>
+            <div class="popup-progress">
+              <div class="progress-bar" style="--progress: 90%"></div>
+            </div>
+            <span class="popup-percentage">90%</span>
+          </div>
+        </div>
+        <div class="tech-icon" data-proficiency="86">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg"
+            alt="Vercel" />
+          <span class="tech-name">Vercel</span>
+          <div class="tech-popup">
+            <div class="popup-header">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg"
+                alt="Vercel" />
+              <span>Vercel</span>
+            </div>
+            <div class="popup-progress">
+              <div class="progress-bar" style="--progress: 86%"></div>
+            </div>
+            <span class="popup-percentage">86%</span>
+          </div>
+        </div>
+        <div class="tech-icon" data-proficiency="88">
+          <i class="bi bi-cloud-arrow-up-fill" aria-hidden="true"></i>
+          <span class="tech-name">Render</span>
+          <div class="tech-popup">
+            <div class="popup-header">
+              <i class="bi bi-cloud-arrow-up-fill" aria-hidden="true"></i>
+              <span>Render</span>
+            </div>
+            <div class="popup-progress">
+              <div class="progress-bar" style="--progress: 88%"></div>
+            </div>
+            <span class="popup-percentage">88%</span>
+          </div>
+        </div>
         <div class="tech-icon" data-proficiency="97">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" />
           <span class="tech-name">VS Code</span>
@@ -362,7 +411,7 @@
         <i class="bi bi-github"></i>
         <div>
           <h3>GitHub Activity</h3>
-          <p>Consistent contributions across open-source and personal projects</p>
+          <p>Live public activity from my GitHub profile</p>
         </div>
         <a href="https://github.com/AwfulLumos" class="btn btn-outline github-activity-cta" target="_blank"
           rel="noopener noreferrer">
@@ -370,22 +419,41 @@
         </a>
       </div>
 
-      <div class="github-stats-grid">
-        <img
-          src="https://github-readme-stats.vercel.app/api?username=AwfulLumos&show_icons=true&theme=transparent&title_color=A3B087&text_color=FFF8D4&icon_color=A3B087&border_color=A3B08740&border_radius=12&hide_border=false&count_private=true"
-          alt="AwfulLumos GitHub Stats" class="github-stat-card" loading="lazy" decoding="async" width="495"
-          height="195" onerror="this.parentElement.style.display='none'" />
-        <img
-          src="https://github-readme-stats.vercel.app/api/top-langs/?username=AwfulLumos&layout=compact&theme=transparent&title_color=A3B087&text_color=FFF8D4&border_color=A3B08740&border_radius=12&langs_count=8"
-          alt="AwfulLumos Top Languages" class="github-stat-card" loading="lazy" decoding="async" width="495"
-          height="195" onerror="this.parentElement.style.display='none'" />
-      </div>
+      <div class="github-live-panel" data-github-username="AwfulLumos">
+        <div class="github-live-topline">
+          <span class="github-live-badge" data-github-badge>Loading live status...</span>
+          <span class="github-live-meta" data-github-last-updated>Refreshing public activity...</span>
+        </div>
 
-      <div class="github-streak-wrapper">
-        <img
-          src="https://streak-stats.demolab.com?user=AwfulLumos&theme=transparent&background=00000000&border=A3B08740&stroke=A3B087&ring=FFF8D4&fire=FFF8D4&currStreakNum=FFF8D4&currStreakLabel=A3B087&sideNums=FFF8D4&sideLabels=A3B087&dates=a8b4bc&border_radius=12"
-          alt="AwfulLumos GitHub Streak" class="github-streak-card" loading="lazy" decoding="async" width="700"
-          height="165" onerror="this.closest('.github-streak-wrapper').style.display='none'" />
+        <div class="github-live-grid">
+          <div class="github-live-item">
+            <span class="label">Latest activity</span>
+            <strong data-github-latest-activity>Fetching...</strong>
+            <p data-github-latest-details>Waiting for GitHub data.</p>
+          </div>
+
+          <div class="github-live-item">
+            <span class="label">Public repos</span>
+            <strong data-github-public-repos>--</strong>
+            <p data-github-followers>Followers: --</p>
+          </div>
+
+          <div class="github-live-item">
+            <span class="label">Active events (7d)</span>
+            <strong data-github-weekly-events>--</strong>
+            <p data-github-weekly-summary>Based on public events.</p>
+          </div>
+        </div>
+
+        <div class="github-live-feed">
+          <div class="github-live-feed-header">
+            <span>Recent events</span>
+            <span data-github-activity-note>Live from public events</span>
+          </div>
+          <ul class="github-live-list" data-github-event-list>
+            <li>Loading recent activity...</li>
+          </ul>
+        </div>
       </div>
     </div>
 

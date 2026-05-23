@@ -106,6 +106,9 @@
 
     // Apply loading optimizations to dynamically injected media
     optimizeDeferredMedia();
+
+    // Initialize live GitHub activity widget
+    initGitHubActivity();
   }
 
   /**
@@ -183,6 +186,202 @@
         img.setAttribute('decoding', 'async');
       }
     });
+  }
+
+  /**
+   * Initialize live GitHub activity data
+   */
+  async function initGitHubActivity() {
+    const widget = document.querySelector('.github-live-panel[data-github-username]');
+
+    if (!widget) {
+      return;
+    }
+
+    const username = widget.dataset.githubUsername || 'AwfulLumos';
+    const badge = widget.querySelector('[data-github-badge]');
+    const lastUpdated = widget.querySelector('[data-github-last-updated]');
+    const latestActivity = widget.querySelector('[data-github-latest-activity]');
+    const latestDetails = widget.querySelector('[data-github-latest-details]');
+    const publicRepos = widget.querySelector('[data-github-public-repos]');
+    const followers = widget.querySelector('[data-github-followers]');
+    const weeklyEvents = widget.querySelector('[data-github-weekly-events]');
+    const weeklySummary = widget.querySelector('[data-github-weekly-summary]');
+    const activityNote = widget.querySelector('[data-github-activity-note]');
+    const eventList = widget.querySelector('[data-github-event-list]');
+
+    if (!badge || !lastUpdated || !latestActivity || !latestDetails || !publicRepos || !followers || !weeklyEvents || !weeklySummary || !activityNote || !eventList) {
+      return;
+    }
+
+    const apiBase = `https://api.github.com/users/${encodeURIComponent(username)}`;
+    const requestOptions = {
+      headers: {
+        Accept: 'application/vnd.github+json'
+      },
+      cache: 'no-store'
+    };
+
+    try {
+      const [profileResponse, eventsResponse] = await Promise.all([
+        fetch(apiBase, requestOptions),
+        fetch(`${apiBase}/events/public?per_page=30`, requestOptions)
+      ]);
+
+      if (!profileResponse.ok || !eventsResponse.ok) {
+        throw new Error('GitHub API request failed');
+      }
+
+      const profile = await profileResponse.json();
+      const events = await eventsResponse.json();
+      const now = Date.now();
+      const sevenDaysAgo = now - (7 * 24 * 60 * 60 * 1000);
+      const recentEvents = events.filter((event) => new Date(event.created_at).getTime() >= sevenDaysAgo);
+      const latestEvent = events[0];
+
+      publicRepos.textContent = profile.public_repos ?? '--';
+      followers.textContent = `Followers: ${profile.followers ?? '--'}`;
+      weeklyEvents.textContent = recentEvents.length.toString();
+
+      if (latestEvent) {
+        const latestEventTime = new Date(latestEvent.created_at).getTime();
+        const hoursAgo = Math.max(0, Math.round((now - latestEventTime) / (60 * 60 * 1000)));
+        const daysAgo = Math.max(0, Math.round((now - latestEventTime) / (24 * 60 * 60 * 1000)));
+        const repoName = latestEvent.repo?.name ? latestEvent.repo.name.split('/').pop() : 'repository';
+        const relativeTime = formatRelativeTime(latestEvent.created_at);
+
+        badge.textContent = hoursAgo < 1
+          ? 'Active now'
+          : hoursAgo < 24
+            ? `Active ${hoursAgo}h ago`
+            : `Last active ${daysAgo}d ago`;
+        badge.classList.toggle('is-active', hoursAgo < 24);
+        badge.classList.toggle('is-idle', hoursAgo >= 24);
+
+        latestActivity.textContent = formatGitHubEventHeadline(latestEvent, repoName);
+        latestDetails.textContent = `${relativeTime} • ${repoName}`;
+        weeklySummary.textContent = recentEvents.length > 0
+          ? `${recentEvents.length} public event${recentEvents.length === 1 ? '' : 's'} in the last 7 days`
+          : 'No public events in the last 7 days';
+
+        activityNote.textContent = latestEvent.type.replace(/Event$/, '').replace(/([a-z])([A-Z])/g, '$1 $2');
+      } else {
+        badge.textContent = 'No recent public activity';
+        badge.classList.remove('is-active');
+        badge.classList.add('is-idle');
+        latestActivity.textContent = 'No public events found';
+        latestDetails.textContent = 'GitHub did not return recent public activity.';
+        weeklySummary.textContent = 'No public events in the last 7 days';
+        activityNote.textContent = 'Public events unavailable';
+      }
+
+      lastUpdated.textContent = 'Updated just now';
+      renderGitHubEvents(eventList, events.slice(0, 4));
+    } catch (error) {
+      badge.textContent = 'Live data unavailable';
+      badge.classList.add('is-idle');
+      lastUpdated.textContent = 'Could not refresh GitHub activity';
+      latestActivity.textContent = 'Unable to load live GitHub activity';
+      latestDetails.textContent = 'Showing the fallback message until GitHub responds again.';
+      publicRepos.textContent = '--';
+      followers.textContent = 'Followers: --';
+      weeklyEvents.textContent = '--';
+      weeklySummary.textContent = 'GitHub API request failed';
+      activityNote.textContent = 'Fallback mode';
+      eventList.innerHTML = '<li class="github-live-empty error">Live GitHub activity could not be loaded right now.</li>';
+      log(`GitHub activity error: ${error.message}`, 'warning');
+    }
+  }
+
+  /**
+   * Format the latest GitHub event headline
+   */
+  function formatGitHubEventHeadline(event, repoName) {
+    switch (event.type) {
+      case 'PushEvent':
+        return `Pushed to ${repoName}`;
+      case 'PullRequestEvent':
+        return `${capitalizeFirst(event.payload?.action || 'updated')} pull request in ${repoName}`;
+      case 'IssuesEvent':
+        return `${capitalizeFirst(event.payload?.action || 'updated')} issue in ${repoName}`;
+      case 'CreateEvent':
+        return `Created ${event.payload?.ref_type || 'activity'} in ${repoName}`;
+      case 'ReleaseEvent':
+        return `Released a new version in ${repoName}`;
+      default:
+        return `${event.type.replace(/Event$/, '')} in ${repoName}`;
+    }
+  }
+
+  /**
+   * Render recent GitHub events into the widget list
+   */
+  function renderGitHubEvents(listElement, events) {
+    listElement.innerHTML = '';
+
+    if (!events.length) {
+      listElement.innerHTML = '<li class="github-live-empty">No recent public events to show.</li>';
+      return;
+    }
+
+    events.forEach((event) => {
+      const repoName = event.repo?.name ? event.repo.name.split('/').pop() : 'repository';
+      const item = document.createElement('li');
+      item.className = 'github-live-event';
+
+      const icon = document.createElement('span');
+      icon.className = 'github-live-event-icon';
+      icon.innerHTML = '<i class="bi bi-github"></i>';
+
+      const main = document.createElement('div');
+      main.className = 'github-live-event-main';
+
+      const title = document.createElement('strong');
+      title.textContent = formatGitHubEventHeadline(event, repoName);
+
+      const detail = document.createElement('span');
+      detail.textContent = `${formatRelativeTime(event.created_at)} • ${repoName}`;
+
+      main.appendChild(title);
+      main.appendChild(detail);
+      item.appendChild(icon);
+      item.appendChild(main);
+      listElement.appendChild(item);
+    });
+  }
+
+  /**
+   * Format a date as relative time
+   */
+  function formatRelativeTime(dateInput) {
+    const date = new Date(dateInput);
+    const diffMs = Date.now() - date.getTime();
+    const diffMinutes = Math.max(1, Math.round(diffMs / (60 * 1000)));
+
+    if (diffMinutes < 60) {
+      return `${diffMinutes}m ago`;
+    }
+
+    const diffHours = Math.round(diffMinutes / 60);
+
+    if (diffHours < 24) {
+      return `${diffHours}h ago`;
+    }
+
+    const diffDays = Math.round(diffHours / 24);
+
+    return `${diffDays}d ago`;
+  }
+
+  /**
+   * Capitalize first letter of a word
+   */
+  function capitalizeFirst(value) {
+    if (!value) {
+      return '';
+    }
+
+    return value.charAt(0).toUpperCase() + value.slice(1);
   }
 
   // Event Listeners
