@@ -942,6 +942,161 @@
   }
 }
 
+/* Salesforce Trailhead Badges */
+.trailhead-section {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 1;
+}
+
+.trailhead-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.trailhead-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 161, 224, 0.14), transparent);
+  transition: left 0.8s ease;
+}
+
+.trailhead-header:hover::before {
+  left: 100%;
+}
+
+.trailhead-header:hover {
+  background: rgba(0, 161, 224, 0.08);
+  border-color: rgba(0, 161, 224, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 161, 224, 0.18);
+}
+
+.trailhead-logo-badge {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, #00a1e0, #1b8fd8);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(0, 161, 224, 0.45);
+}
+
+.trailhead-header-text {
+  flex: 1;
+  min-width: 220px;
+}
+
+.trailhead-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.3rem;
+}
+
+.trailhead-subtitle {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.trailhead-profile-link {
+  margin-left: auto;
+  background: linear-gradient(135deg, rgba(0, 161, 224, 0.25), rgba(0, 161, 224, 0.12));
+  border: 1.5px solid rgba(0, 161, 224, 0.35);
+  color: #fff;
+  padding: 0.5rem 1.1rem;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 161, 224, 0.2);
+}
+
+.trailhead-profile-link:hover {
+  background: linear-gradient(135deg, #00a1e0, #1b8fd8);
+  border-color: #00a1e0;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 161, 224, 0.35);
+}
+
+.trailhead-badges {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.trailhead-badges th-stamp-collection {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .trailhead-header {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .trailhead-title {
+    font-size: 1.4rem;
+  }
+
+  .trailhead-profile-link {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .trailhead-logo-badge {
+    width: 46px;
+    height: 46px;
+    font-size: 1.35rem;
+  }
+
+  .trailhead-title {
+    font-size: 1.2rem;
+  }
+
+  .trailhead-subtitle {
+    font-size: 0.82rem;
+  }
+
+  .trailhead-badges {
+    padding: 1.1rem;
+  }
+}
+
 /* =========================================
    Certificate Folders UI (Accordion Style)
    ========================================= */
