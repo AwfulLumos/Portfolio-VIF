@@ -223,21 +223,23 @@
     };
 
     try {
-      const [profileResponse, eventsResponse] = await Promise.all([
+      const [profileResponse, eventsResponse, reposResponse] = await Promise.all([
         fetch(apiBase, requestOptions),
-        fetch(`${apiBase}/events/public?per_page=30`, requestOptions)
+        fetch(`${apiBase}/events/public?per_page=30`, requestOptions),
+        fetch(`${apiBase}/repos?sort=updated&per_page=4`, requestOptions)
       ]);
 
-      if (!profileResponse.ok || !eventsResponse.ok) {
-        throw new Error('GitHub API request failed');
+      if (!profileResponse.ok) {
+        throw new Error('GitHub Profile API request failed');
       }
 
       const profile = await profileResponse.json();
-      const events = await eventsResponse.json();
+      const events = eventsResponse.ok ? await eventsResponse.json() : [];
+      const repos = reposResponse.ok ? await reposResponse.json() : [];
       const now = Date.now();
       const sevenDaysAgo = now - (7 * 24 * 60 * 60 * 1000);
-      const recentEvents = events.filter((event) => new Date(event.created_at).getTime() >= sevenDaysAgo);
-      const latestEvent = events[0];
+      const recentEvents = Array.isArray(events) ? events.filter((event) => new Date(event.created_at).getTime() >= sevenDaysAgo) : [];
+      const latestEvent = Array.isArray(events) && events.length > 0 ? events[0] : null;
 
       publicRepos.textContent = profile.public_repos ?? '--';
       followers.textContent = `Followers: ${profile.followers ?? '--'}`;
@@ -265,6 +267,22 @@
           : 'No public events in the last 7 days';
 
         activityNote.textContent = latestEvent.type.replace(/Event$/, '').replace(/([a-z])([A-Z])/g, '$1 $2');
+        renderGitHubEvents(eventList, events.slice(0, 4));
+      } else if (repos && repos.length > 0) {
+        // Fallback to showcasing latest updated repositories when event stream has no recent activity
+        const latestRepo = repos[0];
+        const relativeTime = formatRelativeTime(latestRepo.updated_at);
+
+        badge.textContent = `${profile.public_repos || repos.length} Public Repos`;
+        badge.classList.remove('is-idle');
+        badge.classList.add('is-active');
+
+        latestActivity.textContent = `Updated ${latestRepo.name}`;
+        latestDetails.textContent = `Last pushed ${relativeTime}`;
+        weeklySummary.textContent = `${profile.public_repos || repos.length} public repositories active`;
+        activityNote.textContent = 'Active Repositories';
+
+        renderGitHubRepos(eventList, repos);
       } else {
         badge.textContent = 'No recent public activity';
         badge.classList.remove('is-active');
@@ -276,7 +294,6 @@
       }
 
       lastUpdated.textContent = 'Updated just now';
-      renderGitHubEvents(eventList, events.slice(0, 4));
     } catch (error) {
       badge.textContent = 'Live data unavailable';
       badge.classList.add('is-idle');
@@ -351,6 +368,42 @@
   }
 
   /**
+   * Render updated GitHub repositories into the widget list
+   */
+  function renderGitHubRepos(listElement, repos) {
+    listElement.innerHTML = '';
+
+    if (!repos.length) {
+      listElement.innerHTML = '<li class="github-live-empty">No public repositories to show.</li>';
+      return;
+    }
+
+    repos.forEach((repo) => {
+      const item = document.createElement('li');
+      item.className = 'github-live-event';
+
+      const icon = document.createElement('span');
+      icon.className = 'github-live-event-icon';
+      icon.innerHTML = '<i class="bi bi-journal-code"></i>';
+
+      const main = document.createElement('div');
+      main.className = 'github-live-event-main';
+
+      const title = document.createElement('strong');
+      title.textContent = repo.name;
+
+      const detail = document.createElement('span');
+      detail.textContent = `Updated ${formatRelativeTime(repo.updated_at)} • ${repo.language || 'Code'}`;
+
+      main.appendChild(title);
+      main.appendChild(detail);
+      item.appendChild(icon);
+      item.appendChild(main);
+      listElement.appendChild(item);
+    });
+  }
+
+  /**
    * Format a date as relative time
    */
   function formatRelativeTime(dateInput) {
@@ -391,6 +444,12 @@
   // Listen for component load events
   document.addEventListener('allComponentsLoaded', () => {
     log('All components loaded', 'success');
+    initGitHubActivity();
+  });
+  document.addEventListener('componentLoaded', (e) => {
+    if (e.detail && e.detail.componentName === 'skills') {
+      initGitHubActivity();
+    }
   });
 
   // Expose app config for debugging

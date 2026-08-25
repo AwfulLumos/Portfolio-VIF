@@ -164,12 +164,18 @@
 
 .glass-card-enhanced:hover,
 .skill-card:hover,
-.project-card:hover,
 .certification-card:hover {
   background: rgba(163, 176, 135, 0.12) !important;
   border-color: rgba(163, 176, 135, 0.4) !important;
   box-shadow: var(--shadow-lg), var(--shadow-glow-sage);
   transform: translateY(-8px) scale(1.02);
+}
+
+.project-card:hover {
+  background: rgba(163, 176, 135, 0.12) !important;
+  border-color: rgba(163, 176, 135, 0.4) !important;
+  box-shadow: var(--shadow-lg), var(--shadow-glow-sage);
+  transform: none !important;
 }
 
 /* ============================================
@@ -648,8 +654,7 @@
 
   /* Reduce animation intensity on mobile */
   .glass-card-enhanced:hover,
-  .skill-card:hover,
-  .project-card:hover {
+  .skill-card:hover {
     transform: translateY(-4px) scale(1.01);
   }
 
