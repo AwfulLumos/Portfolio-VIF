@@ -12,16 +12,11 @@
       <!-- Hack4Smart Certificate -->
       <div class="certification-card fade-in delay-1">
         <div class="cert-image-wrapper">
-          <img
-            src="assets/images/Hack4Smart-Certificate.jpg"
-            alt="Hack4Smart Hackathon Certificate"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-          />
+          <img src="assets/images/Hack4Smart-Certificate.jpg" alt="Hack4Smart Hackathon Certificate" loading="lazy"
+            decoding="async" fetchpriority="low" />
           <div class="cert-overlay">
-            <button class="view-cert-btn" onclick="openCertModal('hack4smart')">
-              <i class="bi bi-zoom-in"></i> View Certificate
+            <button class="view-cert-btn" data-cert-id="hack4smart" onclick="openCertModal('hack4smart')">
+              <i class="bi bi-zoom-in me-1"></i> View Certificate
             </button>
           </div>
         </div>
@@ -47,16 +42,11 @@
       <!-- Idea2Startup Certificate -->
       <div class="certification-card fade-in delay-2">
         <div class="cert-image-wrapper">
-          <img
-            src="assets/images/Idea2startupCertificate.png"
-            alt="Idea2Startup Certificate"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-          />
+          <img src="assets/images/Idea2startupCertificate.png" alt="Idea2Startup Certificate" loading="lazy"
+            decoding="async" fetchpriority="low" />
           <div class="cert-overlay">
-            <button class="view-cert-btn" onclick="openCertModal('idea2startup')">
-              <i class="bi bi-zoom-in"></i> View Certificate
+            <button class="view-cert-btn" data-cert-id="idea2startup" onclick="openCertModal('idea2startup')">
+              <i class="bi bi-zoom-in me-1"></i> View Certificate
             </button>
           </div>
         </div>
@@ -89,14 +79,11 @@
         <div class="trailhead-header-text">
           <h3 class="trailhead-title">Salesforce Trailhead</h3>
           <p class="trailhead-subtitle">Salesforce Development training and Trailblazer badges</p>
-          <p class="trailhead-description">Completed comprehensive Salesforce Development training and partial Salesforce Administrator coursework.</p>
+          <p class="trailhead-description">Completed comprehensive Salesforce Development training and partial
+            Salesforce Administrator coursework.</p>
         </div>
-        <a
-          class="trailhead-profile-link"
-          href="https://www.salesforce.com/trailblazer/waqlm0esmjj98nivog"
-          target="_blank"
-          rel="noopener"
-        >
+        <a class="trailhead-profile-link" href="https://www.salesforce.com/trailblazer/waqlm0esmjj98nivog"
+          target="_blank" rel="noopener">
           View Trailblazer Profile
           <i class="bi bi-box-arrow-up-right"></i>
         </a>
@@ -109,13 +96,15 @@
 
     <!-- LinkedIn Certificates Subsection -->
     <div class="linkedin-certs-section fade-in">
-      <div class="linkedin-certs-header" onclick="toggleLinkedInCerts()" role="button" tabindex="0" aria-expanded="false" aria-controls="linkedinCertsContent" aria-label="Toggle LinkedIn Learning certificates">
+      <div class="linkedin-certs-header" onclick="toggleLinkedInCerts()" role="button" tabindex="0"
+        aria-expanded="false" aria-controls="linkedinCertsContent" aria-label="Toggle LinkedIn Learning certificates">
         <div class="linkedin-logo-badge">
           <i class="bi bi-linkedin"></i>
         </div>
         <div class="linkedin-header-text">
           <h3 class="linkedin-certs-title">LinkedIn Learning Certificates</h3>
-          <p class="linkedin-certs-subtitle">49 courses completed across software development, design, and agile practices</p>
+          <p class="linkedin-certs-subtitle">49 courses completed across software development, design, and agile
+            practices</p>
         </div>
         <span class="linkedin-toggle-btn" aria-label="Expand LinkedIn certificates" aria-hidden="true">
           <span class="btn-text">Click Here</span>
@@ -131,7 +120,8 @@
 
           <!-- Web Dev Folder -->
           <div class="cert-folder" data-folder="web">
-            <div class="cert-folder-header" onclick="toggleCertFolder('web')" role="button" tabindex="0" aria-expanded="false" aria-controls="folder-web" aria-label="Toggle Web Development certificates">
+            <div class="cert-folder-header" onclick="toggleCertFolder('web')" role="button" tabindex="0"
+              aria-expanded="false" aria-controls="folder-web" aria-label="Toggle Web Development certificates">
               <div class="cert-folder-icon web">
                 <i class="bi bi-folder-fill"></i>
               </div>
@@ -144,69 +134,115 @@
               </div>
             </div>
             <div class="cert-folder-content" id="folder-web" aria-hidden="true">
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Getting Started as a FullStack Web Developer.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Getting Started as a FullStack Web Developer.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Getting Started as a Full-Stack Web Developer</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Getting Started as a Full-Stack Web Developer</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Getting Started as a FullStack Web Developer (1).pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Getting Started as a FullStack Web Developer (1).pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Getting Started as a Full-Stack Web Developer (2)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Getting Started as a Full-Stack Web Developer (2)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_HTTP Essential Training.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_HTTP Essential Training.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>HTTP Essential Training</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>HTTP Essential Training</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Learning Chrome Web Developer Tools.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Learning Chrome Web Developer Tools.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Learning Chrome Web Developer Tools</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Learning Chrome Web Developer Tools</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_TypeScript for Node.js Developers.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_TypeScript for Node.js Developers.pdf" target="_blank"
+                rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>TypeScript for Node.js Developers</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>TypeScript for Node.js Developers</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Learning Vue.js.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Learning Vue.js.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Learning Vue.js</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Learning Vue.js</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_React Building Progressive Web Apps PWAs.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_React Building Progressive Web Apps PWAs.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>React: Building Progressive Web Apps (PWAs)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>React: Building Progressive Web Apps (PWAs)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_AI for React Developers.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_AI for React Developers.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>AI for React Developers</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>AI for React Developers</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_ChatGPT for Web Developers.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_ChatGPT for Web Developers.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>ChatGPT for Web Developers</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>ChatGPT for Web Developers</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Git Essential Training 2023.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Git Essential Training 2023.pdf" target="_blank"
+                rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Git Essential Training (2023)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Git Essential Training (2023)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Career Essentials in System Administration by Microsoft and LinkedIn.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Career Essentials in System Administration by Microsoft and LinkedIn.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Career Essentials in System Administration</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Career Essentials in System Administration</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Node.js Essential Training.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Node.js Essential Training.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Node.js Essential Training</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Node.js Essential Training</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Practical GitHub Actions.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Practical GitHub Actions.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Practical GitHub Actions</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Practical GitHub Actions</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
             </div>
@@ -214,7 +250,9 @@
 
           <!-- Agile & BA Folder -->
           <div class="cert-folder" data-folder="agile">
-            <div class="cert-folder-header" onclick="toggleCertFolder('agile')" role="button" tabindex="0" aria-expanded="false" aria-controls="folder-agile" aria-label="Toggle Agile and Business Analysis certificates">
+            <div class="cert-folder-header" onclick="toggleCertFolder('agile')" role="button" tabindex="0"
+              aria-expanded="false" aria-controls="folder-agile"
+              aria-label="Toggle Agile and Business Analysis certificates">
               <div class="cert-folder-icon agile">
                 <i class="bi bi-folder-fill"></i>
               </div>
@@ -227,74 +265,128 @@
               </div>
             </div>
             <div class="cert-folder-content" id="folder-agile" aria-hidden="true">
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Agile Software Development.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Agile Software Development.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Agile Software Development</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Agile Software Development</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Agile Software Development (1).pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Agile Software Development (1).pdf" target="_blank"
+                rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Agile Software Development (2)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Agile Software Development (2)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Agile Software Development (2).pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Agile Software Development (2).pdf" target="_blank"
+                rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Agile Software Development (3)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Agile Software Development (3)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_A Beginners Guide to Writing User Stories.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_A Beginners Guide to Writing User Stories.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>A Beginner's Guide to Writing User Stories</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>A Beginner's Guide to Writing User Stories</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Building and Mapping User Stories.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Building and Mapping User Stories.pdf" target="_blank"
+                rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Building and Mapping User Stories</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Building and Mapping User Stories</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Asking Effective Questions During Requirements Elicitation.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Asking Effective Questions During Requirements Elicitation.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Asking Effective Questions During Requirements Elicitation</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Asking Effective Questions During Requirements Elicitation</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Requirements Elicitation and Analysis.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Requirements Elicitation and Analysis.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Requirements Elicitation and Analysis</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Requirements Elicitation and Analysis</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Requirements Elicitation and Analysis (1).pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Requirements Elicitation and Analysis (1).pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Requirements Elicitation and Analysis (2)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Requirements Elicitation and Analysis (2)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Requirements Elicitation and Analysis (2).pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Requirements Elicitation and Analysis (2).pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Requirements Elicitation and Analysis (3)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Requirements Elicitation and Analysis (3)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Business Analysis Foundations Business Process Modeling.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Business Analysis Foundations Business Process Modeling.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Business Analysis Foundations: Business Process Modeling</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Business Analysis Foundations: Business Process Modeling</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Business Analysis Foundations Business Process Modeling (1).pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Business Analysis Foundations Business Process Modeling (1).pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Business Analysis Foundations: Business Process Modeling (2)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Business Analysis Foundations: Business Process Modeling (2)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Business Analysis Foundations Business Process Modeling (2).pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Business Analysis Foundations Business Process Modeling (2).pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Business Analysis Foundations: Business Process Modeling (3)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Business Analysis Foundations: Business Process Modeling (3)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Software Development Life Cycle SDLC 2019.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Software Development Life Cycle SDLC 2019.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Software Development Life Cycle (SDLC)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Software Development Life Cycle (SDLC)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Systems Thinking.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Systems Thinking.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Systems Thinking</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Systems Thinking</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
             </div>
@@ -302,7 +394,9 @@
 
           <!-- Architecture & APIs Folder -->
           <div class="cert-folder" data-folder="architecture">
-            <div class="cert-folder-header" onclick="toggleCertFolder('architecture')" role="button" tabindex="0" aria-expanded="false" aria-controls="folder-architecture" aria-label="Toggle Architecture and Design certificates">
+            <div class="cert-folder-header" onclick="toggleCertFolder('architecture')" role="button" tabindex="0"
+              aria-expanded="false" aria-controls="folder-architecture"
+              aria-label="Toggle Architecture and Design certificates">
               <div class="cert-folder-icon architecture">
                 <i class="bi bi-folder-fill"></i>
               </div>
@@ -315,44 +409,72 @@
               </div>
             </div>
             <div class="cert-folder-content" id="folder-architecture" aria-hidden="true">
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Software Architecture Foundations.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Software Architecture Foundations.pdf" target="_blank"
+                rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Software Architecture Foundations</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Software Architecture Foundations</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Software Architecture Patterns for Developers 2020.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Software Architecture Patterns for Developers 2020.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Software Architecture Patterns for Developers</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Software Architecture Patterns for Developers</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Designing RESTful APIs.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Designing RESTful APIs.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Designing RESTful APIs</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Designing RESTful APIs</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Introduction to Web APIs.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Introduction to Web APIs.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Introduction to Web APIs</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Introduction to Web APIs</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Introduction to Web APIs (1).pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Introduction to Web APIs (1).pdf" target="_blank"
+                rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Introduction to Web APIs (2)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Introduction to Web APIs (2)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Programming Foundations APIs and Web Services 2019.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Programming Foundations APIs and Web Services 2019.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Programming Foundations: APIs and Web Services</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Programming Foundations: APIs and Web Services</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_DevOps Foundations.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_DevOps Foundations.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>DevOps Foundations</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>DevOps Foundations</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_DevOps Foundations (1).pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_DevOps Foundations (1).pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>DevOps Foundations (2)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>DevOps Foundations (2)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
             </div>
@@ -360,7 +482,8 @@
 
           <!-- Testing Folder -->
           <div class="cert-folder" data-folder="testing">
-            <div class="cert-folder-header" onclick="toggleCertFolder('testing')" role="button" tabindex="0" aria-expanded="false" aria-controls="folder-testing" aria-label="Toggle Testing and QA certificates">
+            <div class="cert-folder-header" onclick="toggleCertFolder('testing')" role="button" tabindex="0"
+              aria-expanded="false" aria-controls="folder-testing" aria-label="Toggle Testing and QA certificates">
               <div class="cert-folder-icon testing">
                 <i class="bi bi-folder-fill"></i>
               </div>
@@ -373,34 +496,58 @@
               </div>
             </div>
             <div class="cert-folder-content" id="folder-testing" aria-hidden="true">
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Management.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Management.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Software Testing Foundations: Test Management</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Software Testing Foundations: Test Management</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Planning.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Planning.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Software Testing Foundations: Test Planning</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Software Testing Foundations: Test Planning</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Preparation.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Preparation.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Software Testing Foundations: Test Preparation</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Software Testing Foundations: Test Preparation</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Preparation (1).pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Preparation (1).pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Software Testing Foundations: Test Preparation (2)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Software Testing Foundations: Test Preparation (2)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Techniques.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Techniques.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Software Testing Foundations: Test Techniques</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Software Testing Foundations: Test Techniques</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Techniques (1).pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Software Testing Foundations Test Techniques (1).pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Software Testing Foundations: Test Techniques (2)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Software Testing Foundations: Test Techniques (2)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
             </div>
@@ -408,7 +555,8 @@
 
           <!-- Design Folder -->
           <div class="cert-folder" data-folder="design">
-            <div class="cert-folder-header" onclick="toggleCertFolder('design')" role="button" tabindex="0" aria-expanded="false" aria-controls="folder-design" aria-label="Toggle UX and Design certificates">
+            <div class="cert-folder-header" onclick="toggleCertFolder('design')" role="button" tabindex="0"
+              aria-expanded="false" aria-controls="folder-design" aria-label="Toggle UX and Design certificates">
               <div class="cert-folder-icon design">
                 <i class="bi bi-folder-fill"></i>
               </div>
@@ -421,29 +569,48 @@
               </div>
             </div>
             <div class="cert-folder-content" id="folder-design" aria-hidden="true">
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Learning Design Thinking.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Learning Design Thinking.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Learning Design Thinking</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Learning Design Thinking</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Design Thinking Implementing the Process.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Design Thinking Implementing the Process.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Design Thinking: Implementing the Process</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Design Thinking: Implementing the Process</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Design Thinking Implementing the Process (1).pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Design Thinking Implementing the Process (1).pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Design Thinking: Implementing the Process (2)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Design Thinking: Implementing the Process (2)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Design Thinking Implementing the Process (2).pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Design Thinking Implementing the Process (2).pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Design Thinking: Implementing the Process (3)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Design Thinking: Implementing the Process (3)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Using Style Guides to Bridge Design and Development.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Using Style Guides to Bridge Design and Development.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Using Style Guides to Bridge Design and Development</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Using Style Guides to Bridge Design and Development</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
             </div>
@@ -451,7 +618,8 @@
 
           <!-- Other Folder -->
           <div class="cert-folder" data-folder="other">
-            <div class="cert-folder-header" onclick="toggleCertFolder('other')" role="button" tabindex="0" aria-expanded="false" aria-controls="folder-other" aria-label="Toggle Other certificates">
+            <div class="cert-folder-header" onclick="toggleCertFolder('other')" role="button" tabindex="0"
+              aria-expanded="false" aria-controls="folder-other" aria-label="Toggle Other certificates">
               <div class="cert-folder-icon other">
                 <i class="bi bi-folder-fill"></i>
               </div>
@@ -464,48 +632,83 @@
               </div>
             </div>
             <div class="cert-folder-content" id="folder-other" aria-hidden="true">
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Software Design Modeling with UML.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Software Design Modeling with UML.pdf" target="_blank"
+                rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Software Design: Modeling with UML</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Software Design: Modeling with UML</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_Streamlining Information Architecture.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card"
+                href="assets/certificates/CertificateOfCompletion_Streamlining Information Architecture.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>Streamlining Information Architecture</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>Streamlining Information Architecture</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_DevOps Foundations (2).pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_DevOps Foundations (2).pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>DevOps Foundations (3)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>DevOps Foundations (3)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_What Is Generative AI.pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_What Is Generative AI.pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>What Is Generative AI</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>What Is Generative AI</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
-              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_What Is Generative AI (1).pdf" target="_blank" rel="noopener">
+              <a class="pdf-cert-card" href="assets/certificates/CertificateOfCompletion_What Is Generative AI (1).pdf"
+                target="_blank" rel="noopener">
                 <div class="pdf-cert-icon"><i class="bi bi-filetype-pdf"></i></div>
-                <div class="pdf-cert-body"><h4>What Is Generative AI (2)</h4></div>
+                <div class="pdf-cert-body">
+                  <h4>What Is Generative AI (2)</h4>
+                </div>
                 <div class="pdf-cert-action"><i class="bi bi-box-arrow-up-right"></i></div>
               </a>
             </div>
           </div>
 
-        </div>  <!-- /.cert-folders-grid -->
-      </div>  <!-- /.linkedin-certs-content -->
-    </div>  <!-- /.linkedin-certs-section -->
+        </div> <!-- /.cert-folders-grid -->
+      </div> <!-- /.linkedin-certs-content -->
+    </div> <!-- /.linkedin-certs-section -->
 
-  </div>  <!-- /.container -->
+  </div> <!-- /.container -->
 </section>
 
-<!-- Certificate Modal -->
-<div id="certModal" class="cert-modal">
-  <div class="cert-modal-content">
-    <button class="cert-modal-close-btn" onclick="closeCertModal()" aria-label="Close certificate modal">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <img id="certModalImage" src="" alt="Certificate" />
+<!-- High-Resolution Certificate Lightbox Modal -->
+<div id="certModal" class="cert-modal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle">
+  <div class="cert-modal-overlay"></div>
+  <div class="cert-modal-container">
+    <div class="cert-modal-header">
+      <div class="cert-modal-title-group">
+        <h4 id="certModalTitle" class="cert-modal-title">Certificate Preview</h4>
+        <span id="certModalSubtitle" class="cert-modal-subtitle">Issuer Info</span>
+      </div>
+      <div class="cert-modal-actions">
+        <a id="certModalDownload" href="#" download class="cert-modal-btn" title="Download Certificate">
+          <i class="bi bi-download"></i>
+        </a>
+        <a id="certModalOpenNew" href="#" target="_blank" rel="noopener noreferrer" class="cert-modal-btn"
+          title="Open Full Resolution">
+          <i class="bi bi-box-arrow-up-right"></i>
+        </a>
+        <button type="button" class="cert-modal-btn cert-modal-close" onclick="closeCertModal()"
+          aria-label="Close modal">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+    </div>
+    <div class="cert-modal-body">
+      <img id="certModalImage" src="" alt="Certificate" />
+    </div>
   </div>
 </div>
-

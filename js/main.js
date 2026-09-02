@@ -3,7 +3,7 @@
  * Initializes all modules and manages application lifecycle
  */
 
-(function() {
+(function () {
   'use strict';
 
   /**
@@ -30,7 +30,7 @@
    */
   function log(message, type = 'info') {
     if (!AppConfig.debug && type !== 'error') return;
-    
+
     const styles = {
       info: 'color: #00d4ff',
       success: 'color: #22c55e',
@@ -53,7 +53,7 @@
     try {
       // Check if we're using component loading or static HTML
       const hasPlaceholders = document.querySelector('#navbar-placeholder');
-      
+
       if (hasPlaceholders && window.componentLoader) {
         // Dynamic component loading
         log('Loading components dynamically...', 'info');
@@ -107,8 +107,7 @@
     // Apply loading optimizations to dynamically injected media
     optimizeDeferredMedia();
 
-    // Initialize live GitHub activity widget
-    initGitHubActivity();
+
   }
 
   /**
@@ -117,7 +116,7 @@
   function initPageLoadAnimation() {
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.5s ease';
-    
+
     requestAnimationFrame(() => {
       document.body.style.opacity = '1';
     });
@@ -140,18 +139,18 @@
         if (entry.isIntersecting) {
           const element = entry.target;
           const targetValue = parseInt(element.textContent.replace(/\D/g, ''), 10);
-          
+
           if (!isNaN(targetValue)) {
             const suffix = element.textContent.replace(/[0-9]/g, '');
-            
+
             window.Utils.animateNumber(element, targetValue, 1500);
-            
+
             // Add suffix back after animation
             setTimeout(() => {
               element.textContent = targetValue + suffix;
             }, 1600);
           }
-          
+
           observer.unobserve(element);
         }
       });
@@ -189,8 +188,10 @@
   }
 
   /**
-   * Initialize live GitHub activity data
+   * Initialize live GitHub activity data with caching to prevent 403 Rate Limit errors
    */
+  let isGitHubFetching = false;
+
   async function initGitHubActivity() {
     const widget = document.querySelector('.github-live-panel[data-github-username]');
 
@@ -214,28 +215,10 @@
       return;
     }
 
-    const apiBase = `https://api.github.com/users/${encodeURIComponent(username)}`;
-    const requestOptions = {
-      headers: {
-        Accept: 'application/vnd.github+json'
-      },
-      cache: 'no-store'
-    };
+    const CACHE_KEY = `github_activity_${username}`;
+    const CACHE_TTL = 15 * 60 * 1000; // 15 minutes cache
 
-    try {
-      const [profileResponse, eventsResponse, reposResponse] = await Promise.all([
-        fetch(apiBase, requestOptions),
-        fetch(`${apiBase}/events/public?per_page=30`, requestOptions),
-        fetch(`${apiBase}/repos?sort=updated&per_page=4`, requestOptions)
-      ]);
-
-      if (!profileResponse.ok) {
-        throw new Error('GitHub Profile API request failed');
-      }
-
-      const profile = await profileResponse.json();
-      const events = eventsResponse.ok ? await eventsResponse.json() : [];
-      const repos = reposResponse.ok ? await reposResponse.json() : [];
+    function renderWidgetData(profile, events, repos, cacheTime) {
       const now = Date.now();
       const sevenDaysAgo = now - (7 * 24 * 60 * 60 * 1000);
       const recentEvents = Array.isArray(events) ? events.filter((event) => new Date(event.created_at).getTime() >= sevenDaysAgo) : [];
@@ -269,7 +252,6 @@
         activityNote.textContent = latestEvent.type.replace(/Event$/, '').replace(/([a-z])([A-Z])/g, '$1 $2');
         renderGitHubEvents(eventList, events.slice(0, 4));
       } else if (repos && repos.length > 0) {
-        // Fallback to showcasing latest updated repositories when event stream has no recent activity
         const latestRepo = repos[0];
         const relativeTime = formatRelativeTime(latestRepo.updated_at);
 
@@ -293,20 +275,98 @@
         activityNote.textContent = 'Public events unavailable';
       }
 
-      lastUpdated.textContent = 'Updated just now';
+      if (cacheTime) {
+        const minsAgo = Math.round((now - cacheTime) / 60000);
+        lastUpdated.textContent = minsAgo <= 1 ? 'Updated just now' : `Updated ${minsAgo}m ago`;
+      } else {
+        lastUpdated.textContent = 'Updated just now';
+      }
+    }
+
+    // Try loading from localStorage first
+    try {
+      const cachedString = localStorage.getItem(CACHE_KEY);
+      if (cachedString) {
+        const cached = JSON.parse(cachedString);
+        if (Date.now() - cached.timestamp < CACHE_TTL) {
+          renderWidgetData(cached.profile, cached.events, cached.repos, cached.timestamp);
+          return;
+        }
+      }
+    } catch (e) {
+      // Ignore storage errors
+    }
+
+    if (isGitHubFetching) return;
+    isGitHubFetching = true;
+
+    const apiBase = `https://api.github.com/users/${encodeURIComponent(username)}`;
+    const requestOptions = {
+      headers: {
+        Accept: 'application/vnd.github+json'
+      }
+    };
+
+    try {
+      const [profileResponse, eventsResponse, reposResponse] = await Promise.all([
+        fetch(apiBase, requestOptions),
+        fetch(`${apiBase}/events/public?per_page=30`, requestOptions),
+        fetch(`${apiBase}/repos?sort=updated&per_page=4`, requestOptions)
+      ]);
+
+      if (profileResponse.status === 403 || eventsResponse.status === 403 || reposResponse.status === 403) {
+        log('GitHub API Rate limit exceeded (403). Using cached or fallback mode.', 'warning');
+        throw new Error('403 Rate Limit Exceeded');
+      }
+
+      if (!profileResponse.ok) {
+        throw new Error('GitHub Profile API request failed');
+      }
+
+      const profile = await profileResponse.json();
+      const events = eventsResponse.ok ? await eventsResponse.json() : [];
+      const repos = reposResponse.ok ? await reposResponse.json() : [];
+
+      // Cache data
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify({
+          timestamp: Date.now(),
+          profile,
+          events,
+          repos
+        }));
+      } catch (e) {
+        // Ignore quota/storage errors
+      }
+
+      renderWidgetData(profile, events, repos, Date.now());
     } catch (error) {
-      badge.textContent = 'Live data unavailable';
+      // If error occurs, try using stale cache if available
+      try {
+        const cachedString = localStorage.getItem(CACHE_KEY);
+        if (cachedString) {
+          const cached = JSON.parse(cachedString);
+          renderWidgetData(cached.profile, cached.events, cached.repos, cached.timestamp);
+          return;
+        }
+      } catch (e) {
+        // Ignore storage error
+      }
+
+      badge.textContent = 'Rate Limit / Offline';
       badge.classList.add('is-idle');
-      lastUpdated.textContent = 'Could not refresh GitHub activity';
-      latestActivity.textContent = 'Unable to load live GitHub activity';
-      latestDetails.textContent = 'Showing the fallback message until GitHub responds again.';
+      lastUpdated.textContent = 'API rate limit reached';
+      latestActivity.textContent = 'GitHub Live Activity Paused';
+      latestDetails.textContent = 'GitHub public API rate limit reached for your IP (60 req/hr). Will refresh automatically.';
       publicRepos.textContent = '--';
       followers.textContent = 'Followers: --';
       weeklyEvents.textContent = '--';
-      weeklySummary.textContent = 'GitHub API request failed';
-      activityNote.textContent = 'Fallback mode';
-      eventList.innerHTML = '<li class="github-live-empty error">Live GitHub activity could not be loaded right now.</li>';
-      log(`GitHub activity error: ${error.message}`, 'warning');
+      weeklySummary.textContent = 'GitHub API rate limited';
+      activityNote.textContent = 'Rate limited';
+      eventList.innerHTML = '<li class="github-live-empty error">GitHub API rate limit reached (403). Please try again shortly.</li>';
+      log(`GitHub activity notice: ${error.message}`, 'warning');
+    } finally {
+      isGitHubFetching = false;
     }
   }
 
@@ -441,16 +501,11 @@
   document.addEventListener('DOMContentLoaded', initApp);
   document.addEventListener('visibilitychange', handleVisibilityChange);
 
-  // Listen for component load events
+  // Listen for component load events - run GitHub widget initialization ONCE after DOM is fully ready
   document.addEventListener('allComponentsLoaded', () => {
     log('All components loaded', 'success');
     initGitHubActivity();
-  });
-  document.addEventListener('componentLoaded', (e) => {
-    if (e.detail && e.detail.componentName === 'skills') {
-      initGitHubActivity();
-    }
-  });
+  }, { once: true });
 
   // Expose app config for debugging
   window.VIFDevPortfolio = {
