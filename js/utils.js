@@ -245,6 +245,11 @@ function openCertModal(certId) {
   const modal = document.getElementById('certModal');
   if (!modal) return;
 
+  // Ensure modal is attached to document.body so section overflow/transform doesn't restrict it
+  if (modal.parentElement !== document.body) {
+    document.body.appendChild(modal);
+  }
+
   const titleEl = document.getElementById('certModalTitle');
   const subtitleEl = document.getElementById('certModalSubtitle');
   const imgEl = document.getElementById('certModalImage');
@@ -266,6 +271,7 @@ function openCertModal(certId) {
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
+
 
 function closeCertModal() {
   const modal = document.getElementById('certModal');

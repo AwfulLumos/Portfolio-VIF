@@ -423,7 +423,13 @@ class InteractiveComponents {
     const modalEl = document.getElementById('projectDetailModal');
     if (!modalEl) return;
 
+    // Move modal to document.body to prevent parent section stacking context clipping
+    if (modalEl.parentElement !== document.body) {
+      document.body.appendChild(modalEl);
+    }
+
     // Use event delegation for View Details buttons
+
     document.addEventListener('click', (e) => {
       const detailBtn = e.target.closest('.btn-project-detail');
       if (!detailBtn) return;
