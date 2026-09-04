@@ -28,12 +28,13 @@ class InteractiveComponents {
       digistall: {
         title: 'DigiStall',
         category: 'Web & Mobile Application',
-        description: "Selected as one of the Startup Founders by the Naga City Government and served as a developer of a web and mobile-based stall management system for Naga City's public markets. The system was designed to improve stall application processing, payment and transaction tracking, compliance monitoring and overall market operations. Built with Vue.js, React Native, Node.js and PostgreSQL.",
+        description: "Selected as one of the Startup Founders and awarded the ₱41,580.00 Digital Innovation Fund grant by the Naga City Government. Served as developer of a web and mobile-based stall management system for Naga City's public markets, improving stall applications, payment tracking, and market compliance. Built with Vue.js, React Native, Node.js, and PostgreSQL.",
         image: 'assets/images/DigiStall.png',
         github: null,
         tech: ['React.js', 'React Native', 'Vue.js', 'PostgreSQL', 'Docker'],
         highlights: [
-          'Recognized startup founder initiative selected by the Naga City Government.',
+          'Recognized startup founder & ₱41,580.00 Digital Innovation Fund grantee by Naga City Government.',
+          'Featured in official Naga City news coverage for the Idea2Startup Batch 4 Pitching Challenge and Ceremonial Grant Turnover.',
           'Multi-platform ecosystem: Web admin portal for officials & React Native mobile app for market stallholders.',
           'Automated stall application processing, violation reporting, and digital payment tracking.',
           'Containerized backend architecture backed by PostgreSQL relational database.'
@@ -419,70 +420,108 @@ class InteractiveComponents {
   /**
    * Initialize Interactive Project Detail Modal
    */
+  /**
+   * Initialize Interactive Project Detail Modal
+   */
   initProjectDetailModal() {
-    const modalEl = document.getElementById('projectDetailModal');
-    if (!modalEl) return;
+    const relocateModal = () => {
+      const modalEl = document.getElementById('projectDetailModal');
+      if (modalEl && modalEl.parentElement !== document.body) {
+        document.body.appendChild(modalEl);
+      }
+      return modalEl;
+    };
 
-    // Move modal to document.body to prevent parent section stacking context clipping
-    if (modalEl.parentElement !== document.body) {
-      document.body.appendChild(modalEl);
-    }
+    // Try relocating modal immediately
+    relocateModal();
 
-    // Use event delegation for View Details buttons
+    // Also relocate modal on component load completion
+    document.addEventListener('allComponentsLoaded', () => {
+      relocateModal();
+    });
 
+    // Global event delegation for View Details buttons & Modal Close buttons
     document.addEventListener('click', (e) => {
+      // 1. Handle View Details button click
       const detailBtn = e.target.closest('.btn-project-detail');
-      if (!detailBtn) return;
+      if (detailBtn) {
+        e.preventDefault();
+        const projectId = detailBtn.dataset.projectId;
+        const data = this.projectDetailsData[projectId];
+        if (!data) return;
 
-      const projectId = detailBtn.dataset.projectId;
-      const data = this.projectDetailsData[projectId];
+        const modalEl = relocateModal();
+        if (!modalEl) return;
 
-      if (!data) return;
+        // Populate modal content
+        const titleEl = document.getElementById('modalProjectTitle');
+        const categoryEl = document.getElementById('modalProjectCategory');
+        const imgEl = document.getElementById('modalProjectImg');
+        const descEl = document.getElementById('modalProjectDescription');
+        const highlightsEl = document.getElementById('modalProjectHighlights');
+        const techEl = document.getElementById('modalProjectTech');
+        const sourceBtn = document.getElementById('modalSourceBtn');
 
-      // Populate modal content
-      const titleEl = document.getElementById('modalProjectTitle');
-      const categoryEl = document.getElementById('modalProjectCategory');
-      const imgEl = document.getElementById('modalProjectImg');
-      const descEl = document.getElementById('modalProjectDescription');
-      const highlightsEl = document.getElementById('modalProjectHighlights');
-      const techEl = document.getElementById('modalProjectTech');
-      const sourceBtn = document.getElementById('modalSourceBtn');
+        if (titleEl) titleEl.textContent = data.title;
+        if (categoryEl) categoryEl.textContent = data.category;
+        if (imgEl) {
+          imgEl.src = data.image;
+          imgEl.alt = `${data.title} preview`;
+        }
+        if (descEl) descEl.textContent = data.description;
 
-      if (titleEl) titleEl.textContent = data.title;
-      if (categoryEl) categoryEl.textContent = data.category;
-      if (imgEl) {
-        imgEl.src = data.image;
-        imgEl.alt = `${data.title} preview`;
-      }
-      if (descEl) descEl.textContent = data.description;
+        // Render highlights list
+        if (highlightsEl) {
+          highlightsEl.innerHTML = data.highlights
+            .map(h => `<li class="mb-2 text-light"><i class="bi bi-check2-circle text-accent me-2"></i>${h}</li>`)
+            .join('');
+        }
 
-      // Render highlights list
-      if (highlightsEl) {
-        highlightsEl.innerHTML = data.highlights
-          .map(h => `<li class="mb-2 text-light"><i class="bi bi-check2-circle text-accent me-2"></i>${h}</li>`)
-          .join('');
-      }
+        // Render tech stack tags
+        if (techEl) {
+          techEl.innerHTML = data.tech
+            .map(t => `<span class="badge rounded-pill bg-dark border border-secondary me-1 mb-1 p-2">${t}</span>`)
+            .join('');
+        }
 
-      // Render tech stack tags
-      if (techEl) {
-        techEl.innerHTML = data.tech
-          .map(t => `<span class="badge rounded-pill bg-dark border border-secondary me-1 mb-1 p-2">${t}</span>`)
-          .join('');
-      }
+        // Render source code link
+        if (sourceBtn) {
+          if (data.github) {
+            sourceBtn.href = data.github;
+            sourceBtn.style.display = 'inline-flex';
+          } else {
+            sourceBtn.style.display = 'none';
+          }
+        }
 
-      // Render source code link
-      if (sourceBtn) {
-        if (data.github) {
-          sourceBtn.href = data.github;
-          sourceBtn.style.display = 'inline-flex';
+        // Open Bootstrap modal
+        if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+          const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+          bsModal.show();
         } else {
-          sourceBtn.style.display = 'none';
+          modalEl.classList.add('show');
+          modalEl.style.display = 'block';
+          document.body.classList.add('modal-open');
+        }
+        return;
+      }
+
+      // 2. Handle Close button click inside projectDetailModal
+      const closeBtn = e.target.closest('#projectDetailModal [data-bs-dismiss="modal"], #projectDetailModal .btn-close');
+      if (closeBtn) {
+        e.preventDefault();
+        const modalEl = document.getElementById('projectDetailModal');
+        if (!modalEl) return;
+
+        if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+          const bsModal = bootstrap.Modal.getInstance(modalEl) || bootstrap.Modal.getOrCreateInstance(modalEl);
+          bsModal.hide();
+        } else {
+          modalEl.classList.remove('show');
+          modalEl.style.display = 'none';
+          document.body.classList.remove('modal-open');
         }
       }
-
-      // Open Bootstrap modal
-      const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
-      bsModal.show();
     });
   }
 

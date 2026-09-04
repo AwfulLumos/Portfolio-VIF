@@ -200,6 +200,18 @@ body {
     font-size: 0.88rem;
 }
 
+.cv-section a {
+    color: var(--black-soft);
+    text-decoration: underline;
+    font-weight: 500;
+    word-break: break-word;
+    transition: color 0.2s ease;
+}
+
+.cv-section a:hover {
+    color: var(--black);
+}
+
 /* Entry Styles */
 .cv-entry {
     margin-bottom: 12px;
