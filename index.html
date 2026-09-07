@@ -169,11 +169,114 @@
   <!-- Scroll Progress Indicator -->
   <div id="scroll-progress" class="scroll-progress-bar" aria-hidden="true"></div>
 
-  <!-- Page Intro Overlay -->
-  <div id="page-intro" role="presentation" aria-hidden="true">
-    <span class="intro-logo">VIF.Dev</span>
-    <div class="intro-bar"></div>
-    <span class="intro-tagline">Full Stack Developer</span>
+  <!-- Page Intro / High-Tech Loading HUD -->
+  <div id="page-intro" class="loader-active" role="dialog" aria-modal="true" aria-label="Loading VIF.Dev Portfolio">
+    <!-- Ambient Background Glow & Grid -->
+    <div class="loader-backdrop-glow" aria-hidden="true"></div>
+    <div class="loader-grid-bg" aria-hidden="true"></div>
+
+    <!-- Cyberpunk HUD Corner Accents -->
+    <div class="loader-corner top-left" aria-hidden="true">
+      <span class="corner-cross">+</span>
+      <span class="corner-label">SYS_INIT // v2.4</span>
+    </div>
+    <div class="loader-corner top-right" aria-hidden="true">
+      <span class="corner-label">STATUS // OPTIMAL</span>
+      <span class="corner-cross">+</span>
+    </div>
+    <div class="loader-corner bottom-left" aria-hidden="true">
+      <span class="corner-cross">+</span>
+      <span class="corner-label">LATENCY &lt; 12ms</span>
+    </div>
+    <div class="loader-corner bottom-right" aria-hidden="true">
+      <span class="corner-label">BUILD 2026.Q1</span>
+      <span class="corner-cross">+</span>
+    </div>
+
+    <!-- Center Card -->
+    <div class="loader-card">
+      <!-- HUD Top Bar -->
+      <div class="loader-hud-header">
+        <div class="loader-status-badge">
+          <span class="status-pulse-dot"></span>
+          <span class="status-badge-text" id="loader-live-badge">SYSTEM INITIALIZING</span>
+        </div>
+        <div class="loader-sys-info">
+          <i class="bi bi-shield-lock"></i>
+          <span>SECURE PROTOCOL</span>
+        </div>
+      </div>
+
+      <!-- Orbital Hologram & Monogram -->
+      <div class="loader-visual-hub" aria-hidden="true">
+        <div class="loader-orbit orbit-outer"></div>
+        <div class="loader-orbit orbit-inner"></div>
+        <div class="loader-orbit-glow"></div>
+        <div class="loader-core-icon">
+          <i class="bi bi-code-slash"></i>
+        </div>
+      </div>
+
+      <!-- Brand Typography -->
+      <div class="loader-brand">
+        <h1 class="loader-title">VIF<span class="loader-accent">.Dev</span></h1>
+        <p class="loader-subtitle">VOUN IRISH FLORENCE DEJUMO</p>
+        <div class="loader-role-wrapper">
+          <span class="loader-role-tag">FULL STACK DEVELOPER</span>
+        </div>
+      </div>
+
+      <!-- Live Boot Terminal -->
+      <div class="loader-terminal" aria-live="polite">
+        <div class="terminal-bar">
+          <div class="term-dots">
+            <span class="term-dot red"></span>
+            <span class="term-dot yellow"></span>
+            <span class="term-dot green"></span>
+          </div>
+          <span class="term-title">boot_sequence.sh</span>
+        </div>
+        <div class="terminal-output">
+          <span class="term-prompt">&gt;</span>
+          <span class="term-message" id="loader-terminal-text">Booting core design tokens...</span>
+          <span class="term-cursor" aria-hidden="true">_</span>
+        </div>
+      </div>
+
+      <!-- Precision Progress Bar & Metrics -->
+      <div class="loader-progress-section">
+        <div class="progress-meta">
+          <span class="progress-label" id="loader-status-label">Mounting modules...</span>
+          <span class="progress-number" id="loader-percentage">0%</span>
+        </div>
+        <div class="progress-track-wrapper">
+          <div class="loader-progress-track">
+            <div class="loader-progress-fill" id="loader-progress-bar" style="width: 0%;">
+              <div class="progress-glow-head"></div>
+            </div>
+          </div>
+          <div class="progress-ticks" aria-hidden="true">
+            <span>0%</span>
+            <span>25%</span>
+            <span>50%</span>
+            <span>75%</span>
+            <span>100%</span>
+          </div>
+        </div>
+        <div class="progress-sub-meta">
+          <span class="comp-counter" id="loader-component-count">Components: 0 / 10</span>
+          <span class="status-ping"><i class="bi bi-cpu"></i> All Engines Active</span>
+        </div>
+      </div>
+
+      <!-- Micro Tech Stack Pills -->
+      <div class="loader-chips" aria-hidden="true">
+        <span class="loader-chip"><i class="bi bi-filetype-js"></i> JavaScript</span>
+        <span class="loader-chip"><i class="bi bi-filetype-tsx"></i> React</span>
+        <span class="loader-chip"><i class="bi bi-database"></i> Spring / Laravel</span>
+        <span class="loader-chip"><i class="bi bi-gem"></i> Modern UI</span>
+      </div>
+    </div>
   </div>
 
   <!-- Cursor Glow Orb -->

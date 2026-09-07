@@ -679,12 +679,91 @@
 }
 
 @media (max-width: 576px) {
+  .projects-filter-container {
+    gap: 0.45rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-filter-btn {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.775rem;
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .project-card {
+    padding: 1rem;
+    border-radius: var(--radius-md);
+  }
+
+  .project-image {
+    max-height: 180px;
+  }
+
+  .project-info h3 {
+    font-size: 1.15rem;
+  }
+
+  .project-info p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .project-meta-row {
+    gap: 0.4rem;
+  }
+
+  .project-category,
+  .project-pill-badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.65rem;
+  }
+
+  .project-tech {
+    gap: 0.35rem;
+  }
+
+  .project-tech span {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .project-links .btn {
+    min-height: 44px;
+    font-size: 0.85rem;
+  }
+
   .modal-project-img-wrapper {
-    min-height: 220px;
+    min-height: 200px;
     padding: 0.5rem;
   }
 
   .modal-project-img-wrapper img#modalProjectImg {
-    max-height: 320px;
+    max-height: 260px;
+  }
+
+  .modal-gallery-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .project-card {
+    padding: 0.875rem;
+  }
+
+  .project-info h3 {
+    font-size: 1.05rem;
+  }
+
+  .project-thumb {
+    min-width: 60px;
+  }
+
+  .project-thumb img {
+    width: 52px;
+    height: 34px;
   }
 }

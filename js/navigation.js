@@ -49,12 +49,18 @@ class NavigationManager {
       e.preventDefault();
 
       // Close mobile menu if open
-      const navbarCollapse = document.querySelector('.navbar-collapse.show');
-      if (navbarCollapse) {
+      const navbarCollapse = document.querySelector('.navbar-collapse');
+      if (navbarCollapse && navbarCollapse.classList.contains('show')) {
         try {
-          const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-          if (bsCollapse) bsCollapse.hide();
-        } catch (err) { /* Bootstrap may not be ready */ }
+          if (window.bootstrap && bootstrap.Collapse) {
+            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse, { toggle: false });
+            if (bsCollapse) bsCollapse.hide();
+          } else {
+            navbarCollapse.classList.remove('show');
+          }
+        } catch (err) {
+          navbarCollapse.classList.remove('show');
+        }
       }
 
       // Re-fetch navbar height each time (it may change with scroll state)

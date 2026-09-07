@@ -50,6 +50,9 @@
   async function initApp() {
     log('🚀 Initializing VIF.Dev Portfolio...', 'info');
 
+    // Start HUD loading screen controller
+    const loadingScreen = initLoadingScreen();
+
     try {
       // Check if we're using component loading or static HTML
       const hasPlaceholders = document.querySelector('#navbar-placeholder');
@@ -65,10 +68,135 @@
 
       log('✅ Portfolio initialized successfully!', 'success');
 
+      // Complete loading screen animation
+      if (loadingScreen) {
+        loadingScreen.complete();
+      }
+
     } catch (error) {
       log(`❌ Initialization error: ${error.message}`, 'error');
       console.error(error);
+      if (loadingScreen) {
+        loadingScreen.complete();
+      }
     }
+  }
+
+  /**
+   * High-Tech Loading HUD Controller
+   */
+  function initLoadingScreen() {
+    const loaderEl = document.getElementById('page-intro');
+    if (!loaderEl) return null;
+
+    const progressBar = document.getElementById('loader-progress-bar');
+    const percentText = document.getElementById('loader-percentage');
+    const statusLabel = document.getElementById('loader-status-label');
+    const terminalText = document.getElementById('loader-terminal-text');
+    const compCountText = document.getElementById('loader-component-count');
+    const liveBadge = document.getElementById('loader-live-badge');
+
+    let currentProgress = 5;
+    let targetProgress = 20;
+    let isComplete = false;
+    let isDismissed = false;
+    let animationFrameId = null;
+
+    const componentMessages = {
+      navbar: 'Loading navigation architecture...',
+      hero: 'Assembling hero showcase...',
+      about: 'Compiling developer bio & core values...',
+      personality: 'Loading traits & working philosophy...',
+      skills: 'Structuring tech taxonomy & skills...',
+      education: 'Mounting academic & leadership history...',
+      certifications: 'Verifying credentials & badges...',
+      projects: 'Rendering featured projects & demos...',
+      contact: 'Connecting contact channels & EmailJS...',
+      footer: 'Finalizing layout and system readiness...'
+    };
+
+    function updateUI(val) {
+      const rounded = Math.min(100, Math.round(val));
+      if (progressBar) progressBar.style.width = `${rounded}%`;
+      if (percentText) percentText.textContent = `${rounded}%`;
+    }
+
+    function setTerminalMessage(msg) {
+      if (terminalText && msg) {
+        terminalText.textContent = msg;
+      }
+    }
+
+    function animateProgress() {
+      if (isDismissed) return;
+
+      if (currentProgress < targetProgress) {
+        const step = Math.max(0.4, (targetProgress - currentProgress) * 0.12);
+        currentProgress = Math.min(targetProgress, currentProgress + step);
+        updateUI(currentProgress);
+      }
+
+      if (isComplete && currentProgress >= 99.2) {
+        currentProgress = 100;
+        updateUI(100);
+        if (liveBadge) {
+          liveBadge.textContent = 'SYSTEM ONLINE';
+          liveBadge.style.color = '#22c55e';
+        }
+        if (statusLabel) {
+          statusLabel.textContent = 'All modules initialized';
+        }
+        setTimeout(dismissLoader, 300);
+        return;
+      }
+
+      animationFrameId = requestAnimationFrame(animateProgress);
+    }
+
+    // Start progress loop
+    animationFrameId = requestAnimationFrame(animateProgress);
+
+    // Component Progress Listener
+    function onComponentProgress(e) {
+      const { loadedCount, totalCount, componentName, percentage } = e.detail;
+      if (compCountText) {
+        compCountText.textContent = `Components: ${loadedCount} / ${totalCount}`;
+      }
+      if (statusLabel) {
+        statusLabel.textContent = `Loading ${componentName}...`;
+      }
+      if (componentMessages[componentName]) {
+        setTerminalMessage(componentMessages[componentName]);
+      }
+      // Target progress scales up to 92% during component fetching
+      targetProgress = Math.max(targetProgress, Math.round(percentage * 0.92));
+    }
+
+    document.addEventListener('componentProgress', onComponentProgress);
+
+    function dismissLoader() {
+      if (isDismissed) return;
+      isDismissed = true;
+      document.removeEventListener('componentProgress', onComponentProgress);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+
+      loaderEl.classList.add('loader-hiding');
+      loaderEl.setAttribute('aria-hidden', 'true');
+
+      setTimeout(() => {
+        loaderEl.style.display = 'none';
+        document.dispatchEvent(new CustomEvent('loaderDismissed'));
+      }, 650);
+    }
+
+    return {
+      complete: () => {
+        isComplete = true;
+        targetProgress = 100;
+        setTerminalMessage('System initialization complete. Launching...');
+      },
+      dismiss: dismissLoader
+    };
   }
 
   /**
@@ -106,20 +234,13 @@
 
     // Apply loading optimizations to dynamically injected media
     optimizeDeferredMedia();
-
-
   }
 
   /**
    * Page load fade-in animation
    */
   function initPageLoadAnimation() {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-
-    requestAnimationFrame(() => {
-      document.body.style.opacity = '1';
-    });
+    document.body.classList.add('loaded');
   }
 
   /**
