@@ -42,30 +42,36 @@ class InteractiveComponents {
       },
       healthwatch: {
         title: 'HealthWatch Olongapo',
-        category: 'Health Application',
-        description: 'Designed and developed a health records management system to enhance patient data collection, storage, monitoring and appointment scheduling. The system enables healthcare providers to manage patient records, track patient status, schedule appointments and maintain health information through a user-friendly interface.',
+        category: 'Client Commission / Healthcare System',
+        description: 'Commissioned client project designed and developed as a centralized health records and clinical workflow management platform. Empowers healthcare providers to manage patient profiles, track medical history, coordinate appointments, and monitor patient health statuses through an intuitive, secure interface.',
         image: 'assets/images/HealthWatchOlongapo.png',
         github: 'https://github.com/AwfulLumos/HealthWatchOlongapo',
         tech: ['React.js', 'Node.js', 'MongoDB', 'Express', 'TypeScript', 'Supabase'],
         highlights: [
-          'Centralized health records management system for streamlined patient data entry.',
-          'Interactive doctor-patient appointment scheduling & record history tracking.',
-          'Strong TypeScript backend powered by Express.js and Supabase database.',
+          'Commissioned Healthcare Platform: End-to-end patient records management system for streamlined clinical data entry.',
+          'Interactive doctor-patient appointment scheduling & comprehensive medical record history tracking.',
+          'Type-Safe Architecture: Strong TypeScript backend powered by Express.js and Supabase relational database.',
           'Production cloud deployment with frontend hosted on Vercel and backend microservices on Render.'
         ]
       },
-      bitebound: {
-        title: 'BiteBound Application',
-        category: 'Recipe App',
-        description: 'A modern recipe application designed to help users discover, browse, and save recipes with a clean, mobile-friendly experience. Includes recipe details, ingredient lists, and easy navigation for exploring new meals.',
-        image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=400&q=70',
-        github: 'https://github.com/AwfulLumos/BiteBoundApplication',
-        tech: ['React Native', 'Firebase', 'Node.js', 'API Integration'],
+      smartserve: {
+        title: 'SmartServe ',
+        category: 'Client Commission / Full Stack System',
+        description: 'A comprehensive school cafeteria management system built on the MERN stack with dedicated portals for Admin/Staff and Students. Architected end-to-end features including order processing queues, inventory & menu management, BYOC (Bring Your Own Container) eco-points rewards, QR code student identification, and automated demand forecasting analytics.',
+        image: 'assets/images/SmartServeAnalytics.png',
+        images: [
+          { src: 'assets/images/SmartServeAnalytics.png', label: 'Admin Analytics Dashboard', icon: 'bi-graph-up' },
+          { src: 'assets/images/SmartServeMobile.png', label: 'Student Mobile Portal', icon: 'bi-phone' },
+          { src: 'assets/images/SmartServeLogin.png', label: 'Login & Security Gateway', icon: 'bi-shield-lock' }
+        ],
+        github: null,
+        tech: ['React 18', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'JWT Auth', 'Socket.IO', 'Vercel Serverless'],
         highlights: [
-          'Cross-platform mobile application built with React Native for iOS and Android.',
-          'Dynamic recipe API integration with real-time Firebase cloud database synchronization.',
-          'User favorite recipe bookmarking, interactive ingredient checklists, and step-by-step instructions.',
-          'Clean, tactile mobile UI optimized for quick navigation while cooking.'
+          'Dual Portal Architecture: Dedicated Admin/Staff management dashboard and mobile-friendly Student portal.',
+          'Secure Dual JWT Authentication: HttpOnly cookies, 5-strike account lockout defense, and role-based access control.',
+          'BYOC Eco-Points & Rewards: QR-powered Bring Your Own Container sustainability program with reward redemption catalog.',
+          'Demand Forecasting Analytics: Built-in predictive forecasting algorithms (Linear Regression & Exponential Smoothing) for inventory and revenue planning.',
+          '4-Phase Enterprise Security: Helmet HTTP protection, express-mongo-sanitize NoSQL prevention, rate limiting, and binary magic-byte upload validation.'
         ]
       },
       eportfolio: {
@@ -456,6 +462,24 @@ class InteractiveComponents {
         }
         if (descEl) descEl.textContent = data.description;
 
+        // Render multi-image gallery switcher if available
+        const galleryNavEl = document.getElementById('modalGalleryNav');
+        if (galleryNavEl) {
+          if (data.images && data.images.length > 1) {
+            galleryNavEl.style.display = 'flex';
+            galleryNavEl.innerHTML = data.images.map((item, idx) => `
+              <button type="button" class="modal-gallery-btn ${idx === 0 ? 'active' : ''}" data-img-src="${item.src}">
+                ${item.icon ? `<i class="bi ${item.icon} me-1"></i>` : ''}
+                <img src="${item.src}" alt="${item.label}" loading="lazy" />
+                <span>${item.label}</span>
+              </button>
+            `).join('');
+          } else {
+            galleryNavEl.style.display = 'none';
+            galleryNavEl.innerHTML = '';
+          }
+        }
+
         // Render highlights list
         if (highlightsEl) {
           highlightsEl.innerHTML = data.highlights
@@ -492,7 +516,21 @@ class InteractiveComponents {
         return;
       }
 
-      // 2. Handle Close button click inside projectDetailModal
+      // 2. Handle modal gallery thumbnail switcher click
+      const galleryBtn = e.target.closest('.modal-gallery-btn');
+      if (galleryBtn) {
+        e.preventDefault();
+        const imgSrc = galleryBtn.dataset.imgSrc;
+        const imgEl = document.getElementById('modalProjectImg');
+        if (imgEl && imgSrc) {
+          imgEl.src = imgSrc;
+          galleryBtn.parentElement.querySelectorAll('.modal-gallery-btn').forEach(btn => btn.classList.remove('active'));
+          galleryBtn.classList.add('active');
+        }
+        return;
+      }
+
+      // 3. Handle Close button click inside projectDetailModal
       const closeBtn = e.target.closest('#projectDetailModal [data-bs-dismiss="modal"], #projectDetailModal .btn-close');
       if (closeBtn) {
         e.preventDefault();

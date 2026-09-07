@@ -126,14 +126,15 @@
               </div>
               <div class="project-info">
                 <div class="project-meta-row">
-                  <span class="project-category">Health Application</span>
-                  <span class="project-pill-badge badge-health"><i class="bi bi-shield-check"></i> TypeScript &
-                    Supabase</span>
+                  <span class="project-category">Healthcare System</span>
+                  <span class="project-pill-badge badge-commission"><i class="bi bi-briefcase-fill"></i> Client
+                    Commission</span>
                 </div>
                 <h3>HealthWatch Olongapo</h3>
                 <p>
-                  Centralized health records and appointment scheduling system streamlining patient data
-                  management and clinic workflows. Built with TypeScript, React, Express, and Supabase.
+                  Commissioned healthcare records management and clinic appointment scheduling system streamlining
+                  patient
+                  data collection, doctor schedules, and clinical workflows with TypeScript, React, and Supabase.
                 </p>
                 <div class="project-tech">
                   <span>TypeScript</span>
@@ -155,40 +156,38 @@
           </div>
         </div>
 
-        <!-- Project 4: BiteBound Application -->
-        <div class="carousel-item" data-category="mobile" data-project-id="bitebound">
+        <!-- Project 4: SmartServe  -->
+        <div class="carousel-item" data-category="fullstack" data-project-id="smartserve">
           <div class="project-card">
             <div class="project-card-inner">
               <div class="project-image">
-                <img
-                  src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=400&q=70"
-                  alt="BiteBound Application" loading="lazy" decoding="async" fetchpriority="low" width="600"
-                  height="400" />
+                <img src="assets/images/SmartServeAnalytics.png" alt="SmartServe  - School Cafeteria Management System"
+                  loading="lazy" decoding="async" fetchpriority="low" width="600" height="400" />
               </div>
               <div class="project-info">
                 <div class="project-meta-row">
-                  <span class="project-category">Recipe App</span>
-                  <span class="project-pill-badge badge-mobile"><i class="bi bi-phone"></i> Mobile App</span>
+                  <span class="project-category">Full Stack Application</span>
+                  <span class="project-pill-badge badge-commission"><i class="bi bi-briefcase-fill"></i> Client
+                    Commission</span>
                 </div>
-                <h3>BiteBound Application</h3>
+                <h3>SmartServe </h3>
                 <p>
-                  Cross-platform recipe discovery mobile app featuring dynamic ingredient filtering,
-                  recipe bookmarking, and cloud synchronization built with React Native and Firebase.
+                  Comprehensive school cafeteria management system built on the MERN stack with dedicated portals for
+                  Admin/Staff and Students, featuring real-time order processing, BYOC eco-rewards, and AI-driven demand
+                  forecasting.
                 </p>
                 <div class="project-tech">
-                  <span>React Native</span>
-                  <span>Firebase</span>
+                  <span>React 18</span>
                   <span>Node.js</span>
-                  <span>API Integration</span>
+                  <span>Express</span>
+                  <span>MongoDB</span>
+                  <span>Tailwind CSS</span>
+                  <span>JWT Auth</span>
                 </div>
                 <div class="project-links">
-                  <button type="button" class="btn btn-primary btn-project-detail" data-project-id="bitebound">
+                  <button type="button" class="btn btn-primary btn-project-detail" data-project-id="smartserve">
                     <i class="bi bi-info-circle me-1"></i> View Details
                   </button>
-                  <a href="https://github.com/AwfulLumos/BiteBoundApplication" class="btn btn-outline" target="_blank"
-                    rel="noopener noreferrer">
-                    <i class="bi bi-github me-1"></i> Source Code
-                  </a>
                 </div>
               </div>
             </div>
@@ -266,11 +265,11 @@
           fetchpriority="low" width="100" height="60" />
         <span class="thumb-title">HealthWatch</span>
       </button>
-      <button class="project-thumb" data-bs-target="#projectsCarousel" data-bs-slide-to="3" data-category="mobile"
-        data-project-id="bitebound" aria-label="Go to project 4">
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=100&h=60&q=60"
-          alt="BiteBound" loading="lazy" decoding="async" fetchpriority="low" width="100" height="60" />
-        <span class="thumb-title">BiteBound</span>
+      <button class="project-thumb" data-bs-target="#projectsCarousel" data-bs-slide-to="3" data-category="fullstack"
+        data-project-id="smartserve" aria-label="Go to project 4">
+        <img src="assets/images/SmartServeLogin.png" alt="SmartServe" loading="lazy" decoding="async"
+          fetchpriority="low" width="100" height="60" />
+        <span class="thumb-title">SmartServe</span>
       </button>
       <button class="project-thumb" data-bs-target="#projectsCarousel" data-bs-slide-to="4" data-category="academic"
         data-project-id="eportfolio" aria-label="Go to project 5">
@@ -303,6 +302,7 @@
         <div class="modal-body py-3">
           <div class="modal-project-img-wrapper mb-4">
             <img id="modalProjectImg" src="" alt="Project Preview" class="img-fluid rounded border border-secondary" />
+            <div id="modalGalleryNav" class="modal-gallery-nav mt-3" style="display: none;"></div>
           </div>
           <div class="mb-4">
             <h5 class="modal-section-title"><i class="bi bi-text-paragraph text-accent me-2"></i>Overview</h5>
