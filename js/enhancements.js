@@ -47,22 +47,32 @@
   // ============================================
 
   function animateCounter(element) {
-    const target = parseInt(element.getAttribute('data-target')) || 0;
-    const duration = 2000; // 2 seconds
-    const increment = target / (duration / 16); // 60fps
-    let current = 0;
+    if (element.getAttribute('data-animated') === 'true') return;
+    element.setAttribute('data-animated', 'true');
 
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        element.textContent = target;
-        clearInterval(timer);
+    const target = parseInt(element.getAttribute('data-target'), 10) || 0;
+    const suffix = element.getAttribute('data-suffix') || '';
+    const duration = 1400; // 1.4 seconds smooth count
+    const startTime = performance.now();
+
+    function step(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out expo for snappy start and gentle settle
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = Math.floor(easeProgress * target);
+      element.textContent = current + suffix;
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
       } else {
-        element.textContent = Math.floor(current);
+        element.textContent = target + suffix;
+        element.classList.add('counting');
+        setTimeout(() => element.classList.remove('counting'), 300);
       }
-      element.classList.add('counting');
-      setTimeout(() => element.classList.remove('counting'), 300);
-    }, 16);
+    }
+
+    requestAnimationFrame(step);
   }
 
   // ============================================
@@ -335,7 +345,93 @@
   }
 
   // ============================================
-  // 14. MAIN INITIALIZATION
+  // 14. SCROLL PROGRESS BAR
+  // ============================================
+
+  function initScrollProgressBar() {
+    const progressBar = document.getElementById('scroll-progress');
+    if (!progressBar) return;
+
+    function updateProgress() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = `${Math.min(Math.max(progress, 0), 100)}%`;
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+
+  // ============================================
+  // 15. RECRUITER COPY EMAIL QUICK-ACTION
+  // ============================================
+
+  function initCopyEmail() {
+    const copyBtns = document.querySelectorAll('#heroCopyEmailBtn, .btn-copy-email');
+    const emailToCopy = 'vounirishflorence.dejumo@gmail.com';
+
+    let toast = document.querySelector('.copy-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'copy-toast';
+      toast.innerHTML = '<i class="bi bi-check-circle-fill"></i> <span>Email copied to clipboard!</span>';
+      document.body.appendChild(toast);
+    }
+
+    copyBtns.forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+          await navigator.clipboard.writeText(emailToCopy);
+          btn.classList.add('copied');
+          const originalText = btn.querySelector('.copy-text')?.textContent || 'Copy Email';
+          const textEl = btn.querySelector('.copy-text');
+          if (textEl) textEl.textContent = 'Copied!';
+
+          toast.classList.add('show');
+          setTimeout(() => {
+            toast.classList.remove('show');
+            btn.classList.remove('copied');
+            if (textEl) textEl.textContent = originalText;
+          }, 2500);
+        } catch (err) {
+          // Fallback
+          window.location.href = `mailto:${emailToCopy}`;
+        }
+      });
+    });
+  }
+
+  // ============================================
+  // 16. CARD TILT MICRO-INTERACTION
+  // ============================================
+
+  function initCardTilt() {
+    if (isReducedMotion || window.innerWidth < 992) return;
+
+    const tiltCards = document.querySelectorAll('.project-card, .trait-card, .education-summary-card');
+    tiltCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -4;
+        const rotateY = ((x - centerX) / centerX) * 4;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+
+  // ============================================
+  // 17. MAIN INITIALIZATION
   // ============================================
 
   function init() {
@@ -350,10 +446,8 @@
       initScrollAnimations();
     }, 100);
 
-    // Enhance project cards
+    // Enhance project cards & badges
     enhanceProjectCards();
-
-    // Enhance tech badges
     enhanceTechBadges();
 
     // Initialize button enhancements
@@ -364,6 +458,15 @@
 
     // Initialize cursor glow
     initCursorGlow();
+
+    // Initialize top scroll progress bar
+    initScrollProgressBar();
+
+    // Initialize recruiter quick action (copy email)
+    initCopyEmail();
+
+    // Initialize subtle card tilt
+    initCardTilt();
 
     // Parallax (skip for reduced-motion users)
     if (!isReducedMotion) {

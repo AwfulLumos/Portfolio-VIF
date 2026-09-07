@@ -24,12 +24,10 @@
   width: 700px;
   height: 700px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(163, 176, 135, 0.18) 0%,
-    rgba(163, 176, 135, 0.08) 45%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(163, 176, 135, 0.18) 0%,
+      rgba(163, 176, 135, 0.08) 45%,
+      transparent 70%);
   top: -15%;
   left: -15%;
   animation: auroraBlob1 18s ease-in-out infinite alternate;
@@ -44,12 +42,10 @@
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 248, 212, 0.12) 0%,
-    rgba(255, 248, 212, 0.06) 40%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(255, 248, 212, 0.12) 0%,
+      rgba(255, 248, 212, 0.06) 40%,
+      transparent 70%);
   bottom: -10%;
   right: -10%;
   animation: auroraBlob2 22s ease-in-out infinite alternate;
@@ -64,12 +60,10 @@
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(67, 86, 99, 0.25) 0%,
-    rgba(67, 86, 99, 0.12) 40%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(67, 86, 99, 0.25) 0%,
+      rgba(67, 86, 99, 0.12) 40%,
+      transparent 70%);
   top: 30%;
   right: 5%;
   animation: auroraBlob3 14s ease-in-out infinite alternate;
@@ -79,23 +73,64 @@
 }
 
 @keyframes auroraBlob1 {
-  0%   { transform: translate(0, 0) scale(1); opacity: 0.7; }
-  33%  { transform: translate(80px, 60px) scale(1.08); opacity: 1; }
-  66%  { transform: translate(40px, 120px) scale(0.95); opacity: 0.8; }
-  100% { transform: translate(100px, 80px) scale(1.05); opacity: 0.9; }
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.7;
+  }
+
+  33% {
+    transform: translate(80px, 60px) scale(1.08);
+    opacity: 1;
+  }
+
+  66% {
+    transform: translate(40px, 120px) scale(0.95);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translate(100px, 80px) scale(1.05);
+    opacity: 0.9;
+  }
 }
 
 @keyframes auroraBlob2 {
-  0%   { transform: translate(0, 0) scale(1); opacity: 0.6; }
-  33%  { transform: translate(-60px, -40px) scale(1.1); opacity: 0.9; }
-  66%  { transform: translate(-100px, -80px) scale(0.97); opacity: 0.7; }
-  100% { transform: translate(-70px, -50px) scale(1.05); opacity: 0.85; }
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+
+  33% {
+    transform: translate(-60px, -40px) scale(1.1);
+    opacity: 0.9;
+  }
+
+  66% {
+    transform: translate(-100px, -80px) scale(0.97);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translate(-70px, -50px) scale(1.05);
+    opacity: 0.85;
+  }
 }
 
 @keyframes auroraBlob3 {
-  0%   { transform: translate(0, 0) scale(1); opacity: 0.5; }
-  50%  { transform: translate(-50px, 40px) scale(1.12); opacity: 0.8; }
-  100% { transform: translate(30px, -30px) scale(0.92); opacity: 0.6; }
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translate(-50px, 40px) scale(1.12);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translate(30px, -30px) scale(0.92);
+    opacity: 0.6;
+  }
 }
 
 /* Hero Background Effects */
@@ -107,12 +142,10 @@
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(163, 176, 135, 0.1) 0%,
-    rgba(255, 248, 212, 0.05) 30%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse at center,
+      rgba(163, 176, 135, 0.1) 0%,
+      rgba(255, 248, 212, 0.05) 30%,
+      transparent 70%);
   animation: heroGlow 6s ease-in-out infinite alternate;
   pointer-events: none;
 }
@@ -133,6 +166,7 @@
     opacity: 0.5;
     transform: translate(-50%, -50%) scale(1);
   }
+
   100% {
     opacity: 0.8;
     transform: translate(-50%, -50%) scale(1.1);
@@ -172,8 +206,17 @@
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.2); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
 }
 
 .hero-title {
@@ -219,8 +262,15 @@
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 /* Hero Buttons */
@@ -237,8 +287,69 @@
 }
 
 .hero-buttons .btn {
-  min-width: 160px;
+  min-width: 150px;
   max-width: 100%;
+}
+
+.btn-copy-email {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+}
+
+.btn-copy-email.copied {
+  background: rgba(163, 176, 135, 0.25) !important;
+  border-color: #A3B087 !important;
+  color: #FFF8D4 !important;
+}
+
+/* Hero Social Quick-Pills */
+.hero-social-pills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease 0.75s forwards;
+  opacity: 0;
+}
+
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-light, #FFF8D4);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-pill i {
+  font-size: 1rem;
+  color: var(--color-accent, #A3B087);
+  transition: transform 0.3s ease;
+}
+
+.social-pill:hover {
+  background: rgba(163, 176, 135, 0.15);
+  border-color: rgba(163, 176, 135, 0.4);
+  color: #FFF8D4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px -5px rgba(163, 176, 135, 0.3);
+}
+
+.social-pill:hover i {
+  transform: scale(1.15);
 }
 
 /* Scroll Indicator */
@@ -301,13 +412,29 @@
 }
 
 @keyframes scrollWheel {
-  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
-  50% { transform: translateX(-50%) translateY(6px); opacity: 0.5; }
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(6px);
+    opacity: 0.5;
+  }
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes fadeInUp {
@@ -315,6 +442,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -326,6 +454,7 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -338,42 +467,42 @@
     padding: 5rem 0 4rem;
     min-height: calc(100vh - 60px);
   }
-  
+
   .hero-content {
     padding: 0 1rem;
   }
-  
+
   .hero-title {
     letter-spacing: -1px;
     margin-bottom: 1rem;
   }
-  
+
   .hero-subtitle {
     margin-bottom: 1.5rem;
     font-size: clamp(1rem, 4vw, 1.25rem);
   }
-  
+
   .hero-badge {
     padding: 0.4rem 1rem;
     font-size: 0.8rem;
     margin-bottom: 1rem;
   }
-  
+
   .hero-buttons {
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
   }
-  
+
   .hero-buttons .btn {
     width: 100%;
     max-width: 280px;
   }
-  
+
   .scroll-indicator {
     bottom: 1.5rem;
   }
-  
+
   .scroll-indicator .mouse {
     width: 22px;
     height: 34px;
@@ -384,38 +513,38 @@
   .hero-section {
     padding: 4rem 0 3rem;
   }
-  
+
   .hero-content {
     padding: 0 0.75rem;
   }
-  
+
   .hero-title {
     font-size: clamp(1.75rem, 10vw, 2.5rem);
     letter-spacing: -0.5px;
   }
-  
+
   .hero-subtitle {
     font-size: 0.95rem;
     line-height: 1.6;
   }
-  
+
   .hero-badge {
     font-size: 0.75rem;
     padding: 0.35rem 0.875rem;
     gap: 0.35rem;
   }
-  
+
   .hero-badge .status-dot {
     width: 6px;
     height: 6px;
   }
-  
+
   .hero-buttons .btn {
     padding: 0.75rem 1.25rem;
     font-size: 0.9rem;
     max-width: 100%;
   }
-  
+
   .scroll-indicator {
     bottom: 1rem;
   }
@@ -425,7 +554,7 @@
   .hero-title {
     font-size: 1.5rem;
   }
-  
+
   .hero-subtitle {
     font-size: 0.875rem;
   }

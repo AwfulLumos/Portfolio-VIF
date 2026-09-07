@@ -26,14 +26,14 @@ class InteractiveComponents {
         ]
       },
       digistall: {
-        title: 'DigiStall',
-        category: 'Web & Mobile Application',
-        description: "Selected as one of the Startup Founders and awarded the ₱41,580.00 Digital Innovation Fund grant by the Naga City Government. Served as developer of a web and mobile-based stall management system for Naga City's public markets, improving stall applications, payment tracking, and market compliance. Built with Vue.js, React Native, Node.js, and PostgreSQL.",
+        title: 'DigiStall (Capstone Project)',
+        category: 'Capstone / Web & Mobile Application',
+        description: "Undergraduate Capstone Project selected under the Idea2Startup Program and awarded the ₱41,580.00 Digital Innovation Fund grant by the Naga City Government. Served as lead developer of a web and mobile-based stall management system for Naga City's public markets, improving stall applications, payment tracking, and market compliance. Built with Vue.js, React Native, Node.js, and PostgreSQL.",
         image: 'assets/images/DigiStall.png',
         github: null,
         tech: ['React.js', 'React Native', 'Vue.js', 'PostgreSQL', 'Docker'],
         highlights: [
-          'Recognized startup founder & ₱41,580.00 Digital Innovation Fund grantee by Naga City Government.',
+          'Undergraduate Capstone Project & ₱41,580.00 Digital Innovation Fund grantee by Naga City Government.',
           'Featured in official Naga City news coverage for the Idea2Startup Batch 4 Pitching Challenge and Ceremonial Grant Turnover.',
           'Multi-platform ecosystem: Web admin portal for officials & React Native mobile app for market stallholders.',
           'Automated stall application processing, violation reporting, and digital payment tracking.',
@@ -80,20 +80,6 @@ class InteractiveComponents {
           'Interactive, fully responsive web design crafted with custom CSS animations & Bootstrap 5.',
           'Curated team reflections, embedded video galleries, and interactive historical timelines.',
           'Developed for academic excellence in The Contemporary World curriculum.'
-        ]
-      },
-      portfolio: {
-        title: 'Portfolio Website (VIF.Dev)',
-        category: 'Personal Project',
-        description: 'This website is my personal developer portfolio, designed and developed from scratch to showcase my skills, projects and experience as a developer. Built with Bootstrap 5 and custom CSS, it features smooth animations, glassmorphism design, interactive elements and is optimized for an exceptional user experience.',
-        image: 'assets/images/PortfolioWebsite.png',
-        github: 'https://github.com/AwfulLumos/Portfolio-VIF',
-        tech: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap 5', 'JSON-LD'],
-        highlights: [
-          'Custom glassmorphism design system built with CSS custom properties (tokens).',
-          'Live GitHub activity integration with client-side localStorage caching & 403 rate-limit resilience.',
-          'Modular asynchronous component loader architecture with lazy-loaded sections.',
-          'Full SEO compliance with Open Graph meta tags and structured JSON-LD schema.'
         ]
       }
     };
