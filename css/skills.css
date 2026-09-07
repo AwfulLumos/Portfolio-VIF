@@ -16,7 +16,7 @@
 
 /* Skill Category Card */
 .skill-category {
-  padding: 2rem;
+  padding: 1.5rem;
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);

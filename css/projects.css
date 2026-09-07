@@ -21,12 +21,12 @@
 
 /* Project Card */
 .project-card {
-  padding: 1.5rem 2rem;
+  padding: 1.25rem 1.75rem;
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
-  min-height: 380px;
+  min-height: 360px;
   box-sizing: border-box;
   transform: none !important;
   transition: background var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
@@ -41,7 +41,7 @@
 .project-card-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-md);
   align-items: center;
   width: 100%;
 }
