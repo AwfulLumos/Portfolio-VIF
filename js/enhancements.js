@@ -192,24 +192,29 @@
   // ============================================
 
   function enhanceButtons() {
-    // Add ripple effect to primary buttons
-    document.querySelectorAll('.btn-primary, .btn-primary-enhanced').forEach(button => {
-      button.addEventListener('click', function (e) {
-        const ripple = document.createElement('span');
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
+    // Add ripple effect via event delegation for all primary, outline, and standard action buttons
+    document.addEventListener('click', function (e) {
+      const button = e.target.closest('.btn-primary, .btn-primary-enhanced, .btn-outline, .btn-outline-enhanced, .btn-submit, .btn');
+      if (!button) return;
 
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        ripple.classList.add('ripple');
+      const ripple = document.createElement('span');
+      const rect = button.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
 
-        this.appendChild(ripple);
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      ripple.classList.add('ripple');
 
-        setTimeout(() => ripple.remove(), 600);
-      });
+      button.appendChild(ripple);
+
+      setTimeout(() => {
+        if (ripple.parentNode) {
+          ripple.remove();
+        }
+      }, 600);
     });
   }
 

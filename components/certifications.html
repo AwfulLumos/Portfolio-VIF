@@ -139,8 +139,8 @@
 
     <!-- LinkedIn Certificates Subsection -->
     <div class="linkedin-certs-section fade-in">
-      <div class="linkedin-certs-header" onclick="toggleLinkedInCerts()" role="button" tabindex="0"
-        aria-expanded="false" aria-controls="linkedinCertsContent" aria-label="Toggle LinkedIn Learning certificates">
+      <div class="linkedin-certs-header" onclick="toggleLinkedInCerts()" role="button" tabindex="0" aria-expanded="true"
+        aria-controls="linkedinCertsContent" aria-label="Toggle LinkedIn Learning certificates">
         <div class="linkedin-logo-badge">
           <i class="bi bi-linkedin"></i>
         </div>
@@ -149,14 +149,14 @@
           <p class="linkedin-certs-subtitle">49 courses completed across software development, design, and agile
             practices</p>
         </div>
-        <span class="linkedin-toggle-btn" aria-label="Expand LinkedIn certificates" aria-hidden="true">
-          <span class="btn-text">Click Here</span>
+        <span class="linkedin-toggle-btn" aria-label="Collapse LinkedIn certificates" aria-hidden="true">
+          <span class="btn-text">Collapse</span>
           <i class="bi bi-chevron-down btn-icon"></i>
         </span>
       </div>
 
-      <!-- Collapsible Content -->
-      <div id="linkedinCertsContent" class="linkedin-certs-content" style="display: none;" aria-hidden="true">
+      <!-- Collapsible Content (Visible by default) -->
+      <div id="linkedinCertsContent" class="linkedin-certs-content expanded" aria-hidden="false">
 
         <!-- Certificate Folders Grid -->
         <div class="cert-folders-grid">

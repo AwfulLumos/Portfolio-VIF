@@ -303,6 +303,24 @@ main>div[id$="-placeholder"] {
   transform: translateY(-3px);
 }
 
+/* Button Ripple Effect */
+.btn .ripple,
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(0);
+  pointer-events: none;
+  animation: ripple-fade 600ms ease-out forwards;
+}
+
+@keyframes ripple-fade {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
 /* ========================================
    Glass Morphism
    ======================================== */

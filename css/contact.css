@@ -196,12 +196,12 @@
   background: rgba(255, 255, 255, 0.25);
   transform: scale(0);
   pointer-events: none;
-  animation: ripple-fade 600ms ease-out;
+  animation: ripple-fade 600ms ease-out forwards;
 }
 
 @keyframes ripple-fade {
   to {
-    transform: scale(1);
+    transform: scale(2.5);
     opacity: 0;
   }
 }

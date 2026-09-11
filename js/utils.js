@@ -314,6 +314,7 @@ function toggleLinkedInCerts() {
   const header = document.querySelector('.linkedin-certs-header');
   const content = document.getElementById('linkedinCertsContent');
   const toggleBtn = header?.querySelector('.linkedin-toggle-btn');
+  const btnText = toggleBtn?.querySelector('.btn-text');
 
   if (!header || !content) return;
 
@@ -326,6 +327,7 @@ function toggleLinkedInCerts() {
     content.classList.remove('expanded');
     content.classList.add('collapsed');
     if (toggleBtn) toggleBtn.setAttribute('aria-label', 'Expand LinkedIn certificates');
+    if (btnText) btnText.textContent = 'Expand';
 
     // Hide after animation
     setTimeout(() => {
@@ -342,6 +344,7 @@ function toggleLinkedInCerts() {
     content.classList.add('expanded');
     content.classList.remove('collapsed');
     if (toggleBtn) toggleBtn.setAttribute('aria-label', 'Collapse LinkedIn certificates');
+    if (btnText) btnText.textContent = 'Collapse';
 
     requestAnimationFrame(() => ensureElementVisible(content));
   }
