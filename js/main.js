@@ -89,15 +89,36 @@
     const loaderEl = document.getElementById('page-intro');
     if (!loaderEl) return null;
 
+    // Fast bypass for returning visitors in the same browser session
+    const hasSeenIntro = (() => {
+      try {
+        return sessionStorage.getItem('vif_intro_shown') === 'true';
+      } catch (e) {
+        return false;
+      }
+    })();
+
+    if (hasSeenIntro) {
+      loaderEl.style.display = 'none';
+      loaderEl.setAttribute('aria-hidden', 'true');
+      return {
+        complete: () => {
+          document.dispatchEvent(new CustomEvent('loaderDismissed'));
+        },
+        dismiss: () => { }
+      };
+    }
+
     const progressBar = document.getElementById('loader-progress-bar');
     const percentText = document.getElementById('loader-percentage');
     const statusLabel = document.getElementById('loader-status-label');
     const terminalText = document.getElementById('loader-terminal-text');
     const compCountText = document.getElementById('loader-component-count');
     const liveBadge = document.getElementById('loader-live-badge');
+    const skipBtn = document.getElementById('loaderSkipBtn');
 
     let currentProgress = 5;
-    let targetProgress = 20;
+    let targetProgress = 25;
     let isComplete = false;
     let isDismissed = false;
     let animationFrameId = null;
@@ -130,24 +151,26 @@
     function animateProgress() {
       if (isDismissed) return;
 
-      if (currentProgress < targetProgress) {
-        const step = Math.max(0.4, (targetProgress - currentProgress) * 0.12);
+      if (isComplete) {
+        currentProgress += Math.max(3.5, (100 - currentProgress) * 0.4);
+        if (currentProgress >= 99.5) {
+          currentProgress = 100;
+          updateUI(100);
+          if (liveBadge) {
+            liveBadge.textContent = 'SYSTEM ONLINE';
+            liveBadge.style.color = '#22c55e';
+          }
+          if (statusLabel) {
+            statusLabel.textContent = 'All modules initialized';
+          }
+          setTimeout(dismissLoader, 150);
+          return;
+        }
+        updateUI(currentProgress);
+      } else if (currentProgress < targetProgress) {
+        const step = Math.max(0.8, (targetProgress - currentProgress) * 0.2);
         currentProgress = Math.min(targetProgress, currentProgress + step);
         updateUI(currentProgress);
-      }
-
-      if (isComplete && currentProgress >= 99.2) {
-        currentProgress = 100;
-        updateUI(100);
-        if (liveBadge) {
-          liveBadge.textContent = 'SYSTEM ONLINE';
-          liveBadge.style.color = '#22c55e';
-        }
-        if (statusLabel) {
-          statusLabel.textContent = 'All modules initialized';
-        }
-        setTimeout(dismissLoader, 300);
-        return;
       }
 
       animationFrameId = requestAnimationFrame(animateProgress);
@@ -180,14 +203,32 @@
       document.removeEventListener('componentProgress', onComponentProgress);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
 
+      try {
+        sessionStorage.setItem('vif_intro_shown', 'true');
+      } catch (e) { }
+
       loaderEl.classList.add('loader-hiding');
       loaderEl.setAttribute('aria-hidden', 'true');
 
       setTimeout(() => {
         loaderEl.style.display = 'none';
         document.dispatchEvent(new CustomEvent('loaderDismissed'));
-      }, 650);
+      }, 400);
     }
+
+    if (skipBtn) {
+      skipBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        dismissLoader();
+      });
+    }
+
+    // Hard safety timeout: guarantee dismissal within 2 seconds maximum
+    setTimeout(() => {
+      if (!isDismissed) {
+        dismissLoader();
+      }
+    }, 2000);
 
     return {
       complete: () => {

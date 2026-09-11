@@ -44,6 +44,9 @@
   <link rel="preload" href="assets/images/myProfile.jpg" as="image" />
   <link rel="preload" href="css/main.css" as="style" />
   <link rel="preload" href="js/componentLoader.js" as="script" />
+  <link rel="prefetch" href="components/navbar.html" />
+  <link rel="prefetch" href="components/hero.html" />
+  <link rel="prefetch" href="components/about.html" />
 
   <!-- Preconnect to CDNs -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -202,8 +205,10 @@
           <span class="status-badge-text" id="loader-live-badge">SYSTEM INITIALIZING</span>
         </div>
         <div class="loader-sys-info">
-          <i class="bi bi-shield-lock"></i>
-          <span>SECURE PROTOCOL</span>
+          <button type="button" class="loader-skip-btn" id="loaderSkipBtn" aria-label="Skip intro animation">
+            <span>Skip</span>
+            <i class="bi bi-chevron-double-right"></i>
+          </button>
         </div>
       </div>
 

@@ -50,21 +50,19 @@ class ComponentLoader {
   }
 
   /**
-   * Load multiple components in sequence
+   * Load multiple components concurrently in parallel
    * @param {Array<{name: string, target: string}>} components 
    * @returns {Promise<boolean>}
    */
   async loadComponents(components) {
-    const results = [];
     const total = components.length;
     let count = 0;
 
-    for (const { name, target } of components) {
+    const promises = components.map(async ({ name, target }) => {
       const result = await this.loadComponent(name, target);
-      results.push(result);
       count++;
 
-      // Dispatch progress event
+      // Dispatch progress event as each component finishes
       document.dispatchEvent(new CustomEvent('componentProgress', {
         detail: {
           loadedCount: count,
@@ -73,7 +71,11 @@ class ComponentLoader {
           percentage: Math.round((count / total) * 100)
         }
       }));
-    }
+
+      return result;
+    });
+
+    const results = await Promise.all(promises);
 
     // Dispatch event when all components are loaded
     document.dispatchEvent(new CustomEvent('allComponentsLoaded', {
