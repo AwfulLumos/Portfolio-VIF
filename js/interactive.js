@@ -16,6 +16,11 @@ class InteractiveComponents {
         category: 'Full Stack Application',
         description: 'A real-time collaborative document editing platform that allows multiple users to edit, share, and format documents simultaneously with live updates, active user cursors, and seamless document synchronization.',
         image: 'assets/images/CollaborativeDocument.png',
+        images: [
+          { src: 'assets/images/CollaborativeDocument.png', label: 'Document Editor', icon: 'bi-file-earmark-text' },
+          { src: 'assets/images/CDE_Home.png', label: 'Home Dashboard', icon: 'bi-house-door' },
+          { src: 'assets/images/CDE_Share.png', label: 'Share & Collaboration', icon: 'bi-share' }
+        ],
         github: 'https://github.com/AwfulLumos/CollaborativeDocumentEditor',
         tech: ['React.js', 'Node.js', 'Socket.io', 'Express'],
         highlights: [
