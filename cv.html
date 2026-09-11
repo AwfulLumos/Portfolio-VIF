@@ -1,224 +1,250 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Voun Irish Florence Dejumo</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/cv.css">
-    <!-- html2pdf.js for PDF generation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV - Voun Irish Florence Dejumo</title>
+  <link rel="icon" href="assets/images/DEJUMO_S4.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="css/cv.css" />
+  <!-- html2pdf.js for PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
+
 <body>
-    <!-- Download Button (outside CV for screen only) -->
-    <div class="download-controls">
-        <button id="downloadPdf" class="download-btn">
-            <i class="bi bi-download"></i> Download PDF
-        </button>
-        <a href="index.html" class="back-btn">
-            <i class="bi bi-arrow-left"></i> Back to Portfolio
-        </a>
-    </div>
+  <!-- Download Button (outside CV for screen only) -->
+  <div class="download-controls">
+    <button id="downloadPdf" class="download-btn" data-filename="Voun_Irish_Florence_Dejumo_CV.pdf">
+      <i class="bi bi-download"></i> Download PDF
+    </button>
+    <a href="index.html" class="back-btn">
+      <i class="bi bi-arrow-left"></i> Back to Portfolio
+    </a>
+  </div>
 
-    <!-- CV Content -->
-    <div id="cv-content" class="cv-container">
-        <!-- Header Section -->
-        <header class="cv-header">
-            <div class="cv-header-content">
-                <div class="cv-name-section">
-                    <h1>Voun Irish Florence Dejumo</h1>
-                    <p class="cv-title">Full Stack Developer</p>
-                </div>
-                <div class="cv-contact-info">
-                    <div class="contact-item">
-                        <i class="bi bi-telephone"></i>
-                        <span>+63 963 028 1243</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="bi bi-envelope"></i>
-                        <span>vounirishflorence.dejumo@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="bi bi-geo-alt"></i>
-                        <span>Pacol, Naga City, Camarines Sur</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="bi bi-linkedin"></i>
-                        <span>linkedin.com/in/voun-irish-florence-dejumo-6b2393287</span>
-                    </div>
-                </div>
+  <!-- CV Content -->
+  <div id="cv-content" class="cv-container">
+    <!-- Header Section -->
+    <header class="cv-header">
+      <div class="cv-header-content">
+        <div class="cv-name-section">
+          <h1>Voun Irish Florence Dejumo</h1>
+          <p class="cv-title">Applying for Junior Full Stack Developer</p>
+        </div>
+        <div class="cv-contact-info">
+          <div class="contact-item">
+            <i class="bi bi-telephone"></i>
+            <span>+63 963 028 1243</span>
+          </div>
+          <div class="contact-item">
+            <i class="bi bi-envelope"></i>
+            <span>vounirishflorence.dejumo@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="bi bi-geo-alt"></i>
+            <span>Pacol, Naga City, Camarines Sur</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="cv-main">
+      <!-- Left Column -->
+      <div class="cv-left-column">
+        <!-- Profile Summary -->
+        <section class="cv-section">
+          <h2><i class="bi bi-person"></i> Profile</h2>
+          <p>
+            Results-driven Full Stack Developer and BSIT student specializing in modern JavaScript frameworks (React,
+            Vue.js, Node.js), relational databases, and RESTful API architecture. Digital Innovation Fund grant
+            recipient with hands-on experience building civic tech and production-ready applications.
+          </p>
+        </section>
+
+        <!-- Education -->
+        <section class="cv-section">
+          <h2><i class="bi bi-mortarboard"></i> Education</h2>
+          <div class="cv-entry">
+            <div class="entry-header">
+              <h3>Bachelor of Science in Information Technology</h3>
+              <span class="entry-date">2022 - 2026</span>
             </div>
-        </header>
+            <p class="entry-organization">University of Nueva Caceres</p>
+            <p class="entry-description">
+              Specializing in full-stack software development, database architectures, system design, and modern
+              web/mobile technologies. Dean's Lister.
+            </p>
+          </div>
+        </section>
 
-        <!-- Main Content -->
-        <main class="cv-main">
-            <!-- Left Column -->
-            <div class="cv-left-column">
-                <!-- Profile Summary -->
-                <section class="cv-section">
-                    <h2><i class="bi bi-person"></i> Profile</h2>
-                    <p>
-                        A passionate Full Stack Developer dedicated to building exceptional digital experiences. 
-                        I specialize in JavaScript ecosystems including React and Vue.js, complemented by 
-                        robust backend development using Laravel, Spring Boot and database management with MySQL. 
-                        My journey in technology is driven by curiosity and a constant desire to learn.
-                    </p>
-                </section>
+        <!-- Training & Certifications moved to right column -->
 
-                <!-- Education -->
-                <section class="cv-section">
-                    <h2><i class="bi bi-mortarboard"></i> Education</h2>
-                    <div class="cv-entry">
-                        <div class="entry-header">
-                            <h3>Bachelor of Science in Information Technology</h3>
-                            <span class="entry-date">2022 - Present</span>
-                        </div>
-                        <p class="entry-organization">University of Nueva Caceres</p>
-                        <p class="entry-description">
-                            Pursuing excellence in software development, database management, 
-                            and cutting-edge web technologies.
-                        </p>
-                    </div>
-                </section>
+        <!-- Projects -->
+        <section class="cv-section">
+          <h2><i class="bi bi-folder"></i> Projects</h2>
 
-                <!-- Projects -->
-                <section class="cv-section">
-                    <h2><i class="bi bi-folder"></i> Projects</h2>
-                    
-                    <div class="cv-entry">
-                        <div class="entry-header">
-                            <h3>DigiStall</h3>
-                            <span class="entry-date">2025 - 2026</span>
-                        </div>
-                        <p class="entry-organization">Capstone Project for Naga City Government</p>
-                        <p class="entry-description">
-                            E-commerce platform featuring modern UI, secure payment integration, 
-                            and inventory management system. Built with React.js, Vue.js, PostgreSQL, and Docker.
-                            Officially deployed for use by Naga City starting February 2026.
-                        </p>
-                    </div>
-
-                    <div class="cv-entry">
-                        <div class="entry-header">
-                            <h3>Portfolio Website</h3>
-                            <span class="entry-date">2025</span>
-                        </div>
-                        <p class="entry-organization">Personal Project</p>
-                        <p class="entry-description">
-                            Personal portfolio designed and developed from scratch featuring smooth animations, 
-                            glassmorphism design, and responsive layouts. Built with HTML5, CSS3, JavaScript, and Bootstrap 5.
-                        </p>
-                    </div>
-                </section>
-
-                <!-- Interests & Hobbies -->
-                <section class="cv-section">
-                    <h2><i class="bi bi-heart"></i> Interests & Hobbies</h2>
-                    <ul class="languages-list">
-                        <li>Gaming & Interactive Entertainment</li>
-                        <li>Self-Directed Learning & Research</li>
-                        <li>Exploring New Technologies</li>
-                        <li>Rest & Well-being</li>
-                    </ul>
-                </section>
+          <div class="cv-entry">
+            <div class="entry-header">
+              <h3>DigiStall — Public Market Management System (Capstone)</h3>
+              <span class="entry-date">2025 - 2026</span>
             </div>
+            <p class="entry-organization">
+              Undergraduate Capstone & Idea2Startup Project — Naga City Government (Digital Innovation Fund Grantee)
+            </p>
+            <p class="entry-description">
+              Undergraduate Capstone Project selected as Startup Founder and awarded ₱41,580.00 seed funding by the Naga
+              City Government. Built a web
+              and mobile stall management platform for public market stallholders and city administrators using Vue.js,
+              React Native, Node.js, and PostgreSQL. Featured in official Naga City Government news releases.
+            </p>
+          </div>
 
-            <!-- Right Column -->
-            <div class="cv-right-column">
-                <!-- Technical Skills -->
-                <section class="cv-section">
-                    <h2><i class="bi bi-code-slash"></i> Technical Skills</h2>
-                    
-                    <div class="skills-category">
-                        <h4>Frontend Development</h4>
-                        <div class="skills-list">
-                            <span class="skill-item">HTML5</span>
-                            <span class="skill-item">CSS3</span>
-                            <span class="skill-item">Tailwind CSS</span>
-                            <span class="skill-item">JavaScript</span>
-                            <span class="skill-item">TypeScript</span>
-                            <span class="skill-item">React</span>
-                            <span class="skill-item">Vue.js</span>
-                            <span class="skill-item">Bootstrap</span>
-                        </div>
-                    </div>
-
-                    <div class="skills-category">
-                        <h4>Backend Development</h4>
-                        <div class="skills-list">
-                            <span class="skill-item">PHP</span>
-                            <span class="skill-item">Laravel</span>
-                            <span class="skill-item">Java</span>
-                            <span class="skill-item">Spring Boot</span>
-                            <span class="skill-item">Node.js</span>
-                            <span class="skill-item">Express.js</span>
-                            <span class="skill-item">MVC Architecture</span>
-                        </div>
-                    </div>
-
-                    <div class="skills-category">
-                        <h4>Database & DevOps</h4>
-                        <div class="skills-list">
-                            <span class="skill-item">MySQL</span>
-                            <span class="skill-item">PostgreSQL</span>
-                            <span class="skill-item">Git</span>
-                            <span class="skill-item">GitHub</span>
-                            <span class="skill-item">Docker</span>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Achievements -->
-                <section class="cv-section">
-                    <h2><i class="bi bi-trophy"></i> Achievements</h2>
-                    <ul class="achievements-list">
-                        <li>
-                            <span class="achievement-text">Dean's List - Second Semester</span>
-                            <span class="achievement-year">SY 2022-2023</span>
-                        </li>
-                        <li>
-                            <span class="achievement-text">Dean's List - First Semester</span>
-                            <span class="achievement-year">SY 2023-2024</span>
-                        </li>
-                        <li>
-                            <span class="achievement-text">Dean's List - Second Semester</span>
-                            <span class="achievement-year">SY 2024-2025</span>
-                        </li>
-                        <li>
-                            <span class="achievement-text">Idea2Startup 2025 - DigiStall</span>
-                            <span class="achievement-year">2025</span>
-                        </li>
-                        <li>
-                            <span class="achievement-text">Open Source Contributor</span>
-                            <span class="achievement-year">Ongoing</span>
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- Soft Skills -->
-                <section class="cv-section">
-                    <h2><i class="bi bi-lightbulb"></i> Soft Skills</h2>
-                    <div class="skills-list soft-skills">
-                        <span class="skill-item">Clean Code Advocate</span>
-                        <span class="skill-item">Problem Solver</span>
-                        <span class="skill-item">Team Player</span>
-                        <span class="skill-item">Continuous Learner</span>
-                    </div>
-                </section>
-
-                <!-- Languages -->
-                <section class="cv-section">
-                    <h2><i class="bi bi-translate"></i> Languages</h2>
-                    <ul class="languages-list">
-                        <li>Filipino - Native</li>
-                        <li>Bicol - Fluent</li>
-                        <li>English - Advanced (C1)</li>
-                    </ul>
-                </section>
+          <div class="cv-entry">
+            <div class="entry-header">
+              <h3>HealthWatch Olongapo — Healthcare Management System</h3>
+              <span class="entry-date">2026</span>
             </div>
-        </main>
-    </div>
+            <p class="entry-organization">Full Stack Project</p>
+            <p class="entry-description">
+              Designed and built a centralized health records and appointment scheduling system using TypeScript,
+              React.js, Express.js, and Supabase. Deployed production frontend on Vercel and backend services on Render.
+            </p>
+          </div>
+        </section>
 
-    <script src="js/cv.js"></script>
+        <!-- Grants & Press Coverage -->
+        <section class="cv-section">
+          <h2><i class="bi bi-newspaper"></i> Grants & News Features</h2>
+          <div class="cv-entry">
+            <div class="entry-header">
+              <h3>Digital Innovation Fund Awardee & Featured Innovator</h3>
+              <span class="entry-date">2025</span>
+            </div>
+            <p class="entry-organization">City Government of Naga (Idea2Startup Batch 4)</p>
+            <p class="entry-description">
+              Conferred with ₱41,580.00 seed grant funding by the Naga City Government for prototype development of
+              DigiStall. Highlighted in official Naga City Government news coverage:
+            </p>
+            <ul class="languages-list" style="margin-top: 4px;">
+              <li>
+                <a href="https://www2.naga.gov.ph/aspiring-startups-undergo-pitching-challenge-in-idea2startup-batch-4/"
+                  target="_blank" rel="noopener">
+                  Aspiring Startups Undergo Pitching Challenge in Idea2Startup Batch 4
+                </a>
+              </li>
+              <li>
+                <a href="https://www2.naga.gov.ph/16-idea2startup-teams-awarded-digital-innovation-fund-at-naga-city-hall/"
+                  target="_blank" rel="noopener">
+                  16 Idea2Startup Teams Awarded Digital Innovation Fund at Naga City Hall
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right Column -->
+      <div class="cv-right-column">
+        <!-- Technical Skills -->
+        <section class="cv-section">
+          <h2><i class="bi bi-code-slash"></i> Technical Skills</h2>
+
+          <div class="skills-category">
+            <h4>Frontend Development</h4>
+            <div class="skills-list">
+              <span class="skill-item">HTML5</span>
+              <span class="skill-item">CSS3</span>
+              <span class="skill-item">JavaScript</span>
+              <span class="skill-item">TypeScript</span>
+              <span class="skill-item">React</span>
+              <span class="skill-item">Vue.js</span>
+              <span class="skill-item">Tailwind CSS</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>Backend Development</h4>
+            <div class="skills-list">
+              <span class="skill-item">PHP</span>
+              <span class="skill-item">Laravel</span>
+              <span class="skill-item">Java</span>
+              <span class="skill-item">Spring</span>
+              <span class="skill-item">Node.js</span>
+              <span class="skill-item">Express.js</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>DevOps & Tools</h4>
+            <div class="skills-list">
+              <span class="skill-item">MySQL</span>
+              <span class="skill-item">PostgreSQL</span>
+              <span class="skill-item">Supabase</span>
+              <span class="skill-item">Vercel</span>
+              <span class="skill-item">Render</span>
+              <span class="skill-item">Git</span>
+              <span class="skill-item">GitHub</span>
+              <span class="skill-item">Docker</span>
+              <span class="skill-item">VS Code</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Training & Certifications -->
+        <section class="cv-section">
+          <h2><i class="bi bi-award"></i> Training & Certifications</h2>
+          <div class="cv-entry">
+            <div class="entry-header">
+              <h3>Salesforce Trailhead — Salesforce Development</h3>
+              <span class="entry-date">2026</span>
+            </div>
+            <p class="entry-organization">Trailhead (Salesforce)</p>
+            <p class="entry-description">
+              Completed Salesforce Development learning paths and earned
+              Trailhead badges.
+              <a href="https://www.salesforce.com/trailblazer/waqlm0esmjj98nivog" target="_blank" rel="noopener">
+                salesforce.com/trailblazer/waqlm0esmjj98nivog
+              </a>
+            </p>
+          </div>
+        </section>
+
+        <!-- Soft Skills -->
+        <section class="cv-section">
+          <h2><i class="bi bi-lightbulb"></i> Soft Skills</h2>
+          <div class="skills-list soft-skills">
+            <span class="skill-item">Clean Code Advocate</span>
+            <span class="skill-item">Problem Solver</span>
+            <span class="skill-item">Team Player</span>
+            <span class="skill-item">Continuous Learner</span>
+          </div>
+        </section>
+
+        <!-- Interests & Hobbies -->
+        <section class="cv-section">
+          <h2><i class="bi bi-heart"></i> Interests & Hobbies</h2>
+          <ul class="languages-list">
+            <li>Gaming & Interactive Entertainment</li>
+            <li>Self-Directed Learning & Research</li>
+          </ul>
+        </section>
+
+        <!-- Languages -->
+        <section class="cv-section">
+          <h2><i class="bi bi-translate"></i>Languages</h2>
+          <ul class="languages-list">
+            <li>Filipino - Native</li>
+            <li>Bicol - Fluent</li>
+            <li>English - Intermediate (B1)</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/cv.js"></script>
 </body>
+
 </html>

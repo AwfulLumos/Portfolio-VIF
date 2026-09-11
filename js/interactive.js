@@ -1,12 +1,99 @@
 /**
  * VIF.Dev Portfolio - Interactive Components Module
- * Handles form handling, carousel, and interactive elements
+ * Handles form handling, carousel, project category filtering, and project detail modals
  */
 
 class InteractiveComponents {
   constructor() {
     this.achievementsExpanded = false;
     this.formSubmissions = [];
+    this.isSubmitting = false;
+
+    // Structured metadata for Project Detail Modal
+    this.projectDetailsData = {
+      collabdoc: {
+        title: 'Collaborative Document Editor',
+        category: 'Full Stack Application',
+        description: 'A real-time collaborative document editing platform that allows multiple users to edit, share, and format documents simultaneously with live updates, active user cursors, and seamless document synchronization.',
+        image: 'assets/images/CollaborativeDocument.png',
+        images: [
+          { src: 'assets/images/CollaborativeDocument.png', label: 'Document Editor', icon: 'bi-file-earmark-text' },
+          { src: 'assets/images/CDE_Home.png', label: 'Home Dashboard', icon: 'bi-house-door' },
+          { src: 'assets/images/CDE_Share.png', label: 'Share & Collaboration', icon: 'bi-share' }
+        ],
+        github: 'https://github.com/AwfulLumos/CollaborativeDocumentEditor',
+        tech: ['React.js', 'Node.js', 'Socket.io', 'Express'],
+        highlights: [
+          'Real-time collaborative text synchronization powered by WebSockets (Socket.io).',
+          'Live active user cursor indicators and visual selection status.',
+          'Room-based document sharing with instant unique shareable URLs.',
+          'Full-stack architecture with modular React frontend and Express server.'
+        ]
+      },
+      digistall: {
+        title: 'DigiStall (Capstone Project)',
+        category: 'Capstone / Web & Mobile Application',
+        description: "Undergraduate Capstone Project selected under the Idea2Startup Program and awarded the ₱41,580.00 Digital Innovation Fund grant by the Naga City Government. Served as lead developer of a web and mobile-based stall management system for Naga City's public markets, improving stall applications, payment tracking, and market compliance. Built with Vue.js, React Native, Node.js, and PostgreSQL.",
+        image: 'assets/images/DigiStall.png',
+        github: null,
+        tech: ['React.js', 'React Native', 'Vue.js', 'PostgreSQL', 'Docker'],
+        highlights: [
+          'Undergraduate Capstone Project & ₱41,580.00 Digital Innovation Fund grantee by Naga City Government.',
+          'Featured in official Naga City news coverage for the Idea2Startup Batch 4 Pitching Challenge and Ceremonial Grant Turnover.',
+          'Multi-platform ecosystem: Web admin portal for officials & React Native mobile app for market stallholders.',
+          'Automated stall application processing, violation reporting, and digital payment tracking.',
+          'Containerized backend architecture backed by PostgreSQL relational database.'
+        ]
+      },
+      healthwatch: {
+        title: 'HealthWatch Olongapo',
+        category: 'Client Commission / Healthcare System',
+        description: 'Commissioned client project designed and developed as a centralized health records and clinical workflow management platform. Empowers healthcare providers to manage patient profiles, track medical history, coordinate appointments, and monitor patient health statuses through an intuitive, secure interface.',
+        image: 'assets/images/HealthWatchOlongapo.png',
+        github: 'https://github.com/AwfulLumos/HealthWatchOlongapo',
+        tech: ['React.js', 'Node.js', 'MongoDB', 'Express', 'TypeScript', 'Supabase'],
+        highlights: [
+          'Commissioned Healthcare Platform: End-to-end patient records management system for streamlined clinical data entry.',
+          'Interactive doctor-patient appointment scheduling & comprehensive medical record history tracking.',
+          'Type-Safe Architecture: Strong TypeScript backend powered by Express.js and Supabase relational database.',
+          'Production cloud deployment with frontend hosted on Vercel and backend microservices on Render.'
+        ]
+      },
+      smartserve: {
+        title: 'SmartServe ',
+        category: 'Client Commission / Full Stack System',
+        description: 'A comprehensive school cafeteria management system built on the MERN stack with dedicated portals for Admin/Staff and Students. Architected end-to-end features including order processing queues, inventory & menu management, BYOC (Bring Your Own Container) eco-points rewards, QR code student identification, and automated demand forecasting analytics.',
+        image: 'assets/images/SmartServeAnalytics.png',
+        images: [
+          { src: 'assets/images/SmartServeAnalytics.png', label: 'Admin Analytics Dashboard', icon: 'bi-graph-up' },
+          { src: 'assets/images/SmartServeMobile.png', label: 'Student Mobile Portal', icon: 'bi-phone' },
+          { src: 'assets/images/SmartServeLogin.png', label: 'Login & Security Gateway', icon: 'bi-shield-lock' }
+        ],
+        github: null,
+        tech: ['React 18', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'JWT Auth', 'Socket.IO', 'Vercel Serverless'],
+        highlights: [
+          'Dual Portal Architecture: Dedicated Admin/Staff management dashboard and mobile-friendly Student portal.',
+          'Secure Dual JWT Authentication: HttpOnly cookies, 5-strike account lockout defense, and role-based access control.',
+          'BYOC Eco-Points & Rewards: QR-powered Bring Your Own Container sustainability program with reward redemption catalog.',
+          'Demand Forecasting Analytics: Built-in predictive forecasting algorithms (Linear Regression & Exponential Smoothing) for inventory and revenue planning.',
+          '4-Phase Enterprise Security: Helmet HTTP protection, express-mongo-sanitize NoSQL prevention, rate limiting, and binary magic-byte upload validation.'
+        ]
+      },
+      eportfolio: {
+        title: 'Digital Cultural E-Portfolio',
+        category: 'Academic Project',
+        description: 'A comprehensive digital portfolio exploring Japanese culture for The Contemporary World course. This interactive website showcases Japan\'s rich cultural heritage, traditions, global influence and contemporary challenges. Features include detailed sections on Japanese customs, festivals, arts, technology and globalization impacts.',
+        image: 'assets/images/DigitalE-Portfolio.png',
+        github: 'https://github.com/AwfulLumos/TCWFinalProjectGroupOne',
+        tech: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap 5'],
+        highlights: [
+          'In-depth academic presentation exploring Japanese cultural traditions and modern tech advancements.',
+          'Interactive, fully responsive web design crafted with custom CSS animations & Bootstrap 5.',
+          'Curated team reflections, embedded video galleries, and interactive historical timelines.',
+          'Developed for academic excellence in The Contemporary World curriculum.'
+        ]
+      }
+    };
   }
 
   /**
@@ -16,6 +103,8 @@ class InteractiveComponents {
     this.initContactForm();
     this.initCarouselEnhancements();
     this.initSchoolCardToggle();
+    this.initProjectFiltering();
+    this.initProjectDetailModal();
   }
 
   /**
@@ -24,16 +113,16 @@ class InteractiveComponents {
   checkRateLimit() {
     const config = window.EmailConfig?.rateLimiting || { maxAttempts: 3, windowMs: 60000 };
     const now = Date.now();
-    
+
     // Clean old submissions
     this.formSubmissions = this.formSubmissions.filter(
       time => now - time < config.windowMs
     );
-    
+
     if (this.formSubmissions.length >= config.maxAttempts) {
       return false;
     }
-    
+
     this.formSubmissions.push(now);
     return true;
   }
@@ -73,10 +162,13 @@ class InteractiveComponents {
       e.preventDefault();
       e.stopPropagation();
 
+      if (this.isSubmitting) {
+        return;
+      }
+
       // Check honeypot field (bot detection)
       const honeypot = form.querySelector('[name="website"]');
       if (honeypot && honeypot.value) {
-        // Bot detected - silently fail
         console.warn('[ContactForm] Bot detected via honeypot');
         if (messageDiv) {
           messageDiv.textContent = '✓ Message sent successfully!';
@@ -96,7 +188,13 @@ class InteractiveComponents {
       }
 
       const submitBtn = form.querySelector('button[type="submit"]');
+      if (!submitBtn) {
+        console.error('[ContactForm] Submit button not found!');
+        return;
+      }
+
       const originalText = submitBtn.innerHTML;
+      this.isSubmitting = true;
 
       // Show loading state
       submitBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Sending...';
@@ -112,25 +210,19 @@ class InteractiveComponents {
       };
 
       try {
-        // Send email using EmailJS
         const response = await emailjs.send(
           config.serviceId,
           config.templateId,
           formData
         );
 
-        // Show success message
         if (messageDiv) {
-          const successMsg = window.languageManager?.t('contact.form.success') || 
-            '✓ Message sent successfully! I\'ll get back to you soon.';
-          messageDiv.textContent = '✓ ' + successMsg;
+          messageDiv.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
           messageDiv.className = 'form-message success';
         }
 
-        // Reset form
         form.reset();
 
-        // Hide message after 5 seconds
         setTimeout(() => {
           if (messageDiv) {
             messageDiv.className = 'form-message';
@@ -141,13 +233,10 @@ class InteractiveComponents {
         console.error('[ContactForm] Form submission error:', error);
 
         if (messageDiv) {
-          let errorMessage = window.languageManager?.t('contact.form.error') ||
-            '✕ Something went wrong. Please try again or email me directly.';
+          let errorMessage = '✕ Something went wrong. Please try again or email me directly.';
 
-          // Provide helpful error messages based on error status
           if (error.status === 412) {
             errorMessage = '✕ Email service configuration error. Please contact me directly at vounirishflorence.dejumo@gmail.com';
-            console.error('[ContactForm] EmailJS 412 Error - Check: 1) Service ID, 2) Template ID, 3) Public Key, 4) Account verification');
           } else if (error.status === 400) {
             errorMessage = '✕ Invalid form data. Please check your inputs and try again.';
           } else if (error.status === 403) {
@@ -164,6 +253,7 @@ class InteractiveComponents {
       } finally {
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
+        this.isSubmitting = false;
       }
     });
 
@@ -192,18 +282,18 @@ class InteractiveComponents {
     const currentIndexEl = document.getElementById('projectCurrentIndex');
     const totalCountEl = document.getElementById('projectTotalCount');
     const thumbnails = document.querySelectorAll('.project-thumb');
-    const carouselViewBtn = document.getElementById('carouselViewBtn');
-    const gridViewBtn = document.getElementById('gridViewBtn');
-    const projectsGrid = document.getElementById('projectsGrid');
     const thumbContainer = document.getElementById('projectsThumbnails');
 
     if (!carousel) return;
 
     // Get total slides
-    const slides = carousel.querySelectorAll('.carousel-item');
+    const slides = carousel.querySelectorAll('.carousel-inner .carousel-item');
     const totalSlides = slides.length;
 
     if (totalCountEl) totalCountEl.textContent = totalSlides;
+    thumbnails.forEach((thumb, idx) => {
+      thumb.setAttribute('aria-current', idx === 0 ? 'true' : 'false');
+    });
 
     // Update counter and thumbnails on slide change
     carousel.addEventListener('slid.bs.carousel', (e) => {
@@ -213,6 +303,7 @@ class InteractiveComponents {
       // Update thumbnail active state
       thumbnails.forEach((thumb, idx) => {
         thumb.classList.toggle('active', idx === e.to);
+        thumb.setAttribute('aria-current', idx === e.to ? 'true' : 'false');
       });
     });
 
@@ -224,31 +315,7 @@ class InteractiveComponents {
       });
     });
 
-    // View toggle (Carousel vs Grid)
-    if (carouselViewBtn && gridViewBtn) {
-      carouselViewBtn.addEventListener('click', () => {
-        carouselViewBtn.classList.add('active');
-        gridViewBtn.classList.remove('active');
-        carousel.style.display = 'block';
-        if (projectsGrid) projectsGrid.style.display = 'none';
-        if (thumbContainer) thumbContainer.style.display = 'flex';
-      });
-
-      gridViewBtn.addEventListener('click', () => {
-        gridViewBtn.classList.add('active');
-        carouselViewBtn.classList.remove('active');
-        carousel.style.display = 'none';
-        if (thumbContainer) thumbContainer.style.display = 'none';
-
-        // Populate grid if empty
-        if (projectsGrid) {
-          if (projectsGrid.children.length === 0) {
-            this.populateProjectsGrid(projectsGrid, slides);
-          }
-          projectsGrid.style.display = 'grid';
-        }
-      });
-    }
+    if (thumbContainer) thumbContainer.style.display = 'flex';
 
     // Pause carousel on hover
     carousel.addEventListener('mouseenter', () => {
@@ -275,16 +342,215 @@ class InteractiveComponents {
   }
 
   /**
-   * Populate grid view from carousel slides
+   * Initialize Project Category Filtering
    */
-  populateProjectsGrid(gridContainer, slides) {
-    slides.forEach(slide => {
-      const card = slide.querySelector('.project-card');
-      if (!card) return;
+  initProjectFiltering() {
+    const filterContainer = document.getElementById('projectsFilterContainer');
+    const carousel = document.getElementById('projectsCarousel');
+    const currentIndexEl = document.getElementById('projectCurrentIndex');
+    const totalCountEl = document.getElementById('projectTotalCount');
+    const thumbnails = document.querySelectorAll('.project-thumb');
 
-      const clone = card.cloneNode(true);
-      clone.classList.add('project-grid-card');
-      gridContainer.appendChild(clone);
+    if (!filterContainer || !carousel) return;
+
+    const filterBtns = filterContainer.querySelectorAll('.project-filter-btn');
+    const slides = carousel.querySelectorAll('.carousel-inner .carousel-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+
+        // Update active filter pill
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        let visibleCount = 0;
+        let firstVisibleIdx = -1;
+
+        // Filter slides
+        slides.forEach((slide, idx) => {
+          const category = slide.dataset.category;
+          const isMatch = filter === 'all' || category === filter;
+
+          if (isMatch) {
+            slide.style.display = '';
+            if (firstVisibleIdx === -1) firstVisibleIdx = idx;
+            visibleCount++;
+          } else {
+            slide.style.display = 'none';
+            slide.classList.remove('active');
+          }
+        });
+
+        // Filter thumbnails
+        thumbnails.forEach((thumb, idx) => {
+          const category = thumb.dataset.category;
+          const isMatch = filter === 'all' || category === filter;
+
+          if (isMatch) {
+            thumb.style.display = '';
+          } else {
+            thumb.style.display = 'none';
+            thumb.classList.remove('active');
+          }
+        });
+
+        // Update active slide to first visible match
+        if (firstVisibleIdx !== -1) {
+          slides.forEach(s => s.classList.remove('active'));
+          slides[firstVisibleIdx].classList.add('active');
+          thumbnails.forEach((t, i) => t.classList.toggle('active', i === firstVisibleIdx));
+
+          const bsCarousel = bootstrap.Carousel.getInstance(carousel);
+          if (bsCarousel) {
+            bsCarousel.to(firstVisibleIdx);
+          }
+        }
+
+        // Update project total count display
+        if (totalCountEl) totalCountEl.textContent = visibleCount;
+        if (currentIndexEl) currentIndexEl.textContent = visibleCount > 0 ? '1' : '0';
+      });
+    });
+  }
+
+  /**
+   * Initialize Interactive Project Detail Modal
+   */
+  /**
+   * Initialize Interactive Project Detail Modal
+   */
+  initProjectDetailModal() {
+    const relocateModal = () => {
+      const modalEl = document.getElementById('projectDetailModal');
+      if (modalEl && modalEl.parentElement !== document.body) {
+        document.body.appendChild(modalEl);
+      }
+      return modalEl;
+    };
+
+    // Try relocating modal immediately
+    relocateModal();
+
+    // Also relocate modal on component load completion
+    document.addEventListener('allComponentsLoaded', () => {
+      relocateModal();
+    });
+
+    // Global event delegation for View Details buttons & Modal Close buttons
+    document.addEventListener('click', (e) => {
+      // 1. Handle View Details button click
+      const detailBtn = e.target.closest('.btn-project-detail');
+      if (detailBtn) {
+        e.preventDefault();
+        const projectId = detailBtn.dataset.projectId;
+        const data = this.projectDetailsData[projectId];
+        if (!data) return;
+
+        const modalEl = relocateModal();
+        if (!modalEl) return;
+
+        // Populate modal content
+        const titleEl = document.getElementById('modalProjectTitle');
+        const categoryEl = document.getElementById('modalProjectCategory');
+        const imgEl = document.getElementById('modalProjectImg');
+        const descEl = document.getElementById('modalProjectDescription');
+        const highlightsEl = document.getElementById('modalProjectHighlights');
+        const techEl = document.getElementById('modalProjectTech');
+        const sourceBtn = document.getElementById('modalSourceBtn');
+
+        if (titleEl) titleEl.textContent = data.title;
+        if (categoryEl) categoryEl.textContent = data.category;
+        if (imgEl) {
+          imgEl.src = data.image;
+          imgEl.alt = `${data.title} preview`;
+        }
+        if (descEl) descEl.textContent = data.description;
+
+        // Render multi-image gallery switcher if available
+        const galleryNavEl = document.getElementById('modalGalleryNav');
+        if (galleryNavEl) {
+          if (data.images && data.images.length > 1) {
+            galleryNavEl.style.display = 'flex';
+            galleryNavEl.innerHTML = data.images.map((item, idx) => `
+              <button type="button" class="modal-gallery-btn ${idx === 0 ? 'active' : ''}" data-img-src="${item.src}">
+                ${item.icon ? `<i class="bi ${item.icon} me-1"></i>` : ''}
+                <img src="${item.src}" alt="${item.label}" loading="lazy" />
+                <span>${item.label}</span>
+              </button>
+            `).join('');
+          } else {
+            galleryNavEl.style.display = 'none';
+            galleryNavEl.innerHTML = '';
+          }
+        }
+
+        // Render highlights list
+        if (highlightsEl) {
+          highlightsEl.innerHTML = data.highlights
+            .map(h => `<li class="mb-2 text-light"><i class="bi bi-check2-circle text-accent me-2"></i>${h}</li>`)
+            .join('');
+        }
+
+        // Render tech stack tags
+        if (techEl) {
+          techEl.innerHTML = data.tech
+            .map(t => `<span class="badge rounded-pill bg-dark border border-secondary me-1 mb-1 p-2">${t}</span>`)
+            .join('');
+        }
+
+        // Render source code link
+        if (sourceBtn) {
+          if (data.github) {
+            sourceBtn.href = data.github;
+            sourceBtn.style.display = 'inline-flex';
+          } else {
+            sourceBtn.style.display = 'none';
+          }
+        }
+
+        // Open Bootstrap modal
+        if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+          const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+          bsModal.show();
+        } else {
+          modalEl.classList.add('show');
+          modalEl.style.display = 'block';
+          document.body.classList.add('modal-open');
+        }
+        return;
+      }
+
+      // 2. Handle modal gallery thumbnail switcher click
+      const galleryBtn = e.target.closest('.modal-gallery-btn');
+      if (galleryBtn) {
+        e.preventDefault();
+        const imgSrc = galleryBtn.dataset.imgSrc;
+        const imgEl = document.getElementById('modalProjectImg');
+        if (imgEl && imgSrc) {
+          imgEl.src = imgSrc;
+          galleryBtn.parentElement.querySelectorAll('.modal-gallery-btn').forEach(btn => btn.classList.remove('active'));
+          galleryBtn.classList.add('active');
+        }
+        return;
+      }
+
+      // 3. Handle Close button click inside projectDetailModal
+      const closeBtn = e.target.closest('#projectDetailModal [data-bs-dismiss="modal"], #projectDetailModal .btn-close');
+      if (closeBtn) {
+        e.preventDefault();
+        const modalEl = document.getElementById('projectDetailModal');
+        if (!modalEl) return;
+
+        if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+          const bsModal = bootstrap.Modal.getInstance(modalEl) || bootstrap.Modal.getOrCreateInstance(modalEl);
+          bsModal.hide();
+        } else {
+          modalEl.classList.remove('show');
+          modalEl.style.display = 'none';
+          document.body.classList.remove('modal-open');
+        }
+      }
     });
   }
 
@@ -304,15 +570,23 @@ class InteractiveComponents {
 
     if (!schoolCard || !dropdown) return;
 
+    const updateState = (isExpanded) => {
+      schoolCard.classList.toggle('expanded', isExpanded);
+      dropdown.classList.toggle('show', isExpanded);
+      schoolCard.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      dropdown.setAttribute('aria-hidden', isExpanded ? 'false' : 'true');
+    };
+
     schoolCard.addEventListener('click', () => {
       const isExpanded = dropdown.classList.contains('show');
+      updateState(!isExpanded);
+    });
 
-      if (isExpanded) {
-        dropdown.classList.remove('show');
-        schoolCard.classList.remove('expanded');
-      } else {
-        dropdown.classList.add('show');
-        schoolCard.classList.add('expanded');
+    schoolCard.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const isExpanded = dropdown.classList.contains('show');
+        updateState(!isExpanded);
       }
     });
   }

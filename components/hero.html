@@ -1,5 +1,9 @@
 <!-- Hero Section Component -->
 <section id="hero" class="hero-section">
+  <!-- Aurora gradient blobs -->
+  <div class="aurora-blob-1" aria-hidden="true"></div>
+  <div class="aurora-blob-2" aria-hidden="true"></div>
+  <div class="aurora-blob-3" aria-hidden="true"></div>
   <div class="container">
     <div class="hero-content">
       <div class="hero-badge">
@@ -20,9 +24,33 @@
           <i class="bi bi-folder"></i>
           <span data-i18n="hero.viewWork">View My Work</span>
         </a>
-        <a href="#contact" class="btn btn-outline">
-          <i class="bi bi-envelope"></i>
-          <span data-i18n="hero.getInTouch">Get in Touch</span>
+        <a href="assets/certificates/Voun_Irish_Florence_Dejumo_CV.pdf" class="btn btn-outline" target="_blank"
+          rel="noopener noreferrer">
+          <i class="bi bi-file-earmark-pdf"></i>
+          <span>Download CV</span>
+        </a>
+        <button type="button" class="btn btn-outline btn-copy-email" id="heroCopyEmailBtn" title="Copy email address"
+          aria-label="Copy email address">
+          <i class="bi bi-copy"></i>
+          <span class="copy-text">Copy Email</span>
+        </button>
+      </div>
+
+      <!-- Quick Social & Contact Bar -->
+      <div class="hero-social-pills fade-in">
+        <a href="https://github.com/AwfulLumos" class="social-pill" target="_blank" rel="noopener noreferrer"
+          aria-label="GitHub Profile">
+          <i class="bi bi-github"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/voundejumo/" class="social-pill" target="_blank" rel="noopener noreferrer"
+          aria-label="LinkedIn Profile">
+          <i class="bi bi-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="mailto:vounirishflorence.dejumo@gmail.com" class="social-pill" aria-label="Send Email">
+          <i class="bi bi-envelope-fill"></i>
+          <span>Email</span>
         </a>
       </div>
     </div>

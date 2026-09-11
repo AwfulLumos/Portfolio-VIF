@@ -74,24 +74,24 @@ const Utils = {
   animateNumber(element, target, duration = 2000) {
     const start = 0;
     const startTime = performance.now();
-    
+
     const updateNumber = (currentTime) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      
+
       // Easing function (ease-out)
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.floor(start + (target - start) * eased);
-      
+
       element.textContent = current;
-      
+
       if (progress < 1) {
         requestAnimationFrame(updateNumber);
       } else {
         element.textContent = target;
       }
     };
-    
+
     requestAnimationFrame(updateNumber);
   },
 
@@ -193,7 +193,7 @@ const KonamiCode = {
 
     // Check if sequence matches
     if (this.input.length === this.sequence.length &&
-        this.input.every((key, i) => key === this.sequence[i])) {
+      this.input.every((key, i) => key === this.sequence[i])) {
       this.activate();
       this.input = [];
     }
@@ -201,7 +201,7 @@ const KonamiCode = {
 
   activate() {
     document.body.style.animation = 'rainbow 2s linear infinite';
-    
+
     // Inject rainbow keyframes if not exists
     if (!document.getElementById('rainbow-style')) {
       const style = document.createElement('style');
@@ -225,21 +225,53 @@ const KonamiCode = {
 /**
  * Certificate Modal Functions
  */
-const certImages = {
-  hack4smart: 'assets/images/Hack4Smart-Certificate.jpg',
-  idea2startup: 'assets/images/Idea2startupCertificate.png'
+const certDetailsData = {
+  hack4smart: {
+    title: 'Hack4Smart Hackathon Certificate',
+    issuer: 'Hackathon Competition (2025)',
+    image: 'assets/images/Hack4Smart-Certificate.jpg'
+  },
+  idea2startup: {
+    title: 'Idea2Startup Program Certificate',
+    issuer: 'Entrepreneurship Program (2025)',
+    image: 'assets/images/Idea2startupCertificate.png'
+  }
 };
 
 function openCertModal(certId) {
+  const data = certDetailsData[certId];
+  if (!data) return;
+
   const modal = document.getElementById('certModal');
-  const modalImg = document.getElementById('certModalImage');
-  
-  if (modal && modalImg && certImages[certId]) {
-    modalImg.src = certImages[certId];
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+  if (!modal) return;
+
+  // Ensure modal is attached to document.body so section overflow/transform doesn't restrict it
+  if (modal.parentElement !== document.body) {
+    document.body.appendChild(modal);
   }
+
+  const titleEl = document.getElementById('certModalTitle');
+  const subtitleEl = document.getElementById('certModalSubtitle');
+  const imgEl = document.getElementById('certModalImage');
+  const downloadEl = document.getElementById('certModalDownload');
+  const openNewEl = document.getElementById('certModalOpenNew');
+
+  if (titleEl) titleEl.textContent = data.title;
+  if (subtitleEl) subtitleEl.textContent = data.issuer;
+  if (imgEl) {
+    imgEl.src = data.image;
+    imgEl.alt = data.title;
+  }
+  if (downloadEl) {
+    downloadEl.href = data.image;
+    downloadEl.download = `${certId}-certificate`;
+  }
+  if (openNewEl) openNewEl.href = data.image;
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
+
 
 function closeCertModal() {
   const modal = document.getElementById('certModal');
@@ -249,12 +281,40 @@ function closeCertModal() {
   }
 }
 
+
+
+function getStickyOffset() {
+  const navbar = document.querySelector('.navbar');
+  return (navbar?.getBoundingClientRect().height || 80) + 16;
+}
+
+function ensureElementVisible(element) {
+  if (!element) return;
+
+  const offset = getStickyOffset();
+  const rect = element.getBoundingClientRect();
+  const isAboveViewport = rect.top < offset;
+  const isBelowViewport = rect.bottom > window.innerHeight;
+
+  if (isAboveViewport || isBelowViewport) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targetTop = window.scrollY + rect.top - offset;
+
+    window.scrollTo({
+      top: Math.max(0, targetTop),
+      behavior: prefersReducedMotion ? 'auto' : 'smooth'
+    });
+  }
+}
+
 /**
  * Toggle LinkedIn certificates section
  */
 function toggleLinkedInCerts() {
   const header = document.querySelector('.linkedin-certs-header');
   const content = document.getElementById('linkedinCertsContent');
+  const toggleBtn = header?.querySelector('.linkedin-toggle-btn');
+  const btnText = toggleBtn?.querySelector('.btn-text');
 
   if (!header || !content) return;
 
@@ -263,8 +323,11 @@ function toggleLinkedInCerts() {
   if (isExpanded) {
     // Collapse
     header.setAttribute('aria-expanded', 'false');
+    content.setAttribute('aria-hidden', 'true');
     content.classList.remove('expanded');
     content.classList.add('collapsed');
+    if (toggleBtn) toggleBtn.setAttribute('aria-label', 'Expand LinkedIn certificates');
+    if (btnText) btnText.textContent = 'Expand';
 
     // Hide after animation
     setTimeout(() => {
@@ -276,16 +339,36 @@ function toggleLinkedInCerts() {
   } else {
     // Expand
     header.setAttribute('aria-expanded', 'true');
+    content.setAttribute('aria-hidden', 'false');
     content.style.display = 'block';
     content.classList.add('expanded');
     content.classList.remove('collapsed');
+    if (toggleBtn) toggleBtn.setAttribute('aria-label', 'Collapse LinkedIn certificates');
+    if (btnText) btnText.textContent = 'Collapse';
+
+    requestAnimationFrame(() => ensureElementVisible(content));
   }
 }
 
-// Also allow keyboard Enter/Space to toggle
-document.addEventListener('DOMContentLoaded', () => {
+function initCertificateInteractions() {
+  // Delegated click listener for View Certificate buttons
+  if (!document.body.dataset.certClickBound) {
+    document.body.dataset.certClickBound = 'true';
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.view-cert-btn');
+      if (btn) {
+        e.preventDefault();
+        const certId = btn.dataset.certId || (btn.getAttribute('onclick')?.match(/'([^']+)'/)?.[1]);
+        if (certId) {
+          openCertModal(certId);
+        }
+      }
+    });
+  }
+
   const header = document.querySelector('.linkedin-certs-header');
-  if (header) {
+  if (header && !header.dataset.keyboardBound) {
+    header.dataset.keyboardBound = 'true';
     header.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -293,33 +376,37 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-});
 
-// Close modal on background click only
-document.addEventListener('DOMContentLoaded', () => {
-  const modal = document.getElementById('certModal');
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      // Only close if clicking the background (not the image)
-      if (e.target === modal) {
+  // Close modal on overlay or background click
+  if (!document.body.dataset.certOverlayBound) {
+    document.body.dataset.certOverlayBound = 'true';
+    document.addEventListener('click', (e) => {
+      const modal = document.getElementById('certModal');
+      if (!modal || !modal.classList.contains('active')) return;
+      if (e.target.classList.contains('cert-modal-overlay') || e.target === modal) {
         closeCertModal();
       }
     });
   }
-  
+
+
+
   // Close modal on ESC key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeCertModal();
-    }
-  });
-});
+  if (!document.body.dataset.certEscBound) {
+    document.body.dataset.certEscBound = 'true';
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeCertModal();
+      }
+    });
+  }
+}
 
 // LinkedIn certificate category filter & search
 // Must run AFTER components are dynamically injected into the DOM
 function initLinkedInFilter() {
   const filterBtns = document.querySelectorAll('.linkedin-filter-btn');
-  const certCards  = document.querySelectorAll('.pdf-cert-card');
+  const certCards = document.querySelectorAll('.pdf-cert-card');
   const searchInput = document.getElementById('linkedinCertSearch');
   const clearBtn = document.getElementById('linkedinSearchClear');
   const noResults = document.getElementById('linkedinNoResults');
@@ -408,7 +495,10 @@ function toggleCertFolder(folderId) {
       const header = folder.querySelector('.cert-folder-header');
       const content = folder.querySelector('.cert-folder-content');
       if (header) header.setAttribute('aria-expanded', 'false');
-      if (content) content.classList.remove('show');
+      if (content) {
+        content.classList.remove('show');
+        content.setAttribute('aria-hidden', 'true');
+      }
     }
   });
 
@@ -418,18 +508,27 @@ function toggleCertFolder(folderId) {
     clickedFolder.classList.remove('expanded');
     clickedHeader.setAttribute('aria-expanded', 'false');
     clickedContent.classList.remove('show');
+    clickedContent.setAttribute('aria-hidden', 'true');
   } else {
     // Expand
     clickedFolder.classList.add('expanded');
     clickedHeader.setAttribute('aria-expanded', 'true');
     clickedContent.classList.add('show');
+    clickedContent.setAttribute('aria-hidden', 'false');
+
+    requestAnimationFrame(() => ensureElementVisible(clickedContent));
   }
 }
 
 // Allow keyboard navigation for folder headers
 document.addEventListener('allComponentsLoaded', () => {
+  initCertificateInteractions();
+
   const folderHeaders = document.querySelectorAll('.cert-folder-header');
   folderHeaders.forEach(header => {
+    if (header.dataset.keyboardBound) return;
+    header.dataset.keyboardBound = 'true';
+
     header.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -442,6 +541,8 @@ document.addEventListener('allComponentsLoaded', () => {
     });
   });
 });
+
+document.addEventListener('DOMContentLoaded', initCertificateInteractions);
 
 // Export utilities
 window.Utils = Utils;

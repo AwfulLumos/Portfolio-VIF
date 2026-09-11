@@ -32,37 +32,49 @@ class NavigationManager {
 
   /**
    * Initialize smooth scrolling for anchor links
+   * Uses event delegation so dynamically-loaded components are covered.
    */
   initSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (e) => {
-        const href = anchor.getAttribute('href');
-        if (href === '#') return;
+    document.addEventListener('click', (e) => {
+      // Walk up the DOM to find if an anchor was clicked
+      const anchor = e.target.closest('a[href^="#"]');
+      if (!anchor) return;
 
-        e.preventDefault();
-        const targetSection = document.querySelector(href);
+      const href = anchor.getAttribute('href');
+      if (href === '#') return;
 
-        if (targetSection) {
-          // Close mobile menu if open
-          const navbarCollapse = document.querySelector('.navbar-collapse.show');
-          if (navbarCollapse) {
-            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+      const targetSection = document.querySelector(href);
+      if (!targetSection) return;
+
+      e.preventDefault();
+
+      // Close mobile menu if open
+      const navbarCollapse = document.querySelector('.navbar-collapse');
+      if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+        try {
+          if (window.bootstrap && bootstrap.Collapse) {
+            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse, { toggle: false });
             if (bsCollapse) bsCollapse.hide();
+          } else {
+            navbarCollapse.classList.remove('show');
           }
-
-          // Smooth scroll with offset for fixed navbar
-          const navbarHeight = this.navbar ? this.navbar.offsetHeight : 0;
-          const targetPosition = targetSection.offsetTop - navbarHeight - 20;
-
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-
-          // Update URL without scrolling
-          history.pushState(null, '', href);
+        } catch (err) {
+          navbarCollapse.classList.remove('show');
         }
-      });
+      }
+
+      // Re-fetch navbar height each time (it may change with scroll state)
+      const navbar = document.querySelector('.navbar, #mainNavbar');
+      const navbarHeight = navbar ? navbar.offsetHeight : 80;
+      const targetPosition = targetSection.getBoundingClientRect().top
+        + window.pageYOffset
+        - navbarHeight
+        - 20;
+
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+
+      // Update URL without re-scrolling
+      history.pushState(null, '', href);
     });
   }
 
@@ -112,10 +124,14 @@ class NavigationManager {
    * Initialize active link highlighting based on scroll position
    */
   initActiveHighlighting() {
+    // Re-query after components have loaded into the DOM
+    this.navLinks = document.querySelectorAll('.nav-link');
+    this.sections = document.querySelectorAll('section[id]');
+
     if (this.sections.length === 0 || this.navLinks.length === 0) return;
 
     const observerOptions = {
-      threshold: 0.3,
+      threshold: 0.2,
       rootMargin: '-80px 0px -50% 0px'
     };
 
@@ -140,7 +156,7 @@ class NavigationManager {
   setActiveLink(sectionId) {
     this.navLinks.forEach(link => {
       link.classList.remove('active');
-      
+
       if (link.getAttribute('href') === `#${sectionId}`) {
         link.classList.add('active');
       }

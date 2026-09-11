@@ -17,8 +17,8 @@ class ComponentLoader {
    */
   async loadComponent(componentName, target) {
     try {
-      const targetElement = typeof target === 'string' 
-        ? document.querySelector(target) 
+      const targetElement = typeof target === 'string'
+        ? document.querySelector(target)
         : target;
 
       if (!targetElement) {
@@ -27,16 +27,16 @@ class ComponentLoader {
       }
 
       const response = await fetch(`${this.componentsPath}${componentName}.html`);
-      
+
       if (!response.ok) {
         throw new Error(`Failed to load component: ${componentName}`);
       }
 
       const html = await response.text();
       targetElement.innerHTML = html;
-      
+
       this.loadedComponents.set(componentName, targetElement);
-      
+
       // Dispatch custom event for component load
       document.dispatchEvent(new CustomEvent('componentLoaded', {
         detail: { componentName, element: targetElement }
@@ -56,10 +56,23 @@ class ComponentLoader {
    */
   async loadComponents(components) {
     const results = [];
-    
+    const total = components.length;
+    let count = 0;
+
     for (const { name, target } of components) {
       const result = await this.loadComponent(name, target);
       results.push(result);
+      count++;
+
+      // Dispatch progress event
+      document.dispatchEvent(new CustomEvent('componentProgress', {
+        detail: {
+          loadedCount: count,
+          totalCount: total,
+          componentName: name,
+          percentage: Math.round((count / total) * 100)
+        }
+      }));
     }
 
     // Dispatch event when all components are loaded

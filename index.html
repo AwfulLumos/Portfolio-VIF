@@ -1,179 +1,380 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta
-      name="description"
-      content="VIF.Dev - Full Stack Developer Portfolio. Voun Irish Florence Dejumo specializes in JavaScript, React, Vue.js, Laravel and Spring Boot development."
-    />
-    <meta
-      name="keywords"
-      content="Full Stack Developer, Web Developer, JavaScript, React, Vue.js, Laravel, Spring Boot, Portfolio"
-    />
-    <meta name="author" content="Voun Irish Florence Dejumo" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Open Graph / Social Media -->
-    <meta
-      property="og:title"
-      content="VIF.Dev - Full Stack Developer Portfolio"
-    />
-    <meta
-      property="og:description"
-      content="Full Stack Developer crafting modern, responsive web experiences with passion for clean code and innovative solutions."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://vif.dev" />
+  <meta name="description"
+    content="VIF.Dev - Full Stack Developer Portfolio. Voun Irish Florence Dejumo specializes in JavaScript, React, Vue.js, Laravel and Spring Boot development." />
+  <meta name="keywords"
+    content="Full Stack Developer, Web Developer, JavaScript, React, Vue.js, Laravel, Spring Boot, Portfolio" />
+  <meta name="author" content="Voun Irish Florence Dejumo" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
 
-    <title>VIF.Dev | Full Stack Developer Portfolio</title>
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="VIF.Dev - Full Stack Developer Portfolio" />
+  <meta property="og:description"
+    content="Full Stack Developer crafting modern, responsive web experiences with passion for clean code and innovative solutions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="VIF.Dev" />
+  <meta property="og:locale" content="en_PH" />
+  <meta property="og:url" content="https://vif.dev" />
+  <meta property="og:image" content="https://vif.dev/assets/images/myProfile.jpg" />
+  <meta property="og:image:alt" content="VIF.Dev portfolio preview" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-    <link rel="manifest" href="/manifest.webmanifest" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VIF.Dev - Full Stack Developer Portfolio" />
+  <meta name="twitter:description"
+    content="Full Stack Developer crafting modern, responsive web experiences with passion for clean code and innovative solutions." />
+  <meta name="twitter:image" content="https://vif.dev/assets/images/myProfile.jpg" />
+  <link rel="canonical" href="https://vif.dev/" />
+  <meta name="theme-color" content="#313647" />
 
-    <!-- Preload Critical Assets -->
-    <link rel="preload" href="assets/images/myProfile.jpg" as="image" />
-    <link rel="preload" href="css/main.css" as="style" />
-    <link rel="preload" href="js/componentLoader.js" as="script" />
+  <title>VIF.Dev | Full Stack Developer Portfolio</title>
 
-    <!-- Preconnect to CDNs -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/DEJUMO_S4.png" type="image/png" />
+  <link rel="manifest" href="manifest.webmanifest" />
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
+  <!-- Preload Critical Assets -->
+  <link rel="preload" href="assets/images/myProfile.jpg" as="image" />
+  <link rel="preload" href="css/main.css" as="style" />
+  <link rel="preload" href="js/componentLoader.js" as="script" />
 
-    <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
-    />
+  <!-- Preconnect to CDNs -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+  <link rel="preconnect" href="https://unc.neolms.eu" crossorigin />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 
-    <!-- Custom CSS - Organized in css/ folder -->
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/navbar.css" />
-    <link rel="stylesheet" href="css/hero.css" />
-    <link rel="stylesheet" href="css/about.css" />
-    <link rel="stylesheet" href="css/skills.css" />
-    <link rel="stylesheet" href="css/personality.css" />
-    <link rel="stylesheet" href="css/education.css" />
-    <link rel="stylesheet" href="css/certifications.css" />
-    <link rel="stylesheet" href="css/projects.css" />
-    <link rel="stylesheet" href="css/contact.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/particles.css" />
-    <link rel="stylesheet" href="css/language.css" />
-    <link rel="stylesheet" href="css/enhancements.css" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
 
-  <body>
-    <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
 
-    <!-- Navigation Component -->
-    <div id="navbar-placeholder">
-      <div class="skeleton-navbar">
-        <div class="skeleton skeleton-logo"></div>
-        <div class="skeleton-nav-links">
-          <div class="skeleton skeleton-link"></div>
-          <div class="skeleton skeleton-link"></div>
-          <div class="skeleton skeleton-link"></div>
-          <div class="skeleton skeleton-link"></div>
+  <!-- Custom CSS - Organized in css/ folder -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/skills.css" />
+  <link rel="stylesheet" href="css/personality.css" />
+  <link rel="stylesheet" href="css/education.css" />
+  <link rel="stylesheet" href="css/certifications.css" />
+  <link rel="stylesheet" href="css/projects.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/particles.css" />
+  <link rel="stylesheet" href="css/enhancements.css" />
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://vif.dev/#person",
+            "name": "Voun Irish Florence Dejumo",
+            "url": "https://vif.dev/",
+            "jobTitle": "Full Stack Developer",
+            "sameAs": [
+              "https://github.com/AwfulLumos",
+              "https://www.linkedin.com/in/voundejumo/"
+            ],
+            "knowsAbout": [
+              "JavaScript",
+              "TypeScript",
+              "React",
+              "Vue.js",
+              "Laravel",
+              "Spring Boot",
+              "Node.js"
+            ]
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://vif.dev/#projects",
+            "name": "Featured Projects",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "SoftwareSourceCode",
+                  "name": "Collaborative Document Editor",
+                  "url": "https://github.com/AwfulLumos/CollaborativeDocumentEditor",
+                  "author": { "@id": "https://vif.dev/#person" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@type": "SoftwareSourceCode",
+                  "name": "DigiStall",
+                  "url": "https://github.com/AwfulLumos",
+                  "author": { "@id": "https://vif.dev/#person" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                  "@type": "SoftwareSourceCode",
+                  "name": "HealthWatch Olongapo",
+                  "url": "https://github.com/AwfulLumos/HealthWatchOlongapo",
+                  "author": { "@id": "https://vif.dev/#person" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "item": {
+                  "@type": "SoftwareApplication",
+                  "name": "SmartServe ",
+                  "applicationCategory": "BusinessApplication",
+                  "operatingSystem": "Web",
+                  "author": { "@id": "https://vif.dev/#person" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 5,
+                "item": {
+                  "@type": "SoftwareSourceCode",
+                  "name": "Digital Cultural E-Portfolio",
+                  "url": "https://github.com/AwfulLumos/TCWFinalProjectGroupOne",
+                  "author": { "@id": "https://vif.dev/#person" }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+</head>
+
+<body>
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress" class="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- Page Intro / High-Tech Loading HUD -->
+  <div id="page-intro" class="loader-active" role="dialog" aria-modal="true" aria-label="Loading VIF.Dev Portfolio">
+    <!-- Ambient Background Glow & Grid -->
+    <div class="loader-backdrop-glow" aria-hidden="true"></div>
+    <div class="loader-grid-bg" aria-hidden="true"></div>
+
+    <!-- Cyberpunk HUD Corner Accents -->
+    <div class="loader-corner top-left" aria-hidden="true">
+      <span class="corner-cross">+</span>
+      <span class="corner-label">SYS_INIT // v2.4</span>
+    </div>
+    <div class="loader-corner top-right" aria-hidden="true">
+      <span class="corner-label">STATUS // OPTIMAL</span>
+      <span class="corner-cross">+</span>
+    </div>
+    <div class="loader-corner bottom-left" aria-hidden="true">
+      <span class="corner-cross">+</span>
+      <span class="corner-label">LATENCY &lt; 12ms</span>
+    </div>
+    <div class="loader-corner bottom-right" aria-hidden="true">
+      <span class="corner-label">BUILD 2026.Q1</span>
+      <span class="corner-cross">+</span>
+    </div>
+
+    <!-- Center Card -->
+    <div class="loader-card">
+      <!-- HUD Top Bar -->
+      <div class="loader-hud-header">
+        <div class="loader-status-badge">
+          <span class="status-pulse-dot"></span>
+          <span class="status-badge-text" id="loader-live-badge">SYSTEM INITIALIZING</span>
+        </div>
+        <div class="loader-sys-info">
+          <i class="bi bi-shield-lock"></i>
+          <span>SECURE PROTOCOL</span>
+        </div>
+      </div>
+
+      <!-- Orbital Hologram & Monogram -->
+      <div class="loader-visual-hub" aria-hidden="true">
+        <div class="loader-orbit orbit-outer"></div>
+        <div class="loader-orbit orbit-inner"></div>
+        <div class="loader-orbit-glow"></div>
+        <div class="loader-core-icon">
+          <i class="bi bi-code-slash"></i>
+        </div>
+      </div>
+
+      <!-- Brand Typography -->
+      <div class="loader-brand">
+        <h1 class="loader-title">VIF<span class="loader-accent">.Dev</span></h1>
+        <p class="loader-subtitle">VOUN IRISH FLORENCE DEJUMO</p>
+        <div class="loader-role-wrapper">
+          <span class="loader-role-tag">FULL STACK DEVELOPER</span>
+        </div>
+      </div>
+
+      <!-- Live Boot Terminal -->
+      <div class="loader-terminal" aria-live="polite">
+        <div class="terminal-bar">
+          <div class="term-dots">
+            <span class="term-dot red"></span>
+            <span class="term-dot yellow"></span>
+            <span class="term-dot green"></span>
+          </div>
+          <span class="term-title">boot_sequence.sh</span>
+        </div>
+        <div class="terminal-output">
+          <span class="term-prompt">&gt;</span>
+          <span class="term-message" id="loader-terminal-text">Booting core design tokens...</span>
+          <span class="term-cursor" aria-hidden="true">_</span>
+        </div>
+      </div>
+
+      <!-- Precision Progress Bar & Metrics -->
+      <div class="loader-progress-section">
+        <div class="progress-meta">
+          <span class="progress-label" id="loader-status-label">Mounting modules...</span>
+          <span class="progress-number" id="loader-percentage">0%</span>
+        </div>
+        <div class="progress-track-wrapper">
+          <div class="loader-progress-track">
+            <div class="loader-progress-fill" id="loader-progress-bar" style="width: 0%;">
+              <div class="progress-glow-head"></div>
+            </div>
+          </div>
+          <div class="progress-ticks" aria-hidden="true">
+            <span>0%</span>
+            <span>25%</span>
+            <span>50%</span>
+            <span>75%</span>
+            <span>100%</span>
+          </div>
+        </div>
+        <div class="progress-sub-meta">
+          <span class="comp-counter" id="loader-component-count">Components: 0 / 10</span>
+          <span class="status-ping"><i class="bi bi-cpu"></i> All Engines Active</span>
+        </div>
+      </div>
+
+      <!-- Micro Tech Stack Pills -->
+      <div class="loader-chips" aria-hidden="true">
+        <span class="loader-chip"><i class="bi bi-filetype-js"></i> JavaScript</span>
+        <span class="loader-chip"><i class="bi bi-filetype-tsx"></i> React</span>
+        <span class="loader-chip"><i class="bi bi-database"></i> Spring / Laravel</span>
+        <span class="loader-chip"><i class="bi bi-gem"></i> Modern UI</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cursor Glow Orb -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+
+  <!-- Navigation Component -->
+  <div id="navbar-placeholder">
+    <div class="skeleton-navbar">
+      <div class="skeleton skeleton-logo"></div>
+      <div class="skeleton-nav-links">
+        <div class="skeleton skeleton-link"></div>
+        <div class="skeleton skeleton-link"></div>
+        <div class="skeleton skeleton-link"></div>
+        <div class="skeleton skeleton-link"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Hero Section Component -->
+    <div id="hero-placeholder">
+      <div class="skeleton-hero">
+        <div class="skeleton skeleton-badge"></div>
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-subtitle"></div>
+        <div class="skeleton-buttons">
+          <div class="skeleton skeleton-btn"></div>
+          <div class="skeleton skeleton-btn"></div>
         </div>
       </div>
     </div>
 
-    <!-- Main Content -->
-    <main id="main-content">
-      <!-- Hero Section Component -->
-      <div id="hero-placeholder">
-        <div class="skeleton-hero">
-          <div class="skeleton skeleton-badge"></div>
-          <div class="skeleton skeleton-title"></div>
-          <div class="skeleton skeleton-subtitle"></div>
-          <div class="skeleton-buttons">
-            <div class="skeleton skeleton-btn"></div>
-            <div class="skeleton skeleton-btn"></div>
+    <!-- About Section Component -->
+    <div id="about-placeholder">
+      <div class="skeleton-section">
+        <div class="skeleton skeleton-heading"></div>
+        <div class="skeleton-content-row">
+          <div class="skeleton skeleton-image"></div>
+          <div class="skeleton-text-block">
+            <div class="skeleton skeleton-text"></div>
+            <div class="skeleton skeleton-text"></div>
+            <div class="skeleton skeleton-text short"></div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- About Section Component -->
-      <div id="about-placeholder">
-        <div class="skeleton-section">
-          <div class="skeleton skeleton-heading"></div>
-          <div class="skeleton-content-row">
-            <div class="skeleton skeleton-image"></div>
-            <div class="skeleton-text-block">
-              <div class="skeleton skeleton-text"></div>
-              <div class="skeleton skeleton-text"></div>
-              <div class="skeleton skeleton-text short"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- Skills Section Component (includes Tech Stack) -->
+    <div id="skills-placeholder"></div>
 
-      <!-- Skills Section Component (includes Tech Stack) -->
-      <div id="skills-placeholder"></div>
+    <!-- Projects Section Component -->
+    <div id="projects-placeholder"></div>
 
-      <!-- Certifications & Awards Section Component -->
-      <div id="certifications-placeholder"></div>
+    <!-- Certifications & Awards Section Component -->
+    <div id="certifications-placeholder"></div>
 
-      <!-- Projects Section Component -->
-      <div id="projects-placeholder"></div>
+    <!-- Education Section Component -->
+    <div id="education-placeholder"></div>
 
-      <!-- Personality Section Component -->
-      <div id="personality-placeholder"></div>
+    <!-- Personality Section Component -->
+    <div id="personality-placeholder"></div>
 
-      <!-- Education Section Component -->
-      <div id="education-placeholder"></div>
+    <!-- Contact Section Component -->
+    <div id="contact-placeholder"></div>
+  </main>
 
-      <!-- Contact Section Component -->
-      <div id="contact-placeholder"></div>
-    </main>
+  <!-- Footer Component -->
+  <div id="footer-placeholder"></div>
 
-    <!-- Footer Component -->
-    <div id="footer-placeholder"></div>
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="bi bi-chevron-up"></i>
+  </button>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-      <i class="bi bi-chevron-up"></i>
-    </button>
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"
+    defer></script>
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 
-    <!-- EmailJS SDK -->
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-    ></script>
+  <!-- Trailhead badges disabled to avoid client-side API calls (CORS) -->
+  <!-- Badges were intentionally removed; profile link remains in Certifications section. -->
 
-    <!-- Custom JavaScript - Modular Architecture -->
-    <script src="js/emailConfig.js"></script>
-    <script src="js/componentLoader.js"></script>
-    <script src="js/utils.js" defer></script>
-    <script src="js/animations.js" defer></script>
-    <script src="js/navigation.js" defer></script>
-    <script src="js/interactive.js" defer></script>
-    <script src="js/main.js" defer></script>
-    <script src="js/language.js" defer></script>
-    <script src="js/enhancements.js" defer></script>
-  </body>
+  <!-- Custom JavaScript - Modular Architecture -->
+  <script src="js/emailConfig.js" defer></script>
+  <script src="js/componentLoader.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/navigation.js" defer></script>
+  <script src="js/interactive.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/enhancements.js" defer></script>
+</body>
+
 </html>

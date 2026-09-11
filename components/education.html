@@ -4,25 +4,30 @@
     <div class="education-content">
       <!-- School Card -->
       <div class="school-card-wrapper fade-in-left">
-        <div class="school-card-static clickable" id="schoolCard">
+        <div class="school-card-static clickable expanded" id="schoolCard" role="button" tabindex="0"
+          aria-expanded="true" aria-controls="schoolDropdown" aria-label="Toggle university details">
           <img
             src="https://unc.neolms.eu/files/86109/1200px-University_of_Nueva_Caceres_Seal(6).png?lmsauth=0d3e8d79854064302d3a29dc0243b9cba24f367f"
-            alt="Seal of the University of Nueva Caceres"
-            loading="lazy"
-          />
+            alt="Seal of the University of Nueva Caceres" loading="lazy" decoding="async" fetchpriority="low" />
           <div class="click-indicator">
             <i class="bi bi-chevron-down"></i>
             <span>Click to learn more</span>
           </div>
         </div>
-        <div class="school-info-dropdown" id="schoolDropdown">
+        <div class="school-info-dropdown show" id="schoolDropdown" aria-hidden="false">
           <div class="dropdown-content">
             <h4><i class="bi bi-building"></i> About the University</h4>
             <p>
-              The <strong>University of Nueva Caceres (UNC)</strong> is one of the oldest and most prestigious educational institutions in the Bicol Region, founded in 1948. Known for its commitment to academic excellence and holistic development, UNC has been producing competent professionals and leaders for over seven decades.
+              The <strong>University of Nueva Caceres (UNC)</strong> is one of the oldest and most prestigious
+              educational institutions in the Bicol Region, founded in 1948. Known for its commitment to academic
+              excellence and holistic development, UNC has been producing competent professionals and leaders for over
+              seven decades.
             </p>
             <p>
-              The university offers comprehensive programs in various fields including Information Technology, Engineering, Business, Education, and Liberal Arts. With state-of-the-art facilities and a faculty composed of experienced educators and industry practitioners, UNC provides an environment that fosters innovation, critical thinking, and real-world application of knowledge.
+              The university offers comprehensive programs in various fields including Information Technology,
+              Engineering, Business, Education, and Liberal Arts. With state-of-the-art facilities and a faculty
+              composed of experienced educators and industry practitioners, UNC provides an environment that fosters
+              innovation, critical thinking, and real-world application of knowledge.
             </p>
             <div class="school-highlights">
               <div class="highlight-item">
@@ -45,23 +50,25 @@
 
       <!-- Education Info -->
       <div class="education-info fade-in-right">
-        <h2 class="gradient-text">My Educational Journey</h2>
+        <div class="education-summary-card">
+          <h2 class="gradient-text">My Educational Journey</h2>
 
-        <p class="lead">
-          Pursuing excellence in Information Technology at one of Bicol's
-          premier institutions.
-        </p>
+          <p class="lead">
+            Pursuing excellence in Information Technology at one of Bicol's
+            premier institutions.
+          </p>
 
-        <p>
-          I'm currently pursuing my
-          <strong>Bachelor of Science in Information Technology</strong> at the
-          prestigious <strong>University of Nueva Caceres</strong>. My academic
-          journey has been an exciting exploration of software development,
-          database management and cutting-edge web technologies. Through
-          hands-on projects and rigorous coursework, I've developed a strong
-          foundation that bridges theoretical knowledge with real-world
-          applications.
-        </p>
+          <p>
+            I'm currently pursuing my
+            <strong>Bachelor of Science in Information Technology</strong> at the
+            prestigious <strong>University of Nueva Caceres</strong>. My academic
+            journey has been an exciting exploration of software development,
+            database management and cutting-edge web technologies. Through
+            hands-on projects and rigorous coursework, I've developed a strong
+            foundation that bridges theoretical knowledge with real-world
+            applications.
+          </p>
+        </div>
 
         <!-- Achievements Section -->
         <div class="achievements-card">
@@ -71,25 +78,19 @@
           </h3>
           <ul class="achievements-list">
             <li>
-              <span class="text"
-                >Dean's List - Second Semester</span
-              >
+              <span class="text">Dean's List - Second Semester</span>
               <span class="year">SY 2022-2023</span>
             </li>
             <li>
-              <span class="text"
-                >Dean's List - First Semester</span
-              >
+              <span class="text">Dean's List - First Semester</span>
               <span class="year">SY 2023-2024</span>
             </li>
             <li>
-              <span class="text"
-                >Dean's List - Second Semester</span
-              >
+              <span class="text">Dean's List - Second Semester</span>
               <span class="year">SY 2024-2025</span>
             </li>
             <li>
-              <span class="text">Idea2Startup 2025 - DigiStall</span>
+              <span class="text">Idea2Startup Digital Innovation Fund Grantee & Capstone Lead — DigiStall</span>
               <span class="year">2025</span>
             </li>
             <li>
@@ -169,6 +170,58 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GitHub Activity Widget -->
+    <div class="github-activity fade-in mt-5">
+      <div class="github-activity-header">
+        <i class="bi bi-github"></i>
+        <div>
+          <h3>GitHub Activity</h3>
+          <p>Live public activity from my GitHub profile</p>
+        </div>
+        <a href="https://github.com/AwfulLumos" class="btn btn-outline github-activity-cta" target="_blank"
+          rel="noopener noreferrer">
+          <i class="bi bi-box-arrow-up-right"></i> View Profile
+        </a>
+      </div>
+
+      <div class="github-live-panel" data-github-username="AwfulLumos">
+        <div class="github-live-topline">
+          <span class="github-live-badge" data-github-badge>Loading live status...</span>
+          <span class="github-live-meta" data-github-last-updated>Refreshing public activity...</span>
+        </div>
+
+        <div class="github-live-grid">
+          <div class="github-live-item">
+            <span class="label">Latest activity</span>
+            <strong data-github-latest-activity>Fetching...</strong>
+            <p data-github-latest-details>Waiting for GitHub data.</p>
+          </div>
+
+          <div class="github-live-item">
+            <span class="label">Public repos</span>
+            <strong data-github-public-repos>--</strong>
+            <p data-github-followers>Followers: --</p>
+          </div>
+
+          <div class="github-live-item">
+            <span class="label">Active events (7d)</span>
+            <strong data-github-weekly-events>--</strong>
+            <p data-github-weekly-summary>Based on public events.</p>
+          </div>
+        </div>
+
+        <div class="github-live-feed">
+          <div class="github-live-feed-header">
+            <span>Recent events</span>
+            <span data-github-activity-note>Live from public events</span>
+          </div>
+          <ul class="github-live-list" data-github-event-list>
+            <li>Loading recent activity...</li>
+          </ul>
         </div>
       </div>
     </div>
